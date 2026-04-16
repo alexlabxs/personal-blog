@@ -13,7 +13,7 @@ export function Header() {
           {/* Logo */}
           <div className="flex items-center">
             <Link href="/" className="text-xl font-bold brand-gradient hover:brand-bg-hover transition-colors">
-              Alex Xiao
+              Niuniu
             </Link>
           </div>
 

@@ -4,6 +4,7 @@ import { Article } from '@/types/article';
 import { MdxContent } from '@/components/MdxContent';
 import { ArticleToc } from '@/components/ArticleToc';
 import { RelatedArticles } from '@/components/RelatedArticles';
+import { BlogSchema } from '@/lib/seo/BlogSchema';
 import { Metadata } from 'next';
 
 type Props = {
@@ -21,9 +22,30 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const postData = getPostData(params.slug);
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://alexlabx.com';
+
   return {
     title: postData.title,
     description: postData.description,
+    keywords: postData.tags,
+    authors: [{ name: 'Niuniu', url: baseUrl }],
+    openGraph: {
+      title: postData.title,
+      description: postData.description,
+      type: 'article',
+      publishedTime: postData.date,
+      authors: ['Niuniu'],
+      tags: postData.tags,
+      url: `${baseUrl}/blog/${params.slug}`,
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: postData.title,
+      description: postData.description,
+    },
+    alternates: {
+      canonical: `/blog/${params.slug}`,
+    },
   };
 }
 
@@ -37,6 +59,7 @@ export default async function PostPage({ params }: Props) {
 
   return (
     <main className="min-h-screen bg-background text-foreground px-4 py-16 md:px-8">
+      <BlogSchema post={postData} />
       <div className="container mx-auto max-w-6xl">
         <div className="mb-12 font-mono text-terminal-green text-sm">~/blog/{params.slug}</div>
         <h1 className="mb-8 text-4xl font-bold">{postData.title}</h1>

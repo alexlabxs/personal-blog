@@ -12,8 +12,13 @@ const iconMap = {
 };
 
 export const metadata: Metadata = {
-  title: '关于我 | Alex Xiao',
-  description: '了解更多关于我',
+  title: '关于我',
+  description: 'Niuniu - 全栈工程师，5年开发经验。精通 React、Next.js、TypeScript，熟悉 Node.js、Python、Go。热爱从 0 到 1 构建产品，正在探索 AI × Product 的结合。',
+  openGraph: {
+    title: '关于我 | Niuniu',
+    description: '全栈工程师，热爱从 0 到 1 构建产品',
+    type: 'profile',
+  },
 };
 
 export default function AboutPage() {
