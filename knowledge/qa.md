@@ -5,34 +5,37 @@
 ## 关于工作
 
 **Q: 你现在在做什么？**
-A: 我目前在 Tech Company 担任 Senior Frontend Engineer，负责核心产品的前端架构。业余时间正在探索 AI × Product 的结合，构建个人项目和开源贡献。
+A: 我目前在保险公司担任 Senior Java Engineer，负责财务系统核心模块开发。主要项目包括费控管理、收付费微服务、记账引擎和 IFRS17 准则重构。同时也在探索 AI 在财务系统的落地应用。
 
 **Q: 你在找工作吗？**
-A: 我对有趣的机会持开放态度。如果你有 AI 相关、前端架构、或者从 0 到 1 构建产品的岗位，欢迎联系我。
+A: 我对有趣的机会持开放态度。如果你有财务系统、分布式架构、或者 AI 落地相关的岗位，欢迎联系我。
 
 **Q: 你喜欢什么样的团队？**
-A: 我喜欢技术驱动、工程文化好的团队。CI/CD 自动化、代码质量重视、持续学习氛围是加分项。
+A: 我喜欢技术驱动、工程文化好的团队。CI/CD 自动化、代码质量重视、持续学习氛围是加分项。PMP 认证让我也关注项目管理流程。
 
 ## 关于技术
 
 **Q: 你的主要技术栈是什么？**
-A: React/Next.js + TypeScript 是我的核心栈。后端熟悉 Node.js、Python、Go。数据库常用 PostgreSQL、MongoDB。部署用 Vercel、AWS、Docker。
+A: Java/Spring Boot/Spring Cloud 是我的核心栈。数据库主要用 MySQL、Oracle、Redis。消息队列用 RocketMQ 解决分布式事务。熟悉 Docker/K8s 容器化部署和 Jenkins CI/CD。
 
-**Q: 为什么你喜欢 Next.js？**
-A: App Router 设计优雅，SSR/SSG 灵活切换，生态成熟，Vercel 部署体验一流。React 开发者的最佳选择。
+**Q: 为什么你喜欢 Spring Boot？**
+A: 简化了 Java 企业级开发，约定优于配置。配合 Spring Cloud 可以快速构建微服务架构，在保险财务场景下表现稳定。
 
 **Q: 你怎么看待 AI？**
-A: AI 是程序员能力的放大器。我用 Claude API 和 OpenRouter 构建了多个项目。Agent 是下一代交互方式的雏形。
+A: AI 是业务提效的重要工具。我已经落地了 OCR 票据识别、智能审单等功能。LLM 在非结构化数据处理上有很大潜力。
+
+**Q: 你有 PMP 认证，这有什么用？**
+A: PMP 让我能更好地理解项目管理流程，在负责核心模块时也能做好进度管控和跨团队协作。
 
 ## 关于项目
 
 **Q: 你有什么项目？**
-A: 我的个人博客 alexlabx.com 集成了 AI Agent 对话功能，访客可以直接问我问题。还有 AI Chat Application 支持多模型切换。GitHub 上有更多开源项目。
+A: 费控管理系统实现了 OCR 智能报销，效率提升一倍；收付费微服务处理高并发扣费，实现资金处理零差错；记账微服务统一了财务数据入口；IFRS17 重构项目落地了会计引擎和分摊模块。
 
 **Q: 你接受外包吗？**
-A: 视项目而定。如果是 AI 相关、前端架构优化、或者有意思的产品想法，可以聊聊。
+A: 视项目而定。如果是财务系统、分布式架构、或者 AI 落地相关的项目，可以聊聊。
 
 ## 关于联系
 
 **Q: 如何联系你？**
-A: GitHub: github.com/niuniu，Twitter: @niuniu，LinkedIn: linkedin.com/in/niuniu。邮件: contact@niuniu.dev
+A: GitHub: github.com/alexlabx，Twitter: @alexlabx。邮件: hello@alexlabx.com

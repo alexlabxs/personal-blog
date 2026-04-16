@@ -186,10 +186,10 @@ export function AgentChat() {
                   Agent Online
                 </div>
                 <p className="text-gray-400 text-sm">
-                  我是 Niuniu 的 AI 分身，有什么想问的？
+                  我是 Alex 的 AI 分身，有什么想问的？
                 </p>
                 <div className="mt-4 flex flex-wrap gap-2 justify-center">
-                  {['你的技术栈是什么？', '有什么项目？', '为什么喜欢 Next.js？'].map(q => (
+                  {['你的技术栈是什么？', '有什么项目？', '为什么喜欢 Spring Boot？'].map(q => (
                     <button
                       key={q}
                       onClick={() => setInput(q)}

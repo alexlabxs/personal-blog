@@ -35,6 +35,11 @@ export function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/resources" className="text-gray-400 hover:text-terminal-green transition-colors text-sm">
+                  资源
+                </Link>
+              </li>
+              <li>
                 <Link href="/about" className="text-gray-400 hover:text-terminal-green transition-colors text-sm">
                   关于
                 </Link>
@@ -68,7 +73,7 @@ export function Footer() {
         {/* Copyright */}
         <div className="border-t border-terminal-border mt-8 pt-8 text-center">
           <p className="text-gray-500 text-sm">
-            © {new Date().getFullYear()} Niuniu. All rights reserved.
+            © {new Date().getFullYear()} Alex. All rights reserved.
           </p>
         </div>
       </div>

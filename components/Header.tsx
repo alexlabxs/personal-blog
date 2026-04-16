@@ -13,7 +13,7 @@ export function Header() {
           {/* Logo */}
           <div className="flex items-center">
             <Link href="/" className="text-xl font-bold brand-gradient hover:brand-bg-hover transition-colors">
-              Niuniu
+              Alex
             </Link>
           </div>
 
@@ -27,6 +27,9 @@ export function Header() {
             </Link>
             <Link href="/projects" className="text-gray-300 hover:text-brand-primary transition-colors">
               项目
+            </Link>
+            <Link href="/resources" className="text-gray-300 hover:text-brand-primary transition-colors">
+              资源
             </Link>
             <Link href="/about" className="text-gray-300 hover:text-brand-primary transition-colors">
               关于
@@ -60,6 +63,9 @@ export function Header() {
               </Link>
               <Link href="/projects" className="text-gray-300 hover:text-brand-primary transition-colors">
                 项目
+              </Link>
+              <Link href="/resources" className="text-gray-300 hover:text-brand-primary transition-colors">
+                资源
               </Link>
               <Link href="/about" className="text-gray-300 hover:text-brand-primary transition-colors">
                 关于

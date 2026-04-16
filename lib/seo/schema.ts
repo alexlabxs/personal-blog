@@ -90,25 +90,29 @@ export function generatePersonSchema(): PersonSchema {
   return {
     '@context': 'https://schema.org',
     '@type': 'Person',
-    name: 'Niuniu',
+    name: 'Alex',
     url: BASE_URL,
     sameAs: [
-      'https://github.com/niuniu',
-      'https://twitter.com/niuniu',
-      'https://linkedin.com/in/niuniu',
+      'https://github.com/alexlabx',
+      'https://twitter.com/alexlabx',
     ],
-    jobTitle: 'Full-Stack Engineer',
-    description: '全栈工程师，热爱从 0 到 1 构建产品，正在探索 AI × Product 的结合',
+    jobTitle: 'Senior Java Engineer',
+    description: '高级 Java 工程师，10年软件开发经验，专注于保险财务系统建设，具备分布式架构设计与 AI 落地实操经验',
     knowsAbout: [
-      'React',
-      'Next.js',
-      'TypeScript',
-      'Node.js',
-      'Python',
+      'Java',
+      'Spring Boot',
+      'Spring Cloud',
+      'Microservices',
+      'MySQL',
+      'Oracle',
+      'Redis',
+      'RocketMQ',
+      'Docker',
+      'Kubernetes',
       'AI',
-      'Machine Learning',
-      'Web Development',
-      'Full-Stack Development',
+      'LLM',
+      'OCR',
+      'PMP',
     ],
   };
 }
@@ -125,7 +129,7 @@ export function generateWebSiteSchema(): WebSiteSchema {
     description: 'Code. Create. Connect. - 构建有思想的数字产品',
     author: {
       '@type': 'Person',
-      name: 'Niuniu',
+      name: 'Alex',
       url: BASE_URL,
     },
     potentialAction: {
@@ -156,7 +160,7 @@ export function generateBlogPostingSchema(post: {
     dateModified: post.date,
     author: {
       '@type': 'Person',
-      name: 'Niuniu',
+      name: 'Alex',
       url: BASE_URL,
     },
     publisher: {
@@ -190,7 +194,7 @@ export function generateProjectSchema(project: {
     url: project.url,
     author: {
       '@type': 'Person',
-      name: 'Niuniu',
+      name: 'Alex',
       url: BASE_URL,
     },
     applicationCategory: 'DeveloperApplication',

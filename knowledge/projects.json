@@ -1,40 +1,34 @@
 [
   {
-    "id": "personal-blog",
-    "name": "个人博客网站",
-    "description": "基于 Next.js 14 构建的现代化个人博客，集成 AI Agent 对话功能，访客可直接与 AI 版我交流。",
-    "techStack": ["Next.js", "TypeScript", "Tailwind CSS", "MDX", "OpenRouter", "Claude"],
+    "id": "expense-control",
+    "name": "费控及智能报销管理系统",
+    "description": "企业费用报销与预算管理平台，集成 OCR 智能识别、移动端报销、预算自动核销。报销效率提升一倍。",
+    "techStack": ["Spring Boot", "Oracle", "BPM", "OCR", "企业微信"],
     "status": "live",
-    "url": "https://alexlabx.com",
-    "github": "https://github.com/xiaokaihan/personal-blog",
     "featured": true
   },
   {
-    "id": "ai-chat-app",
-    "name": "AI Chat Application",
-    "description": "多模型 AI 聊天应用，支持 Claude、GPT-4、Gemini 等模型切换，流式输出体验。",
-    "techStack": ["React", "Next.js", "OpenRouter API", "Tailwind CSS"],
+    "id": "payment-service",
+    "name": "收付费微服务",
+    "description": "高并发收付费系统，处理实时扣费与批量扣款任务，确保资金流水绝对准确，实现资金处理零差错。",
+    "techStack": ["Java", "Spring Cloud", "RocketMQ", "MySQL", "分布式事务"],
     "status": "live",
-    "url": "https://chat.alexxiao.dev",
-    "github": "https://github.com/xiaokaihan/ai-chat",
     "featured": true
   },
   {
-    "id": "devtools-cli",
-    "name": "DevTools CLI",
-    "description": "开发者工具命令行集合，包含代码生成、项目模板、Git 辅助等功能。",
-    "techStack": ["Go", "CLI", "Shell"],
-    "status": "developing",
-    "github": "https://github.com/xiaokaihan/devtools-cli",
+    "id": "accounting-service",
+    "name": "记账微服务系统",
+    "description": "财务数据总入口，将各业务系统原始数据转化为标准化财务凭证，统一记账标准。",
+    "techStack": ["Spring Cloud", "Nacos", "Sentinel", "接口限流补偿"],
+    "status": "live",
     "featured": false
   },
   {
-    "id": "open-source-contributions",
-    "name": "开源贡献",
-    "description": "参与多个开源项目贡献，包括 Next.js、Tailwind CSS、LangChain 等社区项目。",
-    "techStack": ["Various"],
-    "status": "ongoing",
-    "url": "https://github.com/niuniu",
-    "featured": false
+    "id": "ifrs17",
+    "name": "IFRS17 财务准则重构",
+    "description": "应对保险行业 IFRS17 准则，开发会计引擎与分摊模块，确保财务数据合规。",
+    "techStack": ["Java", "Spring Boot", "Postgres", "大数据量批处理"],
+    "status": "live",
+    "featured": true
   }
 ]

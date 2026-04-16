@@ -68,3 +68,16 @@ export interface AgentMessage {
   content: string;
   timestamp: Date;
 }
+
+/**
+ * 资源类型
+ */
+export interface Resource {
+  id: string;
+  name: string;
+  description: string;
+  url: string;
+  category: string;
+  tags?: string[];
+  featured?: boolean;
+}

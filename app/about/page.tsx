@@ -13,10 +13,10 @@ const iconMap = {
 
 export const metadata: Metadata = {
   title: '关于我',
-  description: 'Niuniu - 全栈工程师，5年开发经验。精通 React、Next.js、TypeScript，熟悉 Node.js、Python、Go。热爱从 0 到 1 构建产品，正在探索 AI × Product 的结合。',
+  description: 'Alex - 高级 Java 工程师，10年开发经验。专注于保险财务系统建设，具备分布式架构设计与 AI 落地实操经验。',
   openGraph: {
-    title: '关于我 | Niuniu',
-    description: '全栈工程师，热爱从 0 到 1 构建产品',
+    title: '关于我 | Alex',
+    description: '高级 Java 工程师，专注于构建稳健的财务系统',
     type: 'profile',
   },
 };
@@ -87,10 +87,10 @@ export default function AboutPage() {
         <section className="rounded-lg border border-terminal-green/30 bg-terminal-dim/10 p-8 text-center">
           <p className="mb-2 font-mono text-gray-400 text-sm">EMAIL</p>
           <a
-            href="mailto:contact@niuniu.dev"
+            href="mailto:hello@alexlabx.com"
             className="text-xl font-bold text-terminal-green hover:underline"
           >
-            contact@niuniu.dev
+            hello@alexlabx.com
           </a>
         </section>
       </div>

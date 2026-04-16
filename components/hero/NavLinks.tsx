@@ -32,8 +32,9 @@ export function NavLinks() {
   const links = [
     { href: '/blog', label: '博客文章' },
     { href: '/projects', label: '项目展示' },
+    { href: '/resources', label: '资源分享' },
     { href: '/about', label: '关于我' },
-    { href: 'mailto:contact@niuniu.dev', label: '联系我' },
+    { href: 'mailto:hello@alexlabx.com', label: '联系我' },
   ];
 
   return (
