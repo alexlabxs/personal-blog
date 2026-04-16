@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 // import { Inter, JetBrains_Mono } from 'next/font/google';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
+import { AgentChat } from '@/components/agent/AgentChat';
 import './globals.css';
 
 // 暂时禁用 Google Fonts，使用系统字体
@@ -46,6 +47,7 @@ export default function RootLayout({
           {children}
         </main>
         <Footer />
+        <AgentChat />
       </body>
     </html>
   );

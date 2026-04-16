@@ -1,0 +1,40 @@
+[
+  {
+    "id": "personal-blog",
+    "name": "个人博客网站",
+    "description": "基于 Next.js 14 构建的现代化个人博客，集成 AI Agent 对话功能，访客可直接与 AI 版我交流。",
+    "techStack": ["Next.js", "TypeScript", "Tailwind CSS", "MDX", "OpenRouter", "Claude"],
+    "status": "live",
+    "url": "https://alexxiao.dev",
+    "github": "https://github.com/xiaokaihan/personal-blog",
+    "featured": true
+  },
+  {
+    "id": "ai-chat-app",
+    "name": "AI Chat Application",
+    "description": "多模型 AI 聊天应用，支持 Claude、GPT-4、Gemini 等模型切换，流式输出体验。",
+    "techStack": ["React", "Next.js", "OpenRouter API", "Tailwind CSS"],
+    "status": "live",
+    "url": "https://chat.alexxiao.dev",
+    "github": "https://github.com/xiaokaihan/ai-chat",
+    "featured": true
+  },
+  {
+    "id": "devtools-cli",
+    "name": "DevTools CLI",
+    "description": "开发者工具命令行集合，包含代码生成、项目模板、Git 辅助等功能。",
+    "techStack": ["Go", "CLI", "Shell"],
+    "status": "developing",
+    "github": "https://github.com/xiaokaihan/devtools-cli",
+    "featured": false
+  },
+  {
+    "id": "open-source-contributions",
+    "name": "开源贡献",
+    "description": "参与多个开源项目贡献，包括 Next.js、Tailwind CSS、LangChain 等社区项目。",
+    "techStack": ["Various"],
+    "status": "ongoing",
+    "url": "https://github.com/niuniu",
+    "featured": false
+  }
+]
