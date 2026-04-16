@@ -126,14 +126,14 @@ A: GitHub: github.com/niuniu，Twitter: @niuniu，LinkedIn: linkedin.com/in/niun
 - 基于 Next.js 14 构建的现代化个人博客，集成 AI Agent 对话功能，访客可直接与 AI 版我交流。
 - 技术栈：Next.js, TypeScript, Tailwind CSS, MDX, OpenRouter, Claude
 - 状态：已上线
-- 地址：https://alexxiao.dev
+- 地址：https://alexlabx.com
 - GitHub：https://github.com/xiaokaihan/personal-blog
 
 ### AI Chat Application
 - 多模型 AI 聊天应用，支持 Claude、GPT-4、Gemini 等模型切换，流式输出体验。
 - 技术栈：React, Next.js, OpenRouter API, Tailwind CSS
 - 状态：已上线
-- 地址：https://chat.alexxiao.dev
+- 地址：https://chat.alexlabx.com
 - GitHub：https://github.com/xiaokaihan/ai-chat
 
 ### DevTools CLI

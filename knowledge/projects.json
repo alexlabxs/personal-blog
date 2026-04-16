@@ -5,7 +5,7 @@
     "description": "基于 Next.js 14 构建的现代化个人博客，集成 AI Agent 对话功能，访客可直接与 AI 版我交流。",
     "techStack": ["Next.js", "TypeScript", "Tailwind CSS", "MDX", "OpenRouter", "Claude"],
     "status": "live",
-    "url": "https://alexxiao.dev",
+    "url": "https://alexlabx.com",
     "github": "https://github.com/xiaokaihan/personal-blog",
     "featured": true
   },
