@@ -3,12 +3,18 @@
 import { useState, useMemo } from 'react';
 import { resources, categories } from '@/lib/resources';
 import { FaExternalLinkAlt } from 'react-icons/fa';
+import { Locale } from '@/lib/i18n';
+import { useTranslation } from '@/lib/i18n/client';
 
-export function ResourcesClient() {
+interface ResourcesClientProps {
+  lang: Locale;
+}
+
+export function ResourcesClient({ lang }: ResourcesClientProps) {
+  const dict = useTranslation(lang);
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState('');
 
-  // 根据分类和搜索过滤资源
   const filteredResources = useMemo(() => {
     let result = resources;
 
@@ -31,7 +37,6 @@ export function ResourcesClient() {
   const featuredResources = filteredResources.filter(r => r.featured);
   const otherResources = filteredResources.filter(r => !r.featured);
 
-  // 统计每个分类的资源数量
   const categoryCounts = useMemo(() => {
     const counts: Record<string, number> = {};
     resources.forEach(r => {
@@ -40,27 +45,30 @@ export function ResourcesClient() {
     return counts;
   }, []);
 
+  const allLabel = lang === 'zh' ? '全部' : 'All';
+  const searchPlaceholder = lang === 'zh' ? '搜索资源...' : 'Search resources...';
+  const clearLabel = lang === 'zh' ? '清除筛选' : 'Clear';
+  const noResourcesLabel = lang === 'zh' ? '没有找到匹配的资源' : 'No matching resources found';
+
   return (
     <main className="min-h-screen bg-background text-foreground px-4 py-16 md:px-8">
       <div className="container mx-auto max-w-6xl">
         <div className="mb-12">
           <div className="font-mono text-terminal-green text-sm mb-4">~/resources</div>
-          <h1 className="text-4xl font-bold mb-2">资源分享</h1>
-          <p className="text-gray-400">收集整理的开发者优质资源，持续更新</p>
+          <h1 className="text-4xl font-bold mb-2">{dict.resources.title}</h1>
+          <p className="text-gray-400">{lang === 'zh' ? '收集整理的开发者优质资源，持续更新' : 'Curated developer resources, updated regularly'}</p>
         </div>
 
-        {/* Search */}
         <div className="mb-8">
           <input
             type="text"
-            placeholder="搜索资源..."
+            placeholder={searchPlaceholder}
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             className="w-full px-4 py-2 bg-code-bg border border-terminal-border rounded-lg text-foreground focus:border-terminal-green focus:outline-none transition-colors"
           />
         </div>
 
-        {/* Category Filter */}
         <div className="mb-8">
           <div className="flex flex-wrap gap-2">
             <button
@@ -71,7 +79,7 @@ export function ResourcesClient() {
                   : 'bg-code-bg text-gray-300 hover:bg-gray-700'
               }`}
             >
-              全部 ({resources.length})
+              {allLabel} ({resources.length})
             </button>
             {categories.map((cat) => (
               <button
@@ -94,13 +102,12 @@ export function ResourcesClient() {
                 onClick={() => setSelectedCategory(null)}
                 className="ml-2 text-terminal-green hover:underline"
               >
-                清除筛选
+                {clearLabel}
               </button>
             </p>
           )}
         </div>
 
-        {/* Featured Resources */}
         {featuredResources.length > 0 && (
           <section className="mb-12">
             <h2 className="mb-6 font-mono text-terminal-green text-sm">
@@ -114,7 +121,6 @@ export function ResourcesClient() {
           </section>
         )}
 
-        {/* Other Resources */}
         {otherResources.length > 0 && (
           <section>
             <h2 className="mb-6 font-mono text-gray-400 text-sm">ALL RESOURCES</h2>
@@ -128,7 +134,7 @@ export function ResourcesClient() {
 
         {filteredResources.length === 0 && (
           <div className="text-center py-12 text-gray-400">
-            <p>没有找到匹配的资源</p>
+            <p>{noResourcesLabel}</p>
           </div>
         )}
       </div>

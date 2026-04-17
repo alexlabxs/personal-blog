@@ -1,0 +1,80 @@
+{
+  "nav": {
+    "home": "首页",
+    "blog": "博客",
+    "projects": "项目",
+    "resources": "资源",
+    "about": "关于"
+  },
+  "home": {
+    "whoami": "~/whoami",
+    "experience": "~/experience",
+    "skills": "~/skills",
+    "stats": {
+      "yearsExperience": "年经验",
+      "projectsBuilt": "个项目",
+      "openSource": "开源贡献",
+      "articlesPublished": "篇文章"
+    },
+    "status": {
+      "label": "状态：",
+      "value": "开放机会"
+    }
+  },
+  "about": {
+    "title": "关于我",
+    "contact": "~/contact",
+    "contactDescription": "欢迎通过以下方式联系我，探讨技术合作、产品咨询或工作机会。"
+  },
+  "blog": {
+    "title": "博客",
+    "description": "技术博客，分享 Java 开发经验、微服务架构设计与 AI 落地实践。Spring Boot、分布式事务、财务系统等技术文章。",
+    "readMore": "阅读更多",
+    "readingTime": "分钟阅读",
+    "allTags": "所有标签",
+    "noPosts": "暂无文章"
+  },
+  "projects": {
+    "title": "项目",
+    "description": "展示我的开源项目和技术实践",
+    "viewProject": "查看项目",
+    "viewCode": "查看代码"
+  },
+  "resources": {
+    "title": "资源",
+    "description": "精选技术资源、工具和学习资料"
+  },
+  "footer": {
+    "about": "关于",
+    "aboutDescription": "Full-Stack Engineer，专注于构建有思想的数字产品。Code. Create. Connect.",
+    "quickLinks": "快速链接",
+    "socialMedia": "社交媒体",
+    "copyright": "保留所有权利"
+  },
+  "profile": {
+    "role": "高级 Java 工程师",
+    "tagline": "构建稳健的系统",
+    "bio": "拥有10年软件开发经验，专注于保险财务系统建设。负责过费控管理、收付费、记账引擎等核心系统开发，具备分布式架构设计与 AI 落地实操经验。持有 PMP 认证，致力于将复杂业务规则转化为稳健的技术方案。"
+  },
+  "experience": {
+    "company1": {
+      "role": "高级 Java 工程师（财务）",
+      "period": "2019 - 至今",
+      "description1": "负责财务系统核心模块开发，包括费控管理、收付费、记账引擎",
+      "description2": "主导 IFRS17 准则重构项目，落地会计引擎与分摊模块",
+      "description3": "集成 LLM 与 OCR 技术，实现智能审单等 AI 提效功能"
+    },
+    "company2": {
+      "role": "Java 开发工程师",
+      "period": "2017 - 2019",
+      "description1": "参与金融行业系统功能模块设计与开发",
+      "description2": "负责核心业务逻辑实现与性能优化"
+    },
+    "company3": {
+      "role": "Java 开发工程师",
+      "period": "2015 - 2017",
+      "description1": "负责金融行情系统后台开发",
+      "description2": "确保行情数据的实时高可用性"
+    }
+  }
+}

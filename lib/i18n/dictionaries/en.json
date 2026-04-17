@@ -1,0 +1,80 @@
+{
+  "nav": {
+    "home": "Home",
+    "blog": "Blog",
+    "projects": "Projects",
+    "resources": "Resources",
+    "about": "About"
+  },
+  "home": {
+    "whoami": "~/whoami",
+    "experience": "~/experience",
+    "skills": "~/skills",
+    "stats": {
+      "yearsExperience": "Years Experience",
+      "projectsBuilt": "Projects Built",
+      "openSource": "Open Source",
+      "articlesPublished": "Articles Published"
+    },
+    "status": {
+      "label": "STATUS:",
+      "value": "Open to opportunities"
+    }
+  },
+  "about": {
+    "title": "About Me",
+    "contact": "~/contact",
+    "contactDescription": "Feel free to reach out for technical collaboration, product consulting, or job opportunities."
+  },
+  "blog": {
+    "title": "Blog",
+    "description": "Technical blog sharing Java development experience, microservices architecture, and AI implementation practices.",
+    "readMore": "Read More",
+    "readingTime": "min read",
+    "allTags": "All Tags",
+    "noPosts": "No posts yet"
+  },
+  "projects": {
+    "title": "Projects",
+    "description": "Showcasing my open source projects and technical practices",
+    "viewProject": "View Project",
+    "viewCode": "View Code"
+  },
+  "resources": {
+    "title": "Resources",
+    "description": "Curated technical resources, tools, and learning materials"
+  },
+  "footer": {
+    "about": "About",
+    "aboutDescription": "Full-Stack Engineer focused on building thoughtful digital products. Code. Create. Connect.",
+    "quickLinks": "Quick Links",
+    "socialMedia": "Social Media",
+    "copyright": "All rights reserved"
+  },
+  "profile": {
+    "role": "Senior Java Engineer",
+    "tagline": "Building reliable systems with precision.",
+    "bio": "10 years of software development experience, specializing in insurance and financial systems. Led core modules including expense management, payment processing, and accounting engines. Experienced in distributed architecture design and AI implementation. PMP certified, dedicated to transforming complex business rules into robust technical solutions."
+  },
+  "experience": {
+    "company1": {
+      "role": "Senior Java Engineer (Finance)",
+      "period": "2019 - Present",
+      "description1": "Developed core financial system modules including expense management, payment processing, and accounting engines",
+      "description2": "Led IFRS17 compliance restructuring project, implementing accounting engine and allocation modules",
+      "description3": "Integrated LLM and OCR technologies for AI-powered document review automation"
+    },
+    "company2": {
+      "role": "Java Developer",
+      "period": "2017 - 2019",
+      "description1": "Participated in financial industry system module design and development",
+      "description2": "Implemented core business logic and performance optimization"
+    },
+    "company3": {
+      "role": "Java Developer",
+      "period": "2015 - 2017",
+      "description1": "Developed backend for financial market data systems",
+      "description2": "Ensured real-time high availability of market data"
+    }
+  }
+}

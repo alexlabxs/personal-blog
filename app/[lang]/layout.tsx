@@ -1,18 +1,17 @@
 import type { Metadata } from 'next';
-// import { Inter, JetBrains_Mono } from 'next/font/google';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { AgentChat } from '@/components/agent/AgentChat';
 import { GlobalSchema } from '@/lib/seo/GlobalSchema';
-import './globals.css';
+import { locales, defaultLocale, Locale } from '@/lib/i18n';
+import '@/app/globals.css';
 
-// 暂时禁用 Google Fonts，使用系统字体
-// const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
-// const jetbrainsMono = JetBrains_Mono({ subsets: ['latin'], variable: '--font-mono' });
-
-// 使用系统字体作为临时解决方案
 const inter = { variable: '--font-inter' };
 const jetbrainsMono = { variable: '--font-mono' };
+
+export function generateStaticParams() {
+  return locales.map((locale) => ({ lang: locale }));
+}
 
 export const metadata: Metadata = {
   metadataBase: process.env.NEXT_PUBLIC_SITE_URL
@@ -65,27 +64,28 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
-  alternates: {
-    canonical: '/',
-  },
 };
 
 export default function RootLayout({
   children,
+  params,
 }: {
   children: React.ReactNode;
+  params: { lang: Locale };
 }) {
+  const lang = params.lang || defaultLocale;
+
   return (
-    <html lang="zh-CN" className="dark">
+    <html lang={lang} className="dark">
       <head>
         <GlobalSchema />
       </head>
       <body className={`${inter.variable} ${jetbrainsMono.variable} font-sans antialiased`}>
-        <Header />
+        <Header lang={lang} />
         <main className="min-h-screen">
           {children}
         </main>
-        <Footer />
+        <Footer lang={lang} />
         <AgentChat />
       </body>
     </html>

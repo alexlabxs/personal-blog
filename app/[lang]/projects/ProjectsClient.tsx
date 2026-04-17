@@ -3,16 +3,21 @@
 import { useState, useMemo } from 'react';
 import { ProjectCard } from '@/components/projects/ProjectCard';
 import { projects } from '@/lib/projects';
+import { Locale } from '@/lib/i18n';
+import { useTranslation } from '@/lib/i18n/client';
 
-export function ProjectsClient() {
+interface ProjectsClientProps {
+  lang: Locale;
+}
+
+export function ProjectsClient({ lang }: ProjectsClientProps) {
+  const dict = useTranslation(lang);
   const [selectedTech, setSelectedTech] = useState<string | null>(null);
 
-  // 获取所有唯一技术栈并排序
   const allTechs = useMemo(() => {
     return Array.from(new Set(projects.flatMap(project => project.techStack))).sort();
   }, [projects]);
 
-  // 根据选中的技术栈过滤项目
   const filteredProjects = useMemo(() => {
     if (!selectedTech) return projects;
     return projects.filter(project => project.techStack.includes(selectedTech));
@@ -20,7 +25,6 @@ export function ProjectsClient() {
 
   const featuredProjects = filteredProjects.filter((p) => p.featured);
 
-  // 统计每个技术栈的项目数量
   const techCounts = useMemo(() => {
     const counts: Record<string, number> = {};
     projects.forEach(project => {
@@ -35,16 +39,21 @@ export function ProjectsClient() {
     setSelectedTech(tech === selectedTech ? null : tech);
   };
 
+  const allLabel = lang === 'zh' ? '全部' : 'All';
+  const filteringLabel = lang === 'zh' ? '正在筛选' : 'Filtering';
+  const clearLabel = lang === 'zh' ? '清除筛选' : 'Clear';
+  const noProjectsLabel = lang === 'zh' ? '没有找到使用' : 'No projects found with';
+  const techStackLabel = lang === 'zh' ? '技术栈的项目' : 'tech stack';
+
   return (
     <main className="min-h-screen bg-background text-foreground px-4 py-16 md:px-8">
       <div className="container mx-auto max-w-6xl">
         <div className="mb-12">
           <div className="font-mono text-terminal-green text-sm mb-4">~/projects</div>
-          <h1 className="text-4xl font-bold mb-2">项目展示</h1>
-          <p className="text-gray-400">正在构建和已经完成的项目</p>
+          <h1 className="text-4xl font-bold mb-2">{dict.projects.title}</h1>
+          <p className="text-gray-400">{lang === 'zh' ? '正在构建和已经完成的项目' : 'Projects I\'m building and have completed'}</p>
         </div>
 
-        {/* Tech Stack Filter */}
         <div className="mb-8">
           <div className="flex flex-wrap gap-2 mb-4">
             <button
@@ -55,7 +64,7 @@ export function ProjectsClient() {
                   : 'bg-gray-700 text-gray-300 hover:bg-gray-600'
               }`}
             >
-              全部 ({projects.length})
+              {allLabel} ({projects.length})
             </button>
             {allTechs.map((tech) => (
               <button
@@ -73,18 +82,17 @@ export function ProjectsClient() {
           </div>
           {selectedTech && (
             <p className="text-sm text-gray-400">
-              正在筛选: <span className="text-brand-primary">{selectedTech}</span>
+              {filteringLabel}: <span className="text-brand-primary">{selectedTech}</span>
               <button
                 onClick={() => setSelectedTech(null)}
                 className="ml-2 text-gray-500 hover:text-white underline"
               >
-                清除筛选
+                {clearLabel}
               </button>
             </p>
           )}
         </div>
 
-        {/* Featured Projects */}
         {featuredProjects.length > 0 && (
           <section className="mb-12">
             <h2 className="mb-6 font-mono text-terminal-green text-sm">
@@ -98,7 +106,6 @@ export function ProjectsClient() {
           </section>
         )}
 
-        {/* All Projects */}
         <section>
           <h2 className="mb-6 font-mono text-gray-400 text-sm">ALL PROJECTS</h2>
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -108,7 +115,7 @@ export function ProjectsClient() {
           </div>
           {filteredProjects.length === 0 && (
             <div className="text-center py-12 text-gray-400">
-              <p>没有找到使用 {selectedTech} 技术栈的项目</p>
+              <p>{noProjectsLabel} {selectedTech} {techStackLabel}</p>
             </div>
           )}
         </section>

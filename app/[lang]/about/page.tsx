@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
-import { profile, experiences, skills, socialLinks } from '@/lib/config';
+import { getDictionary, Locale } from '@/lib/i18n';
+import { getLocalizedConfig, socialLinks } from '@/lib/config-i18n';
 import { SkillCloud } from '@/components/hero/SkillCloud';
 import { Timeline } from '@/components/hero/Timeline';
 import { FaGithub, FaTwitter, FaLinkedin, FaEnvelope } from 'react-icons/fa';
@@ -11,26 +12,35 @@ const iconMap = {
   email: FaEnvelope,
 };
 
-export const metadata: Metadata = {
-  title: '关于我',
-  description: 'Alex - 高级 Java 工程师，10年开发经验。专注于保险财务系统建设，具备分布式架构设计与 AI 落地实操经验。',
-  openGraph: {
-    title: '关于我 | Alex',
-    description: '高级 Java 工程师，专注于构建稳健的财务系统',
-    type: 'profile',
-  },
+type Props = {
+  params: { lang: Locale };
 };
 
-export default function AboutPage() {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const dict = await getDictionary(params.lang);
+  return {
+    title: dict.about.title,
+    description: dict.profile.bio,
+    openGraph: {
+      title: `${dict.about.title} | Alex`,
+      description: dict.profile.bio,
+      type: 'profile',
+    },
+  };
+}
+
+export default async function AboutPage({ params }: Props) {
+  const dict = await getDictionary(params.lang);
+  const { profile, experiences, skills } = getLocalizedConfig(params.lang);
+
   return (
     <main className="min-h-screen bg-background text-foreground px-4 py-16 md:px-8">
       <div className="container mx-auto max-w-4xl">
         <div className="mb-12">
           <div className="font-mono text-terminal-green text-sm mb-4">~/about</div>
-          <h1 className="text-4xl font-bold">关于我</h1>
+          <h1 className="text-4xl font-bold">{dict.about.title}</h1>
         </div>
 
-        {/* Bio Section */}
         <section className="mb-16 rounded-lg bg-code-bg p-8">
           <div className="mb-6 flex items-center gap-4">
             <div className="h-20 w-20 rounded-full bg-terminal-green/20 flex items-center justify-center">
@@ -46,23 +56,20 @@ export default function AboutPage() {
           <p className="text-gray-300 leading-relaxed">{profile.bio}</p>
         </section>
 
-        {/* Experience Section */}
         <section className="mb-16">
           <h2 className="mb-6 font-mono text-terminal-green text-sm">~/experience</h2>
           <Timeline experiences={experiences} />
         </section>
 
-        {/* Skills Section */}
         <section className="mb-16">
           <h2 className="mb-6 font-mono text-terminal-green text-sm">~/skills</h2>
           <SkillCloud skills={skills} />
         </section>
 
-        {/* Contact Section */}
         <section className="mb-16 rounded-lg bg-code-bg p-8">
-          <h2 className="mb-6 font-mono text-terminal-green text-sm">~/contact</h2>
+          <h2 className="mb-6 font-mono text-terminal-green text-sm">{dict.about.contact}</h2>
           <p className="mb-6 text-gray-400">
-            欢迎通过以下方式联系我，探讨技术合作、产品咨询或工作机会。
+            {dict.about.contactDescription}
           </p>
           <div className="flex flex-wrap gap-4">
             {socialLinks.map((link) => {
@@ -83,7 +90,6 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* Email Direct */}
         <section className="rounded-lg border border-terminal-green/30 bg-terminal-dim/10 p-8 text-center">
           <p className="mb-2 font-mono text-gray-400 text-sm">EMAIL</p>
           <a

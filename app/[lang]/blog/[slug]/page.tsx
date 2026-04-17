@@ -1,23 +1,31 @@
 import { notFound } from 'next/navigation';
 import { getPostData, getSortedPostsData } from '@/lib/posts';
-import { Article } from '@/types/article';
 import { MdxContent } from '@/components/MdxContent';
 import { ArticleToc } from '@/components/ArticleToc';
 import { RelatedArticles } from '@/components/RelatedArticles';
 import { BlogSchema } from '@/lib/seo/BlogSchema';
 import { Metadata } from 'next';
+import { Locale } from '@/lib/i18n';
 
 type Props = {
   params: {
     slug: string;
+    lang: Locale;
   };
 };
 
 export async function generateStaticParams() {
   const posts = getSortedPostsData();
-  return posts.map((post) => ({
-    slug: post.slug,
-  }));
+  const locales = ['zh', 'en'];
+
+  const params: { lang: string; slug: string }[] = [];
+  locales.forEach(lang => {
+    posts.forEach(post => {
+      params.push({ lang, slug: post.slug });
+    });
+  });
+
+  return params;
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -36,7 +44,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       publishedTime: postData.date,
       authors: ['Alex'],
       tags: postData.tags,
-      url: `${baseUrl}/blog/${params.slug}`,
+      url: `${baseUrl}/${params.lang}/blog/${params.slug}`,
     },
     twitter: {
       card: 'summary_large_image',
@@ -44,7 +52,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       description: postData.description,
     },
     alternates: {
-      canonical: `/blog/${params.slug}`,
+      canonical: `/${params.lang}/blog/${params.slug}`,
     },
   };
 }
@@ -52,6 +60,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function PostPage({ params }: Props) {
   const postData = getPostData(params.slug);
   const allPostsData = getSortedPostsData();
+  const readingTimeLabel = params.lang === 'zh' ? '分钟阅读' : 'min read';
 
   if (!postData) {
     notFound();
@@ -67,7 +76,7 @@ export default async function PostPage({ params }: Props) {
         <div className="flex items-center text-sm text-gray-500 mb-8">
           <time dateTime={postData.date}>{postData.date}</time>
           <span className="mx-2">•</span>
-          <span>{postData.readingTime} 分钟阅读</span>
+          <span>{postData.readingTime} {readingTimeLabel}</span>
         </div>
 
         <div className="flex flex-wrap gap-2 mb-8">

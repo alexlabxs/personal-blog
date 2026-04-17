@@ -28,14 +28,26 @@ function NavLink({ href, label, index }: NavLinkProps) {
   );
 }
 
-export function NavLinks() {
-  const links = [
-    { href: '/blog', label: '博客文章' },
-    { href: '/projects', label: '项目展示' },
-    { href: '/resources', label: '资源分享' },
-    { href: '/about', label: '关于我' },
-    { href: 'mailto:hello@alexlabx.com', label: '联系我' },
-  ];
+interface NavLinksProps {
+  lang?: string;
+}
+
+export function NavLinks({ lang = 'zh' }: NavLinksProps) {
+  const links = lang === 'zh'
+    ? [
+        { href: `/${lang}/blog`, label: '博客文章' },
+        { href: `/${lang}/projects`, label: '项目展示' },
+        { href: `/${lang}/resources`, label: '资源分享' },
+        { href: `/${lang}/about`, label: '关于我' },
+        { href: 'mailto:hello@alexlabx.com', label: '联系我' },
+      ]
+    : [
+        { href: `/${lang}/blog`, label: 'Blog Posts' },
+        { href: `/${lang}/projects`, label: 'Projects' },
+        { href: `/${lang}/resources`, label: 'Resources' },
+        { href: `/${lang}/about`, label: 'About Me' },
+        { href: 'mailto:hello@alexlabx.com', label: 'Contact' },
+      ];
 
   return (
     <nav className="flex flex-col gap-3">
