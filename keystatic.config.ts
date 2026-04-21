@@ -31,10 +31,7 @@ export default config({
           links: true,
           images: true,
           tables: true,
-          code: {
-            schema: 'normal',
-            block: true,
-          },
+          
         }),
       },
     }),
