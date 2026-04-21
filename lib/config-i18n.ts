@@ -128,4 +128,3 @@ export function getLocalizedConfig(locale: Locale) {
   };
 }
 
-export { skills, socialLinks };
