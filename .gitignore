@@ -40,3 +40,13 @@ next-env.d.ts
 .vscode/
 *.swp
 *.swo
+
+# Personal/Cache files
+skill/i4ToolsDownloads/
+information/
+*.pdf
+
+# Personal/Cache files
+skill/i4ToolsDownloads/
+information/
+*.pdf

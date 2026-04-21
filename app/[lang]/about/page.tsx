@@ -4,6 +4,7 @@ import { getLocalizedConfig, socialLinks } from '@/lib/config-i18n';
 import { SkillCloud } from '@/components/hero/SkillCloud';
 import { Timeline } from '@/components/hero/Timeline';
 import { FaGithub, FaTwitter, FaLinkedin, FaEnvelope } from 'react-icons/fa';
+import { generateAboutMetadata } from '@/lib/seo/metadata';
 
 const iconMap = {
   github: FaGithub,
@@ -17,16 +18,7 @@ type Props = {
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const dict = await getDictionary(params.lang);
-  return {
-    title: dict.about.title,
-    description: dict.profile.bio,
-    openGraph: {
-      title: `${dict.about.title} | Alex`,
-      description: dict.profile.bio,
-      type: 'profile',
-    },
-  };
+  return generateAboutMetadata(params.lang);
 }
 
 export default async function AboutPage({ params }: Props) {

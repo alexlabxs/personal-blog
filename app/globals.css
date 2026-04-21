@@ -14,9 +14,18 @@
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: 'Inter', system-ui, sans-serif;
+  font-family: var(--font-inter), var(--font-chinese), 'Inter', 'Noto Sans SC', system-ui, -apple-system, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* Font utilities */
+.font-mono {
+  font-family: var(--font-mono), 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
+}
+
+.font-sans {
+  font-family: var(--font-inter), var(--font-chinese), 'Inter', 'Noto Sans SC', system-ui, sans-serif;
 }
 
 /* Custom scrollbar */
