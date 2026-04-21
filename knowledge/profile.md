@@ -4,11 +4,11 @@
 
 ## 基本信息
 
-- 姓名：Alex
+- 姓名：Alex Xiao
 - 角色：Senior Java Engineer（财务方向）
 - 位置：China
 - 工作状态：Open to opportunities
-- GitHub: https://github.com/alexlabx
+- GitHub: https://github.com/xiaokaihan
 - 认证：PMP 项目管理认证
 
 ## 工作经历

@@ -3,7 +3,7 @@ import { getSortedPostsData } from '@/lib/posts';
 import { locales } from '@/lib/i18n';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://alexlabx.com';
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://xiaokaihan.github.io';
   const posts = getSortedPostsData();
 
   const staticPages: MetadataRoute.Sitemap = [];

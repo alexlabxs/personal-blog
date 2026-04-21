@@ -108,9 +108,9 @@ const skills: Skill[] = [
   { name: 'Agile/Scrum', level: 'advanced', category: 'Management' },
 ];
 
-const socialLinks = [
-  { name: 'GitHub', url: 'https://github.com/alexlabx', icon: 'github' },
-  { name: 'Twitter', url: 'https://twitter.com/alexlabx', icon: 'twitter' },
+export const socialLinks = [
+  { name: 'GitHub', url: 'https://github.com/xiaokaihan', icon: 'github' },
+  { name: 'X', url: 'https://x.com/DreamkeyKey', icon: 'twitter' },
 ];
 
 export function getLocalizedConfig(locale: Locale) {

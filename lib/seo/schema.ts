@@ -81,7 +81,7 @@ export interface ProjectSchema {
   };
 }
 
-const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://alexlabx.com';
+const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://xiaokaihan.github.io';
 
 /**
  * 生成 Person 结构化数据
@@ -93,8 +93,8 @@ export function generatePersonSchema(): PersonSchema {
     name: 'Alex',
     url: BASE_URL,
     sameAs: [
-      'https://github.com/alexlabx',
-      'https://twitter.com/alexlabx',
+      'https://github.com/xiaokaihan',
+      'https://x.com/DreamkeyKey',
     ],
     jobTitle: 'Senior Java Engineer',
     description: '高级 Java 工程师，10年软件开发经验，专注于保险财务系统建设，具备分布式架构设计与 AI 落地实操经验',

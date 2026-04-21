@@ -85,10 +85,10 @@ export default async function AboutPage({ params }: Props) {
         <section className="rounded-lg border border-terminal-green/30 bg-terminal-dim/10 p-8 text-center">
           <p className="mb-2 font-mono text-gray-400 text-sm">EMAIL</p>
           <a
-            href="mailto:hello@alexlabx.com"
+            href="mailto:dreamkey.xiao@gmail.com"
             className="text-xl font-bold text-terminal-green hover:underline"
           >
-            hello@alexlabx.com
+            dreamkey.xiao@gmail.com
           </a>
         </section>
       </div>

@@ -30,7 +30,7 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const postData = getPostData(params.slug);
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://alexlabx.com';
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://xiaokaihan.github.io';
 
   return {
     title: postData.title,

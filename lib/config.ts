@@ -81,6 +81,6 @@ export const skills: Skill[] = [
  * 社交链接
  */
 export const socialLinks = [
-  { name: 'GitHub', url: 'https://github.com/alexlabx', icon: 'github' },
-  { name: 'Twitter', url: 'https://twitter.com/alexlabx', icon: 'twitter' },
+  { name: 'GitHub', url: 'https://github.com/xiaokaihan', icon: 'github' },
+  { name: 'X', url: 'https://x.com/DreamkeyKey', icon: 'twitter' },
 ];
