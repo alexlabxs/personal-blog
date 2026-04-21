@@ -81,7 +81,7 @@ export interface ProjectSchema {
   };
 }
 
-const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://xiaokaihan.github.io';
+const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://alexlabx.com';
 
 /**
  * 生成 Person 结构化数据
