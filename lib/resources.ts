@@ -1,5 +1,3 @@
-import fs from 'fs';
-import path from 'path';
 import { Resource } from './types';
 
 export interface ResourceCategory {
@@ -16,41 +14,6 @@ export const categories: ResourceCategory[] = [
   { id: 'design', name: '设计资源', icon: '🎨', description: 'UI/UX 设计工具和素材' },
   { id: 'community', name: '社区平台', icon: '👥', description: '开发者社区和问答平台' },
 ];
-
-function getResourcesFromFiles(): Resource[] {
-  const resourcesDir = path.join(process.cwd(), 'content', 'resources');
-
-  // 如果目录不存在，返回默认数据
-  if (!fs.existsSync(resourcesDir)) {
-    return getDefaultResources();
-  }
-
-  const files = fs.readdirSync(resourcesDir);
-  const resources: Resource[] = [];
-
-  files.forEach(file => {
-    if (file.endsWith('.json')) {
-      const filePath = path.join(resourcesDir, file);
-      const content = fs.readFileSync(filePath, 'utf8');
-      try {
-        const data = JSON.parse(content);
-        resources.push({
-          id: data.id || file.replace('.json', ''),
-          name: data.name,
-          description: data.description,
-          url: data.url,
-          category: data.category,
-          tags: data.tags || [],
-          featured: data.featured || false,
-        });
-      } catch (e) {
-        console.error(`Error parsing ${file}:`, e);
-      }
-    }
-  });
-
-  return resources.length > 0 ? resources : getDefaultResources();
-}
 
 function getDefaultResources(): Resource[] {
   return [
@@ -317,4 +280,4 @@ function getDefaultResources(): Resource[] {
   ];
 }
 
-export const resources = getResourcesFromFiles();
+export const resources = getDefaultResources();
