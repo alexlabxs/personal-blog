@@ -14,7 +14,7 @@ interface SEOProps {
   noIndex?: boolean;
 }
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://xiaokaihan.github.io';
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://alexlabx.com';
 const DEFAULT_IMAGE = '/images/og/default.png';
 
 /**
