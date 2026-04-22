@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { Project } from '@/lib/types';
-import { FaGithub, FaExternalLinkAlt, FaRocket, FaHammer, FaArchive } from 'react-icons/fa';
+import { FaGithub, FaExternalLinkAlt, FaRocket, FaHammer, FaArchive, FaCheckCircle } from 'react-icons/fa';
 
 interface ProjectCardProps {
   project: Project;
@@ -12,18 +12,21 @@ interface ProjectCardProps {
 const statusIcons = {
   active: FaRocket,
   developing: FaHammer,
+  completed: FaCheckCircle,
   archived: FaArchive,
 };
 
 const statusLabels = {
   active: '上线中',
   developing: '开发中',
+  completed: '已完成',
   archived: '已归档',
 };
 
 const statusColors = {
   active: 'text-green-400',
   developing: 'text-yellow-400',
+  completed: 'text-blue-400',
   archived: 'text-gray-400',
 };
 

@@ -26,7 +26,7 @@ export interface Project {
   cover?: string;
   liveUrl?: string;
   githubUrl?: string;
-  status: 'active' | 'developing' | 'archived';
+  status: 'active' | 'developing' | 'completed' | 'archived';
   featured?: boolean;
 }
 
