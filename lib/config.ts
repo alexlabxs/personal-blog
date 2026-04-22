@@ -4,10 +4,10 @@ import { WorkExperience, Skill } from './types';
  * 个人信息配置
  */
 export const profile = {
-  name: 'Alex',
-  role: 'Senior Java Engineer',
-  tagline: 'Building reliable systems with precision.',
-  bio: '拥有10年软件开发经验，专注于保险财务系统建设。负责过费控管理、收付费、记账引擎等核心系统开发，具备分布式架构设计与 AI 落地实操经验。持有 PMP 认证，致力于将复杂业务规则转化为稳健的技术方案。',
+  name: 'Alex Xiao',
+  role: '全栈程序员 | AI Agent 应用开发者',
+  tagline: '10 年编程经验 | 最近 2 年专注 AI 应用 | 现在帮传统企业快速落地 AI',
+  bio: '10 年软件开发经验，最近 2 年专注于 AI 应用落地。曾在保险财务系统做过复杂的分布式架构，现在用这些技术经验来帮助传统企业快速实现 AI 应用。提供 AI Agent 应用设计咨询、可行性评估、成本评估和技术选型服务。',
 };
 
 /**
@@ -16,9 +16,20 @@ export const profile = {
 export const experiences: WorkExperience[] = [
   {
     id: '1',
+    company: 'AI Agent 应用开发',
+    role: '独立开发者 & 咨询顾问',
+    period: '2024 - 至今',
+    description: [
+      '专注于 AI Agent 应用设计和开发，帮助传统企业快速落地 AI',
+      '提供 AI 应用可行性评估、技术选型、成本评估服务',
+      '开发博客 + AI Agent + 小程序全栈项目',
+    ],
+  },
+  {
+    id: '2',
     company: 'Insurance Company',
     role: 'Senior Java Engineer (Finance)',
-    period: '2019 - 至今',
+    period: '2019 - 2024',
     description: [
       '负责财务系统核心模块开发，包括费控管理、收付费、记账引擎',
       '主导 IFRS17 准则重构项目，落地会计引擎与分摊模块',
@@ -26,7 +37,7 @@ export const experiences: WorkExperience[] = [
     ],
   },
   {
-    id: '2',
+    id: '3',
     company: 'Lingzhi Software',
     role: 'Java Developer',
     period: '2017 - 2019',
@@ -36,7 +47,7 @@ export const experiences: WorkExperience[] = [
     ],
   },
   {
-    id: '3',
+    id: '4',
     company: 'YiJiaoYi Tech',
     role: 'Java Developer',
     period: '2015 - 2017',
