@@ -45,9 +45,19 @@ export default function RootLayout({
   const lang = params.lang || defaultLocale;
 
   return (
-    <html lang={lang} className={`${inter.variable} ${jetbrainsMono.variable} ${notoSansSC.variable} dark`}>
+    <html lang={lang} className={`${inter.variable} ${jetbrainsMono.variable} ${notoSansSC.variable}`}>
       <head>
         <GlobalSchema />
+        <script dangerouslySetInnerHTML={{
+          __html: `
+            (function() {
+              var theme = localStorage.getItem('theme');
+              if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                document.documentElement.classList.add('dark');
+              }
+            })();
+          `
+        }} />
       </head>
       <body className="font-sans antialiased">
         <Header lang={lang} />

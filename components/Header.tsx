@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useState } from 'react';
 import { Locale, locales, localeLabels } from '@/lib/i18n';
 import { useTranslation } from '@/lib/i18n/client';
+import { ThemeToggle } from '@/components/ThemeToggle';
 
 interface HeaderProps {
   lang: Locale;
@@ -42,6 +43,8 @@ export function Header({ lang }: HeaderProps) {
               {dict.nav.about}
             </Link>
 
+            <ThemeToggle />
+
             <Link
               href={`/${switchLang}`}
               className="px-3 py-1 rounded border border-terminal-green text-terminal-green hover:bg-terminal-green hover:text-black transition-colors text-sm"
@@ -51,6 +54,7 @@ export function Header({ lang }: HeaderProps) {
           </nav>
 
           <div className="flex items-center gap-2 md:hidden">
+            <ThemeToggle />
             <Link
               href={`/${switchLang}`}
               className="px-2 py-1 rounded border border-terminal-green text-terminal-green text-sm"

@@ -3,12 +3,38 @@
 @tailwind utilities;
 
 :root {
-  --background: #0a0a0a;
-  --foreground: #e5e5e5;
+  /* 浅色模式变量 */
+  --background: #ffffff;
+  --foreground: #1a1a1a;
   --brand-primary: #2563EB;
   --brand-secondary: #8B5CF6;
   --brand-accent: #1F2937;
   --brand-light: #F9FAFB;
+  
+  /* 浅色模式额外变量 */
+  --terminal-bg: #f5f5f5;
+  --terminal-green: #059669;
+  --terminal-dim: #d1d5db;
+  --terminal-border: #e5e7eb;
+  --code-bg: #f9fafb;
+  --text-primary: #1a1a1a;
+  --text-secondary: #6b7280;
+  --text-muted: #9ca3af;
+}
+
+.dark {
+  /* 深色模式变量 */
+  --background: #0a0a0a;
+  --foreground: #e5e5e5;
+  
+  --terminal-bg: #0a0a0a;
+  --terminal-green: #00ff41;
+  --terminal-dim: #003b00;
+  --terminal-border: #1a1a1a;
+  --code-bg: #1e1e1e;
+  --text-primary: #e5e5e5;
+  --text-secondary: #9ca3af;
+  --text-muted: #6b7280;
 }
 
 body {
@@ -17,6 +43,7 @@ body {
   font-family: var(--font-inter), var(--font-chinese), 'Inter', 'Noto Sans SC', system-ui, -apple-system, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* Font utilities */
@@ -28,27 +55,32 @@ body {
   font-family: var(--font-inter), var(--font-chinese), 'Inter', 'Noto Sans SC', system-ui, sans-serif;
 }
 
-/* Custom scrollbar */
+/* Custom scrollbar - 浅色模式 */
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #1a1a1a;
+  background: var(--terminal-bg);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #333;
+  background: var(--terminal-dim);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #444;
+  background: var(--text-muted);
 }
 
 /* Selection */
 ::selection {
+  background: rgba(37, 99, 235, 0.3);
+  color: var(--foreground);
+}
+
+.dark ::selection {
   background: rgba(0, 255, 65, 0.2);
   color: #fff;
 }
@@ -111,8 +143,15 @@ body {
   animation: pulse 2s infinite;
 }
 
-/* Gradient text */
+/* Gradient text - 浅色模式 */
 .gradient-text {
+  background: linear-gradient(135deg, #059669 0%, #047857 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.dark .gradient-text {
   background: linear-gradient(135deg, #00ff41 0%, #00cc33 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -145,13 +184,17 @@ body {
   color: var(--brand-light);
 }
 
-/* Card hover effect */
+/* Card hover effect - 浅色模式 */
 .card-hover {
   transition: all 0.3s ease;
 }
 
 .card-hover:hover {
   transform: translateY(-4px);
+  box-shadow: 0 10px 40px rgba(37, 99, 235, 0.1);
+}
+
+.dark .card-hover:hover {
   box-shadow: 0 10px 40px rgba(0, 255, 65, 0.1);
 }
 
@@ -174,5 +217,42 @@ pre {
   padding-right: 1em;
   margin-right: 1em;
   text-align: right;
-  color: #666;
+  color: var(--text-muted);
+}
+
+/* 浅色模式特定样式 */
+.bg-background {
+  background-color: var(--background);
+}
+
+.text-foreground {
+  color: var(--foreground);
+}
+
+.bg-terminal-bg {
+  background-color: var(--terminal-bg);
+}
+
+.bg-terminal-dim {
+  background-color: var(--terminal-dim);
+}
+
+.text-terminal-green {
+  color: var(--terminal-green);
+}
+
+.border-terminal-border {
+  border-color: var(--terminal-border);
+}
+
+.border-terminal-dim {
+  border-color: var(--terminal-dim);
+}
+
+.bg-code-bg {
+  background-color: var(--code-bg);
+}
+
+.text-terminal-dim {
+  color: var(--terminal-dim);
 }
