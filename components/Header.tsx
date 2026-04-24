@@ -27,19 +27,19 @@ export function Header({ lang }: HeaderProps) {
           </div>
 
           <nav className="hidden md:flex items-center space-x-8">
-            <Link href={`/${lang}`} className="text-gray-300 hover:text-brand-primary transition-colors">
+            <Link href={`/${lang}`} className="text-secondary hover:text-brand-primary transition-colors">
               {dict.nav.home}
             </Link>
-            <Link href={`/${lang}/blog`} className="text-gray-300 hover:text-brand-primary transition-colors">
+            <Link href={`/${lang}/blog`} className="text-secondary hover:text-brand-primary transition-colors">
               {dict.nav.blog}
             </Link>
-            <Link href={`/${lang}/projects`} className="text-gray-300 hover:text-brand-primary transition-colors">
+            <Link href={`/${lang}/projects`} className="text-secondary hover:text-brand-primary transition-colors">
               {dict.nav.projects}
             </Link>
-            <Link href={`/${lang}/resources`} className="text-gray-300 hover:text-brand-primary transition-colors">
+            <Link href={`/${lang}/resources`} className="text-secondary hover:text-brand-primary transition-colors">
               {dict.nav.resources}
             </Link>
-            <Link href={`/${lang}/about`} className="text-gray-300 hover:text-brand-primary transition-colors">
+            <Link href={`/${lang}/about`} className="text-secondary hover:text-brand-primary transition-colors">
               {dict.nav.about}
             </Link>
 
@@ -47,7 +47,7 @@ export function Header({ lang }: HeaderProps) {
 
             <Link
               href={`/${switchLang}`}
-              className="px-3 py-1 rounded border border-terminal-green text-terminal-green hover:bg-terminal-green hover:text-black transition-colors text-sm"
+              className="px-3 py-1 rounded border border-terminal-green text-terminal-green hover:bg-terminal-green hover:text-black dark:hover:text-black transition-colors text-sm"
             >
               {localeLabels[switchLang].short}
             </Link>
@@ -63,7 +63,7 @@ export function Header({ lang }: HeaderProps) {
             </Link>
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="text-gray-300 hover:text-brand-primary transition-colors"
+              className="text-secondary hover:text-brand-primary transition-colors"
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 {isMenuOpen ? (
@@ -79,19 +79,19 @@ export function Header({ lang }: HeaderProps) {
         {isMenuOpen && (
           <div className="md:hidden py-4 border-t border-terminal-border">
             <nav className="flex flex-col space-y-4">
-              <Link href={`/${lang}`} className="text-gray-300 hover:text-brand-primary transition-colors">
+              <Link href={`/${lang}`} className="text-secondary hover:text-brand-primary transition-colors">
                 {dict.nav.home}
               </Link>
-              <Link href={`/${lang}/blog`} className="text-gray-300 hover:text-brand-primary transition-colors">
+              <Link href={`/${lang}/blog`} className="text-secondary hover:text-brand-primary transition-colors">
                 {dict.nav.blog}
               </Link>
-              <Link href={`/${lang}/projects`} className="text-gray-300 hover:text-brand-primary transition-colors">
+              <Link href={`/${lang}/projects`} className="text-secondary hover:text-brand-primary transition-colors">
                 {dict.nav.projects}
               </Link>
-              <Link href={`/${lang}/resources`} className="text-gray-300 hover:text-brand-primary transition-colors">
+              <Link href={`/${lang}/resources`} className="text-secondary hover:text-brand-primary transition-colors">
                 {dict.nav.resources}
               </Link>
-              <Link href={`/${lang}/about`} className="text-gray-300 hover:text-brand-primary transition-colors">
+              <Link href={`/${lang}/about`} className="text-secondary hover:text-brand-primary transition-colors">
                 {dict.nav.about}
               </Link>
             </nav>

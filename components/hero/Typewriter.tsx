@@ -57,7 +57,7 @@ export function CodeSnippet({ code, className }: CodeSnippetProps) {
   return (
     <motion.pre
       className={cn(
-        'overflow-hidden rounded-lg bg-code-bg p-4 text-sm text-gray-300',
+        'overflow-hidden rounded-lg bg-code-bg p-4 text-sm text-secondary',
         className
       )}
       initial={{ opacity: 0, y: 20 }}

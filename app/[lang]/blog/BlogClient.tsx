@@ -32,8 +32,8 @@ export function BlogClient({ posts, lang }: BlogClientProps) {
     <main className="min-h-screen bg-background text-foreground px-4 py-16 md:px-8">
       <div className="container mx-auto max-w-4xl">
         <div className="mb-12 font-mono text-terminal-green text-sm">~/blog</div>
-        <h1 className="mb-8 text-4xl font-bold">{dict.blog.title}</h1>
-        <p className="text-gray-400 mb-12">{dict.blog.description}</p>
+        <h1 className="mb-8 text-4xl font-bold text-primary">{dict.blog.title}</h1>
+        <p className="text-secondary mb-12">{dict.blog.description}</p>
 
         <div className="mb-8">
           <div className="flex flex-wrap gap-2 mb-4">
@@ -42,7 +42,7 @@ export function BlogClient({ posts, lang }: BlogClientProps) {
               className={`px-3 py-1 rounded-full text-sm transition-colors ${
                 selectedTag === null
                   ? 'bg-brand-primary text-white'
-                  : 'bg-gray-700 text-gray-300 hover:bg-gray-600'
+                  : 'bg-card-bg text-secondary border border-card-border hover:bg-hover-bg'
               }`}
             >
               {lang === 'zh' ? '全部' : 'All'} ({posts.length})
@@ -56,7 +56,7 @@ export function BlogClient({ posts, lang }: BlogClientProps) {
                   className={`px-3 py-1 rounded-full text-sm transition-colors ${
                     selectedTag === tag
                       ? 'bg-brand-primary text-white'
-                      : 'bg-gray-700 text-gray-300 hover:bg-gray-600'
+                      : 'bg-card-bg text-secondary border border-card-border hover:bg-hover-bg'
                   }`}
                 >
                   {tag} ({count})
@@ -65,11 +65,11 @@ export function BlogClient({ posts, lang }: BlogClientProps) {
             })}
           </div>
           {selectedTag && (
-            <p className="text-sm text-gray-400">
+            <p className="text-sm text-secondary">
               {lang === 'zh' ? '正在筛选' : 'Filtering'}: <span className="text-brand-primary">{selectedTag}</span>
               <button
                 onClick={() => setSelectedTag(null)}
-                className="ml-2 text-gray-500 hover:text-white underline"
+                className="ml-2 text-muted hover:text-primary underline"
               >
                 {lang === 'zh' ? '清除筛选' : 'Clear'}
               </button>
@@ -84,7 +84,7 @@ export function BlogClient({ posts, lang }: BlogClientProps) {
             ))}
           </div>
         ) : (
-          <div className="text-center py-12 text-gray-400">
+          <div className="text-center py-12 text-secondary">
             <p>{dict.blog.noPosts}</p>
           </div>
         )}

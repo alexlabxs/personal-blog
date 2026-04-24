@@ -22,9 +22,9 @@ export function Timeline({ experiences }: TimelineProps) {
           <div className="absolute -left-[9px] top-0 h-4 w-4 rounded-full bg-terminal-green shadow-[0_0_10px_rgba(0,255,65,0.5)]" />
 
           <div className="mb-1 text-sm text-terminal-green font-mono">{exp.period}</div>
-          <h3 className="text-xl font-semibold">{exp.role}</h3>
-          <div className="mb-2 text-gray-400">{exp.company}</div>
-          <ul className="ml-4 list-disc space-y-1 text-gray-400">
+          <h3 className="text-xl font-semibold text-primary">{exp.role}</h3>
+          <div className="mb-2 text-secondary">{exp.company}</div>
+          <ul className="ml-4 list-disc space-y-1 text-secondary">
             {exp.description.map((item, i) => (
               <li key={i} className="text-sm">
                 {item}

@@ -10,23 +10,27 @@
   --brand-secondary: #8B5CF6;
   --brand-accent: #1F2937;
   --brand-light: #F9FAFB;
-  
+
   /* 浅色模式额外变量 */
-  --terminal-bg: #f5f5f5;
+  --terminal-bg: #f8fafc;
   --terminal-green: #059669;
-  --terminal-dim: #d1d5db;
-  --terminal-border: #e5e7eb;
-  --code-bg: #f9fafb;
-  --text-primary: #1a1a1a;
-  --text-secondary: #6b7280;
-  --text-muted: #9ca3af;
+  --terminal-dim: #94a3b8;
+  --terminal-border: #e2e8f0;
+  --code-bg: #f1f5f9;
+  --text-primary: #1e293b;
+  --text-secondary: #475569;
+  --text-muted: #64748b;
+  --text-tertiary: #94a3b8;
+  --card-bg: #ffffff;
+  --card-border: #e2e8f0;
+  --hover-bg: #f1f5f9;
 }
 
 .dark {
   /* 深色模式变量 */
   --background: #0a0a0a;
   --foreground: #e5e5e5;
-  
+
   --terminal-bg: #0a0a0a;
   --terminal-green: #00ff41;
   --terminal-dim: #003b00;
@@ -35,6 +39,10 @@
   --text-primary: #e5e5e5;
   --text-secondary: #9ca3af;
   --text-muted: #6b7280;
+  --text-tertiary: #4b5563;
+  --card-bg: #171717;
+  --card-border: #262626;
+  --hover-bg: #262626;
 }
 
 body {
@@ -255,4 +263,55 @@ pre {
 
 .text-terminal-dim {
   color: var(--terminal-dim);
+}
+
+/* 浅色/深色模式通用文本样式 */
+.text-primary {
+  color: var(--text-primary);
+}
+
+.text-secondary {
+  color: var(--text-secondary);
+}
+
+.text-muted {
+  color: var(--text-muted);
+}
+
+.text-tertiary {
+  color: var(--text-tertiary);
+}
+
+.bg-card-bg {
+  background-color: var(--card-bg);
+}
+
+.border-card-border {
+  border-color: var(--card-border);
+}
+
+.hover-bg:hover {
+  background-color: var(--hover-bg);
+}
+
+/* 文章卡片浅色模式适配 */
+.light-article-card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  transition: box-shadow 0.3s ease;
+}
+
+.light-article-card:hover {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.dark .light-article-card {
+  background-color: var(--code-bg);
+  border-color: var(--terminal-border);
+}
+
+.dark .light-article-card:hover {
+  box-shadow: 0 4px 20px rgba(0, 255, 65, 0.1);
 }

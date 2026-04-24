@@ -27,7 +27,7 @@ export function SkillCloud({ skills }: SkillCloudProps) {
             {categorySkills.map((skill, index) => (
               <motion.span
                 key={skill.name}
-                className="cursor-default rounded-md bg-code-bg px-3 py-1.5 text-sm font-mono text-gray-300 transition-colors hover:bg-terminal-dim hover:text-terminal-green"
+                className="cursor-default rounded-md bg-code-bg px-3 py-1.5 text-sm font-mono text-secondary transition-colors hover:bg-hover-bg hover:text-terminal-green"
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.3, delay: categoryIndex * 0.2 + index * 0.05 }}

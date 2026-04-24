@@ -34,11 +34,11 @@ export default async function Home({ params }: { params: { lang: Locale } }) {
                 <Typewriter
                   text={profile.tagline}
                   speed={80}
-                  className="text-xl text-gray-400"
+                  className="text-xl text-secondary"
                 />
               </div>
 
-              <p className="text-gray-400 leading-relaxed fadeIn" style={{ animationDelay: '0.2s' }}>
+              <p className="text-secondary leading-relaxed fadeIn" style={{ animationDelay: '0.2s' }}>
                 {profile.bio}
               </p>
 
@@ -63,7 +63,7 @@ export default async function Home({ params }: { params: { lang: Locale } }) {
                     style={{ animationDelay: `${0.5 + i * 0.1}s` }}
                   >
                     <div className="text-2xl font-bold text-terminal-green">{stat.value}</div>
-                    <div className="text-sm text-gray-400">{stat.label}</div>
+                    <div className="text-sm text-secondary">{stat.label}</div>
                   </div>
                 ))}
               </div>
@@ -72,7 +72,7 @@ export default async function Home({ params }: { params: { lang: Locale } }) {
                 <div className="h-2 w-2 rounded-full bg-terminal-green pulse" />
                 <div className="font-mono text-sm">
                   <span className="text-terminal-green">{dict.home.status.label}</span>{' '}
-                  <span className="text-gray-300">{dict.home.status.value}</span>
+                  <span className="text-primary">{dict.home.status.value}</span>
                 </div>
               </div>
             </div>

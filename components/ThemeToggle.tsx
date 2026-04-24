@@ -39,7 +39,7 @@ export function ThemeToggle() {
   if (!mounted) {
     return (
       <button
-        className="p-2 rounded-lg bg-code-bg text-gray-400 hover:text-terminal-green transition-colors"
+        className="p-2 rounded-lg bg-code-bg text-muted hover:text-terminal-green transition-colors border border-card-border"
         aria-label="切换主题"
       >
         <FaMoon className="w-5 h-5" />
@@ -50,7 +50,7 @@ export function ThemeToggle() {
   return (
     <button
       onClick={toggleTheme}
-      className="p-2 rounded-lg bg-code-bg text-gray-400 hover:text-terminal-green transition-colors hover:bg-terminal-dim"
+      className="p-2 rounded-lg bg-code-bg text-muted hover:text-terminal-green transition-colors hover:bg-hover-bg border border-card-border"
       aria-label={isDark ? '切换到浅色模式' : '切换到深色模式'}
     >
       {isDark ? (

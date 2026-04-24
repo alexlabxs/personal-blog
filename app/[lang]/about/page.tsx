@@ -41,11 +41,11 @@ export default async function AboutPage({ params }: Props) {
               </span>
             </div>
             <div>
-              <h2 className="text-2xl font-bold">{profile.name}</h2>
-              <p className="text-gray-400">{profile.role}</p>
+              <h2 className="text-2xl font-bold text-primary">{profile.name}</h2>
+              <p className="text-secondary">{profile.role}</p>
             </div>
           </div>
-          <p className="text-gray-300 leading-relaxed">{profile.bio}</p>
+          <p className="text-secondary leading-relaxed">{profile.bio}</p>
         </section>
 
         <section className="mb-16">
@@ -60,7 +60,7 @@ export default async function AboutPage({ params }: Props) {
 
         <section className="mb-16 rounded-lg bg-code-bg p-8">
           <h2 className="mb-6 font-mono text-terminal-green text-sm">{dict.about.contact}</h2>
-          <p className="mb-6 text-gray-400">
+          <p className="mb-6 text-secondary">
             {dict.about.contactDescription}
           </p>
           <div className="flex flex-wrap gap-4">
@@ -72,7 +72,7 @@ export default async function AboutPage({ params }: Props) {
                   href={link.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 rounded-lg bg-background px-4 py-2 text-gray-300 transition-colors hover:bg-terminal-dim hover:text-terminal-green"
+                  className="flex items-center gap-2 rounded-lg bg-background px-4 py-2 text-secondary transition-colors hover:bg-hover-bg hover:text-terminal-green"
                 >
                   {Icon && <Icon className="h-5 w-5" />}
                   <span>{link.name}</span>
@@ -82,8 +82,8 @@ export default async function AboutPage({ params }: Props) {
           </div>
         </section>
 
-        <section className="rounded-lg border border-terminal-green/30 bg-terminal-dim/10 p-8 text-center">
-          <p className="mb-2 font-mono text-gray-400 text-sm">EMAIL</p>
+        <section className="rounded-lg border border-terminal-green/30 bg-code-bg p-8 text-center">
+          <p className="mb-2 font-mono text-muted text-sm">EMAIL</p>
           <a
             href="mailto:dreamkey.xiao@gmail.com"
             className="text-xl font-bold text-terminal-green hover:underline"

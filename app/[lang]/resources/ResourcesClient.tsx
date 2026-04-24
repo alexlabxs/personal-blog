@@ -55,8 +55,8 @@ export function ResourcesClient({ lang }: ResourcesClientProps) {
       <div className="container mx-auto max-w-6xl">
         <div className="mb-12">
           <div className="font-mono text-terminal-green text-sm mb-4">~/resources</div>
-          <h1 className="text-4xl font-bold mb-2">{dict.resources.title}</h1>
-          <p className="text-gray-400">{lang === 'zh' ? '收集整理的开发者优质资源，持续更新' : 'Curated developer resources, updated regularly'}</p>
+          <h1 className="text-4xl font-bold mb-2 text-primary">{dict.resources.title}</h1>
+          <p className="text-secondary">{lang === 'zh' ? '收集整理的开发者优质资源，持续更新' : 'Curated developer resources, updated regularly'}</p>
         </div>
 
         <div className="mb-8">
@@ -65,7 +65,7 @@ export function ResourcesClient({ lang }: ResourcesClientProps) {
             placeholder={searchPlaceholder}
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full px-4 py-2 bg-code-bg border border-terminal-border rounded-lg text-foreground focus:border-terminal-green focus:outline-none transition-colors"
+            className="w-full px-4 py-2 bg-code-bg border border-card-border rounded-lg text-foreground placeholder:text-muted focus:border-terminal-green focus:outline-none transition-colors"
           />
         </div>
 
@@ -76,7 +76,7 @@ export function ResourcesClient({ lang }: ResourcesClientProps) {
               className={`px-4 py-2 rounded-lg text-sm transition-colors ${
                 selectedCategory === null
                   ? 'bg-terminal-green text-black'
-                  : 'bg-code-bg text-gray-300 hover:bg-gray-700'
+                  : 'bg-code-bg text-secondary border border-card-border hover:bg-hover-bg'
               }`}
             >
               {allLabel} ({resources.length})
@@ -88,7 +88,7 @@ export function ResourcesClient({ lang }: ResourcesClientProps) {
                 className={`px-4 py-2 rounded-lg text-sm transition-colors ${
                   selectedCategory === cat.id
                     ? 'bg-terminal-green text-black'
-                    : 'bg-code-bg text-gray-300 hover:bg-gray-700'
+                    : 'bg-code-bg text-secondary border border-card-border hover:bg-hover-bg'
                 }`}
               >
                 {cat.icon} {cat.name} ({categoryCounts[cat.id] || 0})
@@ -96,7 +96,7 @@ export function ResourcesClient({ lang }: ResourcesClientProps) {
             ))}
           </div>
           {selectedCategory && (
-            <p className="mt-4 text-sm text-gray-400">
+            <p className="mt-4 text-sm text-secondary">
               {categories.find(c => c.id === selectedCategory)?.description}
               <button
                 onClick={() => setSelectedCategory(null)}
@@ -123,7 +123,7 @@ export function ResourcesClient({ lang }: ResourcesClientProps) {
 
         {otherResources.length > 0 && (
           <section>
-            <h2 className="mb-6 font-mono text-gray-400 text-sm">ALL RESOURCES</h2>
+            <h2 className="mb-6 font-mono text-muted text-sm">ALL RESOURCES</h2>
             <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
               {otherResources.map((resource) => (
                 <ResourceCard key={resource.id} resource={resource} />
@@ -133,7 +133,7 @@ export function ResourcesClient({ lang }: ResourcesClientProps) {
         )}
 
         {filteredResources.length === 0 && (
-          <div className="text-center py-12 text-gray-400">
+          <div className="text-center py-12 text-secondary">
             <p>{noResourcesLabel}</p>
           </div>
         )}
@@ -150,23 +150,23 @@ function ResourceCard({ resource, featured = false }: { resource: typeof resourc
       rel="noopener noreferrer"
       className={`group block p-4 rounded-lg transition-all ${
         featured
-          ? 'bg-terminal-dim/20 border border-terminal-green/30 hover:border-terminal-green hover:bg-terminal-dim/30'
-          : 'bg-code-bg border border-terminal-border hover:border-terminal-green/50'
+          ? 'bg-code-bg border border-terminal-green/30 hover:border-terminal-green hover:shadow-lg'
+          : 'bg-code-bg border border-card-border hover:border-terminal-green/50'
       }`}
     >
       <div className="flex items-start justify-between mb-2">
-        <h3 className={`font-semibold ${featured ? 'text-terminal-green' : 'text-foreground group-hover:text-terminal-green'}`}>
+        <h3 className={`font-semibold ${featured ? 'text-terminal-green' : 'text-primary group-hover:text-terminal-green'}`}>
           {resource.name}
         </h3>
-        <FaExternalLinkAlt className="w-3 h-3 text-gray-400 group-hover:text-terminal-green transition-colors" />
+        <FaExternalLinkAlt className="w-3 h-3 text-muted group-hover:text-terminal-green transition-colors" />
       </div>
-      <p className="text-sm text-gray-400 mb-3 line-clamp-2">{resource.description}</p>
+      <p className="text-sm text-secondary mb-3 line-clamp-2">{resource.description}</p>
       {resource.tags && (
         <div className="flex flex-wrap gap-1">
           {resource.tags.map((tag) => (
             <span
               key={tag}
-              className="px-2 py-0.5 bg-gray-700 text-gray-300 text-xs rounded"
+              className="px-2 py-0.5 bg-hover-bg text-muted text-xs rounded"
             >
               {tag}
             </span>

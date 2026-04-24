@@ -95,12 +95,12 @@ export function generatePageMetadata({
 export function generateHomeMetadata(locale: Locale): Metadata {
   const dict = {
     zh: {
-      title: '高级 Java 工程师',
-      description: '拥有10年软件开发经验，专注于保险财务系统建设。负责过费控管理、收付费、记账引擎等核心系统开发，具备分布式架构设计与 AI 落地实操经验。',
+      title: 'AI Agent 开发者 | 全栈工程师',
+      description: '10+ 年软件开发经验，最近 2 年专注于 AI 应用落地。提供 AI Agent 应用设计咨询、可行性评估、成本评估和技术选型服务。',
     },
     en: {
-      title: 'Senior Java Engineer',
-      description: '10 years of software development experience, specializing in insurance financial systems. Expert in distributed architecture and AI implementation.',
+      title: 'AI Agent Developer | Full-Stack Engineer',
+      description: '10+ years of software development experience, focused on AI applications in the last 2 years. Providing AI Agent design consulting, feasibility assessment, and technology selection services.',
     },
   };
 

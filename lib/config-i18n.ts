@@ -9,8 +9,8 @@ const baseProfile = {
 const profileTranslations = {
   zh: {
     role: '全栈程序员 | AI Agent 应用开发者',
-    tagline: '10 年编程经验 | 最近 2 年专注 AI 应用 | 现在帮传统企业快速落地 AI',
-    bio: '10 年软件开发经验，最近 2 年专注于 AI 应用落地。曾在保险财务系统做过复杂的分布式架构，现在用这些技术经验来帮助传统企业快速实现 AI 应用。提供 AI Agent 应用设计咨询、可行性评估、成本评估和技术选型服务。',
+    tagline: '10+ 年编程经验 | 最近 2 年专注 AI 应用 | 现在帮传统企业快速落地 AI',
+    bio: '10+ 年软件开发经验，最近 2 年专注于 AI 应用落地。曾在保险财务系统做过复杂的分布式架构，现在用这些技术经验来帮助传统企业快速实现 AI 应用。提供 AI Agent 应用设计咨询、可行性评估、成本评估和技术选型服务。',
   },
   en: {
     role: 'Full-Stack Developer | AI Agent Builder',
