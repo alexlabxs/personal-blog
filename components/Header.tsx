@@ -36,9 +36,6 @@ export function Header({ lang }: HeaderProps) {
             <Link href={`/${lang}/projects`} className="text-secondary hover:text-brand-primary transition-colors">
               {dict.nav.projects}
             </Link>
-            <Link href={`/${lang}/resources`} className="text-secondary hover:text-brand-primary transition-colors">
-              {dict.nav.resources}
-            </Link>
             <Link href={`/${lang}/about`} className="text-secondary hover:text-brand-primary transition-colors">
               {dict.nav.about}
             </Link>
@@ -87,9 +84,6 @@ export function Header({ lang }: HeaderProps) {
               </Link>
               <Link href={`/${lang}/projects`} className="text-secondary hover:text-brand-primary transition-colors">
                 {dict.nav.projects}
-              </Link>
-              <Link href={`/${lang}/resources`} className="text-secondary hover:text-brand-primary transition-colors">
-                {dict.nav.resources}
               </Link>
               <Link href={`/${lang}/about`} className="text-secondary hover:text-brand-primary transition-colors">
                 {dict.nav.about}

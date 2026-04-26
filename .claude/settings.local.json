@@ -1,0 +1,30 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm install:*)",
+      "Bash(npm run:*)",
+      "Bash(curl:*)",
+      "Bash(pkill -f \"next dev\")",
+      "Bash(npm list:*)",
+      "Bash(npm view:*)",
+      "Bash(ls -la /Users/niuniu/Documents/project/blog/.env*)",
+      "Bash(lighthouse:*)",
+      "Bash(lhci autorun:*)",
+      "Bash(pkill:*)",
+      "Bash(npx next:*)",
+      "Bash(git init:*)",
+      "Bash(git add:*)",
+      "Bash(git rm:*)",
+      "Bash(git commit:*)",
+      "Bash(git remote:*)",
+      "Bash(git branch:*)",
+      "Bash(git push:*)",
+      "Bash(npm audit:*)",
+      "Bash(gh repo *)",
+      "Bash(npm ls *)",
+      "Bash(npx tsc *)",
+      "Bash(node *)",
+      "Bash(GIT_SSH_COMMAND=\"ssh -o ConnectTimeout=10\" git push *)"
+    ]
+  }
+}

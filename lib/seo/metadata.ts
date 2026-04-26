@@ -11,6 +11,7 @@ interface SEOProps {
   publishedTime?: string;
   modifiedTime?: string;
   tags?: string[];
+  keywords?: string[];
   noIndex?: boolean;
 }
 
@@ -95,12 +96,12 @@ export function generatePageMetadata({
 export function generateHomeMetadata(locale: Locale): Metadata {
   const dict = {
     zh: {
-      title: 'AI Agent 开发者 | 全栈工程师',
-      description: '10+ 年软件开发经验，最近 2 年专注于 AI 应用落地。提供 AI Agent 应用设计咨询、可行性评估、成本评估和技术选型服务。',
+      title: 'Alex — AI 时代的系统设计工程师',
+      description: '思考 AI 工程化、系统设计和产品。让 AI 从实验室走向生产环境。',
     },
     en: {
-      title: 'AI Agent Developer | Full-Stack Engineer',
-      description: '10+ years of software development experience, focused on AI applications in the last 2 years. Providing AI Agent design consulting, feasibility assessment, and technology selection services.',
+      title: 'Alex — Systems Design Engineer in AI Era',
+      description: 'Thinking about AI engineering, systems design, and products. Making AI production-ready.',
     },
   };
 
@@ -112,6 +113,9 @@ export function generateHomeMetadata(locale: Locale): Metadata {
     locale,
     pathname: '/',
     image: '/images/og/home.png',
+    keywords: locale === 'zh'
+      ? ['AI工程化', '系统设计', 'LLM应用', 'AI Agent', '全栈开发', '产品思维']
+      : ['AI Engineering', 'Systems Design', 'LLM Applications', 'AI Agent', 'Full-stack Development', 'Product Thinking'],
   });
 }
 
@@ -121,12 +125,12 @@ export function generateHomeMetadata(locale: Locale): Metadata {
 export function generateBlogListMetadata(locale: Locale): Metadata {
   const dict = {
     zh: {
-      title: '博客',
-      description: '分享技术文章、项目经验与 AI 实践。探索 Java、Spring Boot、微服务、人工智能等领域。',
+      title: '思考与洞察',
+      description: '深度思考 AI 时代的系统设计。分享工程实践、架构决策和产品思维。',
     },
     en: {
-      title: 'Blog',
-      description: 'Technical articles, project experiences, and AI practices. Exploring Java, Spring Boot, Microservices, and Artificial Intelligence.',
+      title: 'Thinking & Insights',
+      description: 'Deep thinking on systems design in the AI era. Sharing engineering practices, architecture decisions, and product thinking.',
     },
   };
 

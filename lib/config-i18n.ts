@@ -2,20 +2,20 @@ import { WorkExperience, Skill } from './types';
 import { Locale } from './i18n';
 
 const baseProfile = {
-  name: 'Alex Xiao',
-  role: 'Full-Stack Developer | AI Agent Builder',
+  name: 'Alex (肖凯瀚)',
+  role: 'AI 时代的系统设计工程师',
 };
 
 const profileTranslations = {
   zh: {
-    role: '全栈程序员 | AI Agent 应用开发者',
-    tagline: '10+ 年编程经验 | 最近 2 年专注 AI 应用 | 现在帮传统企业快速落地 AI',
-    bio: '10+ 年软件开发经验，最近 2 年专注于 AI 应用落地。曾在保险财务系统做过复杂的分布式架构，现在用这些技术经验来帮助传统企业快速实现 AI 应用。提供 AI Agent 应用设计咨询、可行性评估、成本评估和技术选型服务。',
+    role: 'AI 时代的系统设计工程师',
+    tagline: '让 AI 从实验室走向生产环境',
+    bio: '全栈思维 × AI 工程化。我在思考：怎样才能让 AI 真正为组织创造价值？为什么系统设计在 AI 时代变得更重要？欢迎一起探索这些问题。',
   },
   en: {
-    role: 'Full-Stack Developer | AI Agent Builder',
-    tagline: '10 years coding | 2 years AI focus | Helping enterprises adopt AI',
-    bio: '10 years of software development experience, focused on AI applications in the last 2 years. Previously built complex distributed architectures for insurance financial systems, now helping traditional enterprises rapidly implement AI solutions. Providing AI Agent design consulting, feasibility assessment, cost evaluation, and technology selection services.',
+    role: 'Systems Design Engineer in AI Era',
+    tagline: 'Making AI Production-Ready',
+    bio: 'Full-stack thinking × AI engineering. I explore: How to make AI truly create value for organizations? Why does systems design matter more in the AI era? Let\'s explore these questions together.',
   },
 };
 
