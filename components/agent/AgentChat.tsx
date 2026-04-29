@@ -144,23 +144,23 @@ export function AgentChat() {
       {/* 浮动按钮 */}
       <button
         onClick={() => setIsOpen(true)}
-        className={`fixed bottom-6 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-terminal-dim border-2 border-terminal-green text-terminal-green transition-all hover:bg-terminal-green/20 ${
+        className={`fixed bottom-6 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-accent-glow border-2 border-accent text-accent transition-all hover:bg-accent/20 ${
           isOpen ? 'hidden' : 'animate-pulse'
         }`}
         aria-label="打开聊天"
       >
         <FiTerminal className="h-6 w-6" />
-        <span className="absolute -top-1 -right-1 h-3 w-3 rounded-full bg-terminal-green" />
+        <span className="absolute -top-1 -right-1 h-3 w-3 rounded-full bg-accent" />
       </button>
 
       {/* 聊天窗口 */}
       {isOpen && (
-        <div className="fixed bottom-6 right-6 z-50 flex flex-col w-[380px] max-w-[calc(100vw-48px)] h-[500px] max-h-[calc(100vh-100px)] bg-terminal-bg border-2 border-terminal-green rounded-lg shadow-2xl">
+        <div className="fixed bottom-6 right-6 z-50 flex flex-col w-[380px] max-w-[calc(100vw-48px)] h-[500px] max-h-[calc(100vh-100px)] bg-surface border-2 border-accent rounded-lg shadow-2xl">
           {/* 头部 */}
-          <div className="flex items-center justify-between px-4 py-3 border-b border-terminal-border bg-terminal-dim/50">
+          <div className="flex items-center justify-between px-4 py-3 border-b border-border bg-accent-glow/50">
             <div className="flex items-center gap-2">
-              <FiTerminal className="h-5 w-5 text-terminal-green" />
-              <span className="font-mono text-terminal-green text-sm">~/chat</span>
+              <FiTerminal className="h-5 w-5 text-accent" />
+              <span className="font-mono text-accent text-sm">~/chat</span>
             </div>
             <div className="flex items-center gap-3">
               <span className="text-xs text-gray-500">
@@ -168,7 +168,7 @@ export function AgentChat() {
               </span>
               <button
                 onClick={() => setIsOpen(false)}
-                className="text-gray-400 hover:text-terminal-green transition-colors"
+                className="text-gray-400 hover:text-accent transition-colors"
                 aria-label="关闭聊天"
               >
                 <FiX className="h-5 w-5" />
@@ -181,8 +181,8 @@ export function AgentChat() {
             {/* 欢迎消息 */}
             {messages.length === 0 && (
               <div className="text-center py-8">
-                <div className="inline-flex items-center gap-2 px-3 py-1 bg-terminal-dim rounded font-mono text-terminal-green text-sm mb-4">
-                  <span className="h-2 w-2 rounded-full bg-terminal-green animate-pulse" />
+                <div className="inline-flex items-center gap-2 px-3 py-1 bg-accent-glow rounded font-mono text-accent text-sm mb-4">
+                  <span className="h-2 w-2 rounded-full bg-accent animate-pulse" />
                   Agent Online
                 </div>
                 <p className="text-gray-400 text-sm">
@@ -193,7 +193,7 @@ export function AgentChat() {
                     <button
                       key={q}
                       onClick={() => setInput(q)}
-                      className="px-3 py-1 text-xs bg-code-bg text-gray-300 rounded hover:text-terminal-green transition-colors"
+                      className="px-3 py-1 text-xs bg-code text-gray-300 rounded hover:text-accent transition-colors"
                     >
                       {q}
                     </button>
@@ -211,12 +211,12 @@ export function AgentChat() {
                 <div
                   className={`max-w-[85%] px-4 py-2 rounded-lg font-mono text-sm ${
                     msg.role === 'user'
-                      ? 'bg-brand-primary text-white'
-                      : 'bg-code-bg text-gray-200 border border-terminal-border'
+                      ? 'bg-accent text-white'
+                      : 'bg-code text-gray-200 border border-border'
                   }`}
                 >
                   {msg.role === 'assistant' && (
-                    <span className="text-terminal-green text-xs mb-1 block">
+                    <span className="text-accent text-xs mb-1 block">
                       &gt; {isLoading && msg.content === '' ? 'thinking...' : 'response'}
                     </span>
                   )}
@@ -228,8 +228,8 @@ export function AgentChat() {
             {/* 加载指示器 */}
             {isLoading && messages[messages.length - 1]?.role === 'user' && (
               <div className="flex justify-start">
-                <div className="px-4 py-2 bg-code-bg rounded-lg border border-terminal-border">
-                  <span className="font-mono text-terminal-green text-sm">
+                <div className="px-4 py-2 bg-code rounded-lg border border-border">
+                  <span className="font-mono text-accent text-sm">
                     <span className="animate-pulse">thinking...</span>
                   </span>
                 </div>
@@ -240,7 +240,7 @@ export function AgentChat() {
           </div>
 
           {/* 输入区域 */}
-          <div className="px-4 py-3 border-t border-terminal-border bg-terminal-dim/30">
+          <div className="px-4 py-3 border-t border-border bg-accent-glow/30">
             {rateLimited && (
               <p className="text-xs text-orange-400 mb-2 text-center">
                 今日对话次数已用完
@@ -254,12 +254,12 @@ export function AgentChat() {
                 onKeyDown={handleKeyDown}
                 placeholder="输入问题..."
                 disabled={isLoading || rateLimited}
-                className="flex-1 px-4 py-2 bg-code-bg border border-terminal-border rounded text-sm text-gray-200 placeholder-gray-500 focus:border-terminal-green focus:outline-none disabled:opacity-50"
+                className="flex-1 px-4 py-2 bg-code border border-border rounded text-sm text-gray-200 placeholder-gray-500 focus:border-accent focus:outline-none disabled:opacity-50"
               />
               <button
                 onClick={sendMessage}
                 disabled={!input.trim() || isLoading || rateLimited}
-                className="px-4 py-2 bg-terminal-dim border border-terminal-green rounded text-terminal-green text-sm hover:bg-terminal-green/20 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                className="px-4 py-2 bg-accent-glow border border-accent rounded text-accent text-sm hover:bg-accent/20 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 发送
               </button>

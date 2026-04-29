@@ -28,7 +28,7 @@
   },
   "blog": {
     "title": "Blog",
-    "description": "Technical blog sharing Java development experience, microservices architecture, and AI implementation practices.",
+    "description": "Deep thinking on systems design in the AI era. Sharing engineering practices, architecture decisions, and product thinking.",
     "readMore": "Read More",
     "readingTime": "min read",
     "allTags": "All Tags",

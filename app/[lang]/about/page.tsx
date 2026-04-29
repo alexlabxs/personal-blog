@@ -1,17 +1,6 @@
 import { Metadata } from 'next';
-import { getDictionary, Locale } from '@/lib/i18n';
-import { getLocalizedConfig, socialLinks } from '@/lib/config-i18n';
-import { SkillCloud } from '@/components/hero/SkillCloud';
-import { Timeline } from '@/components/hero/Timeline';
-import { FaGithub, FaTwitter, FaLinkedin, FaEnvelope } from 'react-icons/fa';
+import { Locale } from '@/lib/i18n';
 import { generateAboutMetadata } from '@/lib/seo/metadata';
-
-const iconMap = {
-  github: FaGithub,
-  twitter: FaTwitter,
-  linkedin: FaLinkedin,
-  email: FaEnvelope,
-};
 
 type Props = {
   params: { lang: Locale };
@@ -21,125 +10,184 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return generateAboutMetadata(params.lang);
 }
 
-export default async function AboutPage({ params }: Props) {
-  const dict = await getDictionary(params.lang);
-  const { profile, experiences, skills } = getLocalizedConfig(params.lang);
+export default function AboutPage({ params }: Props) {
+  const lang = params.lang;
 
   return (
-    <main className="min-h-screen bg-background text-foreground px-4 py-20 md:px-8">
+    <main className="min-h-screen bg-background px-4 py-20 text-foreground md:px-8">
       <div className="container mx-auto max-w-4xl">
         {/* 开场白 */}
         <section className="mb-20">
-          <h1 className="mb-6 text-4xl font-bold">
-            {params.lang === 'zh' ? '关于我' : 'About Me'}
+          <div className="mb-6">
+            <span className="font-mono text-xs uppercase tracking-[0.2em] text-text-muted">
+              ~/about
+            </span>
+          </div>
+
+          <h1 className="mb-8 font-display text-4xl font-medium md:text-5xl">
+            {lang === 'zh' ? '关于我' : 'About Me'}
           </h1>
-          <div className="prose prose-invert max-w-none">
-            <p className="text-lg text-secondary/80 leading-relaxed mb-6">
-              {params.lang === 'zh'
-                ? '我是一名全栈工程师，专注于系统设计。在 AI 时代，我在思考如何让 AI 从实验室走向生产环境，如何设计真正创造价值的 AI 系统。'
-                : 'I\'m a full-stack engineer focused on systems design. In the AI era, I\'m exploring how to make AI production-ready and how to design AI systems that truly create value.'
-              }
-            </p>
-            <p className="text-lg text-secondary/80 leading-relaxed">
-              {params.lang === 'zh'
-                ? '拥有 10+ 年软件开发经验，曾在保险财务系统构建复杂的分布式架构。现在，我将这些系统设计的经验应用到 AI 工程化领域，帮助企业实现 AI 应用的落地。'
-                : 'With 10+ years of software development experience, I\'ve built complex distributed architectures for insurance financial systems. Now, I\'m applying this systems design expertise to AI engineering, helping enterprises bring AI applications to production.'
-              }
-            </p>
+
+          <div className="prose prose-lg max-w-none space-y-6 leading-relaxed text-text-secondary">
+            {lang === 'zh' ? (
+              <>
+                <p>
+                  我是 <strong className="text-foreground">Alex（肖凯瀚）</strong>，一名全栈工程师。
+                </p>
+
+                <p>
+                  过去 10 年，我在保险行业做 Java
+                  后端开发，设计过财务系统、记账引擎、费控管理等核心模块。
+                  我学会了如何设计复杂的业务系统，如何让代码在生产环境稳定运行。
+                </p>
+
+                <p className="pt-4 text-lg font-medium text-foreground">
+                  但现在，我在思考一个更大的问题：
+                </p>
+
+                <p>AI 时代，系统设计会变得更重要还是更不重要？</p>
+
+                <p>
+                  大多数人觉得 AI 会替代工程师。我不这么认为。我认为 AI 让系统设计变得
+                  <strong className="text-foreground">更关键</strong>——因为 AI
+                  本身就是最难预测、最难驾驭的"组件"。
+                </p>
+
+                <p>
+                  如何把 AI 集成到生产系统？如何保证可靠性？如何控制成本？
+                  这些问题，只有懂系统设计的工程师才能回答。
+                </p>
+
+                <p>所以我开始写作，记录我的思考：</p>
+
+                <ul className="list-none space-y-2 pl-0">
+                  <li className="text-accent">→ 怎样让 AI 从实验室走向生产环境？</li>
+                  <li className="text-accent">→ 系统设计在 AI 时代有什么新挑战？</li>
+                  <li className="text-accent">→ 工程师需要补充什么产品思维？</li>
+                </ul>
+
+                <p className="text-foreground">欢迎一起探索这些问题。</p>
+              </>
+            ) : (
+              <>
+                <p>
+                  I'm <strong className="text-foreground">Alex (Xiao Kaihan)</strong>, a full-stack
+                  engineer.
+                </p>
+
+                <p>
+                  For the past 10 years, I've been building Java backend systems in the insurance
+                  industry—financial systems, accounting engines, expense control modules. I learned
+                  how to design complex business systems and keep code running reliably in
+                  production.
+                </p>
+
+                <p className="pt-4 text-lg font-medium text-foreground">
+                  But now, I'm thinking about a bigger question:
+                </p>
+
+                <p>In the AI era, will systems design become more important or less?</p>
+
+                <p>
+                  Most people think AI will replace engineers. I disagree. I believe AI makes
+                  systems design <strong className="text-foreground">more critical</strong>—because
+                  AI itself is the most unpredictable, most difficult "component" to control.
+                </p>
+
+                <p>
+                  How do we integrate AI into production systems? How do we ensure reliability? How
+                  do we control costs? Only engineers who understand systems design can answer these
+                  questions.
+                </p>
+
+                <p>That's why I write—to document my thinking:</p>
+
+                <ul className="list-none space-y-2 pl-0">
+                  <li className="text-accent">→ How to make AI production-ready?</li>
+                  <li className="text-accent">
+                    → What new challenges does systems design face in the AI era?
+                  </li>
+                  <li className="text-accent">
+                    → What product thinking do engineers need to develop?
+                  </li>
+                </ul>
+
+                <p className="text-foreground">Let's explore these questions together.</p>
+              </>
+            )}
           </div>
         </section>
 
-        {/* 为什么听我的 */}
+        {/* 经历背景 */}
         <section className="mb-20">
-          <h2 className="mb-6 text-2xl font-bold">
-            {params.lang === 'zh' ? '为什么我的观点值得听' : 'Why My Perspective Matters'}
+          <h2 className="mb-8 font-display text-2xl font-medium">
+            {lang === 'zh' ? '背景' : 'Background'}
           </h2>
-          <div className="space-y-6 text-secondary/80">
+
+          <div className="space-y-6 text-text-secondary">
             <div className="flex gap-4">
-              <div className="flex-shrink-0 h-8 w-8 rounded-full bg-terminal-green/20 flex items-center justify-center text-terminal-green font-bold">1</div>
+              <span className="mt-1 font-mono text-xs text-accent">2019-Now</span>
               <div>
-                <h3 className="font-semibold text-foreground mb-2">
-                  {params.lang === 'zh' ? '实战经验 + 理论深度' : 'Practical Experience + Theoretical Depth'}
+                <h3 className="mb-1 font-semibold text-foreground">
+                  {lang === 'zh' ? '高级 Java 工程师' : 'Senior Java Engineer'}
                 </h3>
-                <p>
-                  {params.lang === 'zh'
-                    ? '不仅是技术实现，更关注架构设计和业务价值。从金融系统到 AI 应用，我对系统设计有深入理解。'
-                    : 'Not just technical implementation, but focused on architecture design and business value. From financial systems to AI applications, I have deep understanding of systems design.'
-                  }
+                <p className="text-sm">
+                  {lang === 'zh'
+                    ? '保险行业财务系统核心模块开发、IFRS17 准则重构、LLM 与 OCR 技术集成'
+                    : 'Insurance financial systems, IFRS17 refactoring, LLM & OCR integration'}
                 </p>
               </div>
             </div>
+
             <div className="flex gap-4">
-              <div className="flex-shrink-0 h-8 w-8 rounded-full bg-terminal-green/20 flex items-center justify-center text-terminal-green font-bold">2</div>
+              <span className="mt-1 font-mono text-xs text-accent">2015-2019</span>
               <div>
-                <h3 className="font-semibold text-foreground mb-2">
-                  {params.lang === 'zh' ? '产品思维 + 技术视野' : 'Product Thinking + Technical Vision'}
+                <h3 className="mb-1 font-semibold text-foreground">
+                  {lang === 'zh' ? 'Java 开发工程师' : 'Java Developer'}
                 </h3>
-                <p>
-                  {params.lang === 'zh'
-                    ? '技术为产品服务。我关注如何用 AI 解决真实问题，创造可衡量的价值。'
-                    : 'Technology serves the product. I focus on using AI to solve real problems and create measurable value.'
-                  }
-                </p>
-              </div>
-            </div>
-            <div className="flex gap-4">
-              <div className="flex-shrink-0 h-8 w-8 rounded-full bg-terminal-green/20 flex items-center justify-center text-terminal-green font-bold">3</div>
-              <div>
-                <h3 className="font-semibold text-foreground mb-2">
-                  {params.lang === 'zh' ? '跨领域思考' : 'Cross-Disciplinary Thinking'}
-                </h3>
-                <p>
-                  {params.lang === 'zh'
-                    ? '结合分布式系统、产品设计和 AI 工程化，提供更全面的视角。'
-                    : 'Combining distributed systems, product design, and AI engineering to provide a more comprehensive perspective.'
-                  }
+                <p className="text-sm">
+                  {lang === 'zh'
+                    ? '金融行业系统开发、行情数据系统'
+                    : 'Financial systems development, market data systems'}
                 </p>
               </div>
             </div>
           </div>
-        </section>
-
-        {/* 工作经历 */}
-        <section className="mb-20">
-          <h2 className="mb-6 font-mono text-terminal-green text-sm">~/experience</h2>
-          <Timeline experiences={experiences} />
-        </section>
-
-        {/* 技能 */}
-        <section className="mb-20">
-          <h2 className="mb-6 font-mono text-terminal-green text-sm">~/skills</h2>
-          <SkillCloud skills={skills} />
         </section>
 
         {/* 联系方式 */}
-        <section>
-          <h2 className="mb-6 font-mono text-terminal-green text-sm">
-            {params.lang === 'zh' ? '联系' : 'Contact'}
+        <section className="border-t border-border pt-12">
+          <h2 className="mb-6 font-display text-2xl font-medium">
+            {lang === 'zh' ? '联系我' : 'Contact'}
           </h2>
-          <div className="flex flex-wrap gap-4">
-            <a
-              href="mailto:dreamkey.xiao@gmail.com"
-              className="inline-flex items-center gap-2 rounded-lg bg-code-bg px-6 py-3 text-secondary transition-colors hover:bg-code-bg/80 hover:text-terminal-green"
-            >
-              <FaEnvelope className="h-5 w-5" />
-              <span>Email</span>
-            </a>
-            {socialLinks.map((link) => {
-              const Icon = iconMap[link.icon as keyof typeof iconMap];
-              return (
-                <a
-                  key={link.name}
-                  href={link.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-lg bg-code-bg px-6 py-3 text-secondary transition-colors hover:bg-code-bg/80 hover:text-terminal-green"
-                >
-                  {Icon && <Icon className="h-5 w-5" />}
-                  <span>{link.name}</span>
-                </a>
-              );
-            })}
+
+          <div className="space-y-4">
+            <div className="flex items-center gap-3 text-text-muted">
+              <span className="font-mono text-xs text-accent">EMAIL</span>
+              <a
+                href="mailto:dreamkey.xiao@gmail.com"
+                className="transition-colors hover:text-accent"
+              >
+                dreamkey.xiao@gmail.com
+              </a>
+            </div>
+
+            <div className="flex gap-6 text-sm">
+              <a
+                href="https://github.com/xiaokaihan"
+                target="_blank"
+                className="text-text-muted transition-colors hover:text-accent"
+              >
+                GitHub
+              </a>
+              <a
+                href="https://x.com/DreamkeyKey"
+                target="_blank"
+                className="text-text-muted transition-colors hover:text-accent"
+              >
+                Twitter
+              </a>
+            </div>
           </div>
         </section>
       </div>

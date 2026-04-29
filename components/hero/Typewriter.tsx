@@ -38,7 +38,7 @@ export function Typewriter({
       {displayText}
       {showCursor && (
         <motion.span
-          className="ml-1 inline-block h-5 w-2.5 bg-terminal-green"
+          className="ml-1 inline-block h-5 w-2.5 bg-accent"
           initial={{ opacity: 1 }}
           animate={{ opacity: [1, 0, 1] }}
           transition={{ duration: 1, repeat: Infinity }}
@@ -57,7 +57,7 @@ export function CodeSnippet({ code, className }: CodeSnippetProps) {
   return (
     <motion.pre
       className={cn(
-        'overflow-hidden rounded-lg bg-code-bg p-4 text-sm text-secondary',
+        'overflow-hidden rounded-lg bg-code p-4 text-sm text-secondary',
         className
       )}
       initial={{ opacity: 0, y: 20 }}

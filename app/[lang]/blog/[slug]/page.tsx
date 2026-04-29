@@ -70,7 +70,7 @@ export default async function PostPage({ params }: Props) {
     <main className="min-h-screen bg-background text-foreground px-4 py-16 md:px-8">
       <BlogSchema post={postData} />
       <div className="container mx-auto max-w-6xl">
-        <div className="mb-12 font-mono text-terminal-green text-sm">~/blog/{params.slug}</div>
+        <div className="mb-12 font-mono text-accent text-sm">~/blog/{params.slug}</div>
         <h1 className="mb-8 text-4xl font-bold">{postData.title}</h1>
 
         <div className="flex items-center text-sm text-gray-500 mb-8">

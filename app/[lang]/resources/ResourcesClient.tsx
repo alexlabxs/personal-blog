@@ -54,7 +54,7 @@ export function ResourcesClient({ lang }: ResourcesClientProps) {
     <main className="min-h-screen bg-background text-foreground px-4 py-16 md:px-8">
       <div className="container mx-auto max-w-6xl">
         <div className="mb-12">
-          <div className="font-mono text-terminal-green text-sm mb-4">~/resources</div>
+          <div className="font-mono text-accent text-sm mb-4">~/resources</div>
           <h1 className="text-4xl font-bold mb-2 text-primary">{dict.resources.title}</h1>
           <p className="text-secondary">{lang === 'zh' ? '收集整理的开发者优质资源，持续更新' : 'Curated developer resources, updated regularly'}</p>
         </div>
@@ -65,7 +65,7 @@ export function ResourcesClient({ lang }: ResourcesClientProps) {
             placeholder={searchPlaceholder}
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full px-4 py-2 bg-code-bg border border-card-border rounded-lg text-foreground placeholder:text-muted focus:border-terminal-green focus:outline-none transition-colors"
+            className="w-full px-4 py-2 bg-code border border-border rounded-lg text-foreground placeholder:text-muted focus:border-accent focus:outline-none transition-colors"
           />
         </div>
 
@@ -75,8 +75,8 @@ export function ResourcesClient({ lang }: ResourcesClientProps) {
               onClick={() => setSelectedCategory(null)}
               className={`px-4 py-2 rounded-lg text-sm transition-colors ${
                 selectedCategory === null
-                  ? 'bg-terminal-green text-black'
-                  : 'bg-code-bg text-secondary border border-card-border hover:bg-hover-bg'
+                  ? 'bg-accent text-black'
+                  : 'bg-code text-secondary border border-border hover:bg-surface'
               }`}
             >
               {allLabel} ({resources.length})
@@ -87,8 +87,8 @@ export function ResourcesClient({ lang }: ResourcesClientProps) {
                 onClick={() => setSelectedCategory(cat.id)}
                 className={`px-4 py-2 rounded-lg text-sm transition-colors ${
                   selectedCategory === cat.id
-                    ? 'bg-terminal-green text-black'
-                    : 'bg-code-bg text-secondary border border-card-border hover:bg-hover-bg'
+                    ? 'bg-accent text-black'
+                    : 'bg-code text-secondary border border-border hover:bg-surface'
                 }`}
               >
                 {cat.icon} {cat.name} ({categoryCounts[cat.id] || 0})
@@ -100,7 +100,7 @@ export function ResourcesClient({ lang }: ResourcesClientProps) {
               {categories.find(c => c.id === selectedCategory)?.description}
               <button
                 onClick={() => setSelectedCategory(null)}
-                className="ml-2 text-terminal-green hover:underline"
+                className="ml-2 text-accent hover:underline"
               >
                 {clearLabel}
               </button>
@@ -110,7 +110,7 @@ export function ResourcesClient({ lang }: ResourcesClientProps) {
 
         {featuredResources.length > 0 && (
           <section className="mb-12">
-            <h2 className="mb-6 font-mono text-terminal-green text-sm">
+            <h2 className="mb-6 font-mono text-accent text-sm">
               <span className="mr-2">★</span>RECOMMENDED
             </h2>
             <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
@@ -150,15 +150,15 @@ function ResourceCard({ resource, featured = false }: { resource: typeof resourc
       rel="noopener noreferrer"
       className={`group block p-4 rounded-lg transition-all ${
         featured
-          ? 'bg-code-bg border border-terminal-green/30 hover:border-terminal-green hover:shadow-lg'
-          : 'bg-code-bg border border-card-border hover:border-terminal-green/50'
+          ? 'bg-code border border-accent/30 hover:border-accent hover:shadow-lg'
+          : 'bg-code border border-border hover:border-accent/50'
       }`}
     >
       <div className="flex items-start justify-between mb-2">
-        <h3 className={`font-semibold ${featured ? 'text-terminal-green' : 'text-primary group-hover:text-terminal-green'}`}>
+        <h3 className={`font-semibold ${featured ? 'text-accent' : 'text-primary group-hover:text-accent'}`}>
           {resource.name}
         </h3>
-        <FaExternalLinkAlt className="w-3 h-3 text-muted group-hover:text-terminal-green transition-colors" />
+        <FaExternalLinkAlt className="w-3 h-3 text-muted group-hover:text-accent transition-colors" />
       </div>
       <p className="text-sm text-secondary mb-3 line-clamp-2">{resource.description}</p>
       {resource.tags && (
@@ -166,7 +166,7 @@ function ResourceCard({ resource, featured = false }: { resource: typeof resourc
           {resource.tags.map((tag) => (
             <span
               key={tag}
-              className="px-2 py-0.5 bg-hover-bg text-muted text-xs rounded"
+              className="px-2 py-0.5 bg-surface text-muted text-xs rounded"
             >
               {tag}
             </span>

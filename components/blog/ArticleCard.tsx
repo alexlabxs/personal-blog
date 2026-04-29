@@ -13,27 +13,34 @@ export function ArticleCard({ article, lang }: ArticleCardProps) {
   const readingTimeLabel = lang === 'zh' ? '分钟阅读' : 'min read';
 
   return (
-    <article className="light-article-card">
-      <div className="mb-4">
-        <h2 className="text-xl font-semibold text-primary mb-2">
-          <Link href={`/${lang}/blog/${article.slug}`} className="hover:text-brand-primary transition-colors">
-            {article.title}
-          </Link>
-        </h2>
-        <div className="flex items-center text-sm text-muted mb-3">
-          <time dateTime={article.date}>{article.date}</time>
-          <span className="mx-2">•</span>
-          <span>{article.readingTime} {readingTimeLabel}</span>
-        </div>
-        <p className="text-secondary mb-4">{article.description}</p>
+    <article className="editorial-card group flex flex-col p-6">
+      {/* Meta row */}
+      <div className="mb-4 flex items-center gap-3">
+        <time dateTime={article.date} className="font-mono text-xs text-text-muted">
+          {article.date}
+        </time>
+        <span className="h-px flex-1 bg-border" />
+        <span className="font-mono text-xs text-text-muted">
+          {article.readingTime} {readingTimeLabel}
+        </span>
       </div>
 
+      {/* Title */}
+      <h2 className="mb-3 font-display text-2xl font-medium leading-tight">
+        <Link href={`/${lang}/blog/${article.slug}`} className="accent-link text-text-primary">
+          {article.title}
+        </Link>
+      </h2>
+
+      {/* Description */}
+      <p className="mb-5 flex-1 text-sm leading-relaxed text-text-secondary">
+        {article.description}
+      </p>
+
+      {/* Tags */}
       <div className="flex flex-wrap gap-2">
         {article.tags.map((tag) => (
-          <span
-            key={tag}
-            className="px-3 py-1 bg-brand-primary/10 text-brand-primary text-xs rounded-full hover:bg-brand-primary/20 transition-colors cursor-pointer"
-          >
+          <span key={tag} className="tag-pill">
             {tag}
           </span>
         ))}

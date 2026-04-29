@@ -10,51 +10,59 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Terminal-inspired color palette with brand integration
         background: 'var(--background)',
         foreground: 'var(--foreground)',
-        terminal: {
-          bg: '#0a0a0a',
-          green: '#00ff41',
-          dim: '#003b00',
-          border: '#1a1a1a',
+        accent: {
+          DEFAULT: 'var(--accent)',
+          dim: 'var(--accent-dim)',
+          glow: 'var(--accent-glow)',
+        },
+        surface: {
+          DEFAULT: 'var(--surface)',
+          raised: 'var(--surface-raised)',
+        },
+        border: {
+          DEFAULT: 'var(--border)',
+          strong: 'var(--border-strong)',
+        },
+        text: {
+          primary: 'var(--text-primary)',
+          secondary: 'var(--text-secondary)',
+          muted: 'var(--text-muted)',
+          subtle: 'var(--text-subtle)',
         },
         code: {
-          bg: '#1e1e1e',
-          comment: '#6a9955',
-          keyword: '#569cd6',
-          string: '#ce9178',
-          function: '#dcdcaa',
-        },
-        // Brand colors for alexxiao.dev
-        brand: {
-          primary: '#2563EB',    // 科技蓝
-          secondary: '#8B5CF6',  // 霓虹紫
-          accent: '#1F2937',     // 深空灰
-          light: '#F9FAFB',      // 浅灰白
+          bg: 'var(--code-bg)',
+          border: 'var(--code-border)',
         },
       },
       fontFamily: {
-        mono: ['"JetBrains Mono"', '"Fira Code"', 'Consolas', 'Monaco', 'monospace'],
-        sans: ['"Inter"', 'system-ui', 'sans-serif'],
+        display: ['var(--font-display)', 'Cormorant Garamond', 'Georgia', 'serif'],
+        body: ['var(--font-body)', 'DM Sans', 'system-ui', 'sans-serif'],
+        mono: ['var(--font-mono)', 'JetBrains Mono', 'Fira Code', 'monospace'],
       },
       animation: {
-        'cursor-blink': 'blink 1s step-end infinite',
-        'typing': 'typing 3.5s steps(40, end)',
-        'float': 'float 6s ease-in-out infinite',
+        'fade-in': 'fadeIn 0.8s ease forwards',
+        'slide-up': 'slideUp 0.7s ease forwards',
+        reveal: 'reveal 1s ease forwards',
+        'soft-pulse': 'softPulse 3s infinite',
       },
       keyframes: {
-        blink: {
-          '0%, 100%': { opacity: '1' },
-          '50%': { opacity: '0' },
+        fadeIn: {
+          from: { opacity: '0' },
+          to: { opacity: '1' },
         },
-        typing: {
-          'from': { width: '0' },
-          'to': { width: '100%' },
+        slideUp: {
+          from: { transform: 'translateY(24px)', opacity: '0' },
+          to: { transform: 'translateY(0)', opacity: '1' },
         },
-        float: {
-          '0%, 100%': { transform: 'translateY(0px)' },
-          '50%': { transform: 'translateY(-20px)' },
+        reveal: {
+          from: { clipPath: 'inset(0 100% 0 0)' },
+          to: { clipPath: 'inset(0 0 0 0)' },
+        },
+        softPulse: {
+          '0%, 100%': { opacity: '0.6' },
+          '50%': { opacity: '1' },
         },
       },
     },

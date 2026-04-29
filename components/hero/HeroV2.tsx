@@ -15,80 +15,65 @@ interface HeroV2Props {
 
 export function HeroV2({ lang, dict, profile }: HeroV2Props) {
   return (
-    <section className="relative min-h-screen flex items-center">
-      {/* 背景层 */}
-      <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-background/95">
-        {/* 微妙的网格背景 */}
-        <div className="absolute inset-0 opacity-5">
-          <div className="h-full w-full" style={{
-            backgroundImage: `
-              linear-gradient(to right, #4ade80 1px, transparent 1px),
-              linear-gradient(to bottom, #4ade80 1px, transparent 1px)
-            `,
-            backgroundSize: '50px 50px'
-          }} />
-        </div>
-      </div>
+    <section className="relative flex min-h-[90vh] items-center pb-16 pt-24">
+      {/* Subtle decorative line */}
+      <div className="absolute left-8 top-1/2 hidden h-px w-16 -translate-y-1/2 bg-accent-dim lg:block" />
 
-      {/* 内容层 */}
-      <div className="container mx-auto max-w-4xl px-4 relative z-10">
-        <motion.div
-          className="space-y-6"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-        >
-          {/* 名字 */}
+      <div className="container relative z-10 mx-auto max-w-5xl px-4">
+        <div className="space-y-10">
+          {/* Name — small, understated */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 0.2, duration: 0.6 }}
+            transition={{ delay: 0.15, duration: 0.8 }}
           >
-            <span className="block text-secondary/60 text-2xl md:text-3xl mb-2">
+            <span className="font-mono text-xs uppercase tracking-[0.2em] text-text-muted">
               {profile.name}
             </span>
           </motion.div>
 
-          {/* 主要标题 */}
-          <h1 className="text-5xl md:text-7xl font-bold leading-tight">
+          {/* Role — dramatic display typography */}
+          <h1 className="font-display text-5xl font-medium leading-[1.08] text-text-primary md:text-7xl lg:text-8xl">
             {profile.role}
           </h1>
 
-          {/* 标语 */}
-          <motion.p
-            className="text-xl md:text-2xl text-secondary/80"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4, duration: 0.6 }}
-          >
-            {profile.tagline}
-          </motion.p>
-
-          {/* 简介 */}
-          <motion.p
-            className="text-lg text-secondary/70 max-w-2xl leading-relaxed"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.6, duration: 0.6 }}
-          >
-            {profile.bio}
-          </motion.p>
-
-          {/* CTA 按钮 */}
-          <motion.div
-            className="pt-4"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.8, duration: 0.6 }}
-          >
-            <a
-              href={`/${lang}/blog`}
-              className="inline-flex items-center px-6 py-3 bg-terminal-green text-background font-medium rounded-lg hover:bg-terminal-green/90 transition-colors"
+          {/* Tagline + bio */}
+          <div className="max-w-2xl space-y-5">
+            <motion.p
+              className="text-lg font-medium text-accent md:text-xl"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.35, duration: 0.7 }}
             >
-              {lang === 'zh' ? '阅读我的思考' : 'Read My Thinking'} →
+              {profile.tagline}
+            </motion.p>
+
+            <motion.p
+              className="text-base leading-relaxed text-text-secondary md:text-lg"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5, duration: 0.7 }}
+            >
+              {profile.bio}
+            </motion.p>
+          </div>
+
+          {/* CTA */}
+          <motion.div
+            className="flex gap-4 pt-2"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.7, duration: 0.7 }}
+          >
+            <a href={`/${lang}/blog`} className="btn-accent">
+              {lang === 'zh' ? '阅读我的思考' : 'Read My Thinking'}
+              <span className="font-mono">→</span>
+            </a>
+            <a href={`/${lang}/about`} className="btn-ghost">
+              {lang === 'zh' ? '关于我' : 'About'}
             </a>
           </motion.div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

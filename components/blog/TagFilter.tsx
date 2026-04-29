@@ -12,7 +12,7 @@ export function TagFilter({ articles }: TagFilterProps) {
   return (
     <div className="mb-6">
       <div className="flex flex-wrap gap-2 mb-4">
-        <button className="px-3 py-1 rounded-full text-sm bg-brand-primary text-white">
+        <button className="px-3 py-1 rounded-full text-sm bg-accent text-white">
           全部
         </button>
         {allTags.map((tag) => (

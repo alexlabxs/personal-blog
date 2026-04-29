@@ -18,9 +18,9 @@ function NavLink({ href, label, index }: NavLinkProps) {
     >
       <Link
         href={href}
-        className="group flex items-center gap-2 text-secondary transition-colors hover:text-terminal-green"
+        className="group flex items-center gap-2 text-secondary transition-colors hover:text-accent"
       >
-        <span className="font-mono text-terminal-green">0{index + 1}.</span>
+        <span className="font-mono text-accent">0{index + 1}.</span>
         <span className="group-hover:underline">{label}</span>
         <span className="font-mono opacity-0 transition-opacity group-hover:opacity-100">→</span>
       </Link>

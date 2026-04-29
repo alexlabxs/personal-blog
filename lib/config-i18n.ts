@@ -2,7 +2,7 @@ import { WorkExperience, Skill } from './types';
 import { Locale } from './i18n';
 
 const baseProfile = {
-  name: 'Alex (肖凯瀚)',
+  name: 'Alex Xiao',
   role: 'AI 时代的系统设计工程师',
 };
 

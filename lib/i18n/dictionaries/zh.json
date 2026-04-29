@@ -28,7 +28,7 @@
   },
   "blog": {
     "title": "博客",
-    "description": "技术博客，分享 Java 开发经验、微服务架构设计与 AI 落地实践。Spring Boot、分布式事务、财务系统等技术文章。",
+    "description": "深度思考 AI 时代的系统设计。分享工程实践、架构决策和产品思维。",
     "readMore": "阅读更多",
     "readingTime": "分钟阅读",
     "allTags": "所有标签",

@@ -84,7 +84,7 @@
 ```typescript
 const config_zh = {
   profile: {
-    name: "Alex (肖凯瀚)",
+    name: "Alex Xiao",
     role: "AI 时代的系统设计工程师",
     tagline: "让 AI 从实验室走向生产环境",
     bio: "全栈思维 × AI 工程化。我在思考：怎样才能让 AI 真正为组织创造价值？为什么系统设计在 AI 时代变得更重要？欢迎一起探索这些问题。"

@@ -17,77 +17,89 @@ export function Header({ lang }: HeaderProps) {
   const switchLang = lang === 'zh' ? 'en' : 'zh';
 
   return (
-    <header className="fixed top-0 left-0 right-0 bg-background border-b border-terminal-border z-50">
+    <header className="bg-background/80 fixed left-0 right-0 top-0 z-50 backdrop-blur-sm">
       <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-16">
-          <div className="flex items-center">
-            <Link href={`/${lang}`} className="text-xl font-bold brand-gradient hover:brand-bg-hover transition-colors">
-              Alex
-            </Link>
-          </div>
+        <div className="flex h-16 items-center justify-between">
+          {/* Logo */}
+          <Link
+            href={`/${lang}`}
+            className="font-display text-xl font-semibold text-text-primary transition-opacity hover:opacity-70"
+          >
+            Alex
+          </Link>
 
-          <nav className="hidden md:flex items-center space-x-8">
-            <Link href={`/${lang}`} className="text-secondary hover:text-brand-primary transition-colors">
-              {dict.nav.home}
-            </Link>
-            <Link href={`/${lang}/blog`} className="text-secondary hover:text-brand-primary transition-colors">
-              {dict.nav.blog}
-            </Link>
-            <Link href={`/${lang}/projects`} className="text-secondary hover:text-brand-primary transition-colors">
-              {dict.nav.projects}
-            </Link>
-            <Link href={`/${lang}/about`} className="text-secondary hover:text-brand-primary transition-colors">
-              {dict.nav.about}
-            </Link>
-
-            <ThemeToggle />
-
-            <Link
-              href={`/${switchLang}`}
-              className="px-3 py-1 rounded border border-terminal-green text-terminal-green hover:bg-terminal-green hover:text-black dark:hover:text-black transition-colors text-sm"
-            >
-              {localeLabels[switchLang].short}
-            </Link>
+          {/* Desktop nav */}
+          <nav className="hidden items-center gap-1 md:flex">
+            {[
+              { href: `/${lang}`, label: dict.nav.home },
+              { href: `/${lang}/blog`, label: dict.nav.blog },
+              { href: `/${lang}/projects`, label: dict.nav.projects },
+              { href: `/${lang}/about`, label: dict.nav.about },
+            ].map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="px-3 py-2 text-sm text-text-secondary transition-colors hover:text-accent"
+              >
+                {item.label}
+              </Link>
+            ))}
           </nav>
 
-          <div className="flex items-center gap-2 md:hidden">
+          {/* Actions */}
+          <div className="flex items-center gap-2">
             <ThemeToggle />
             <Link
               href={`/${switchLang}`}
-              className="px-2 py-1 rounded border border-terminal-green text-terminal-green text-sm"
+              className="px-3 py-1.5 font-mono text-xs text-text-muted transition-colors hover:text-accent"
             >
               {localeLabels[switchLang].short}
             </Link>
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="text-secondary hover:text-brand-primary transition-colors"
+              className="p-2 text-text-secondary transition-colors hover:text-accent md:hidden"
+              aria-label="Toggle menu"
             >
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 {isMenuOpen ? (
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M6 18L18 6M6 6l12 12"
+                  />
                 ) : (
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M4 6h16M4 12h16M4 18h16"
+                  />
                 )}
               </svg>
             </button>
           </div>
         </div>
 
+        {/* Mobile nav */}
         {isMenuOpen && (
-          <div className="md:hidden py-4 border-t border-terminal-border">
-            <nav className="flex flex-col space-y-4">
-              <Link href={`/${lang}`} className="text-secondary hover:text-brand-primary transition-colors">
-                {dict.nav.home}
-              </Link>
-              <Link href={`/${lang}/blog`} className="text-secondary hover:text-brand-primary transition-colors">
-                {dict.nav.blog}
-              </Link>
-              <Link href={`/${lang}/projects`} className="text-secondary hover:text-brand-primary transition-colors">
-                {dict.nav.projects}
-              </Link>
-              <Link href={`/${lang}/about`} className="text-secondary hover:text-brand-primary transition-colors">
-                {dict.nav.about}
-              </Link>
+          <div className="border-t border-border py-4 md:hidden">
+            <nav className="flex flex-col space-y-1">
+              {[
+                { href: `/${lang}`, label: dict.nav.home },
+                { href: `/${lang}/blog`, label: dict.nav.blog },
+                { href: `/${lang}/projects`, label: dict.nav.projects },
+                { href: `/${lang}/about`, label: dict.nav.about },
+              ].map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  onClick={() => setIsMenuOpen(false)}
+                  className="px-3 py-2 text-sm text-text-secondary transition-colors hover:text-accent"
+                >
+                  {item.label}
+                </Link>
+              ))}
             </nav>
           </div>
         )}

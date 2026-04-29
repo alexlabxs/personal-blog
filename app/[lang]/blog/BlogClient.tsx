@@ -16,12 +16,12 @@ export function BlogClient({ posts, lang }: BlogClientProps) {
   const [selectedTag, setSelectedTag] = useState<string | null>(null);
 
   const allTags = useMemo(() => {
-    return Array.from(new Set(posts.flatMap(post => post.tags))).sort();
+    return Array.from(new Set(posts.flatMap((post) => post.tags))).sort();
   }, [posts]);
 
   const filteredPosts = useMemo(() => {
     if (!selectedTag) return posts;
-    return posts.filter(post => post.tags.includes(selectedTag));
+    return posts.filter((post) => post.tags.includes(selectedTag));
   }, [posts, selectedTag]);
 
   const handleTagClick = (tag: string | null) => {
@@ -29,34 +29,37 @@ export function BlogClient({ posts, lang }: BlogClientProps) {
   };
 
   return (
-    <main className="min-h-screen bg-background text-foreground px-4 py-16 md:px-8">
+    <main className="min-h-screen bg-background px-4 py-20 text-foreground md:px-8">
       <div className="container mx-auto max-w-4xl">
-        <div className="mb-12 font-mono text-terminal-green text-sm">~/blog</div>
-        <h1 className="mb-8 text-4xl font-bold text-primary">{dict.blog.title}</h1>
-        <p className="text-secondary mb-12">{dict.blog.description}</p>
+        <div className="mb-4 font-mono text-xs uppercase tracking-[0.2em] text-text-muted">
+          ~/blog
+        </div>
+        <h1 className="mb-4 font-display text-4xl font-medium">{dict.blog.title}</h1>
+        <p className="mb-12 text-text-secondary">{dict.blog.description}</p>
 
-        <div className="mb-8">
-          <div className="flex flex-wrap gap-2 mb-4">
+        {/* Tag filters */}
+        <div className="mb-10">
+          <div className="mb-3 flex flex-wrap gap-2">
             <button
               onClick={() => handleTagClick(null)}
-              className={`px-3 py-1 rounded-full text-sm transition-colors ${
+              className={`px-3 py-1 text-xs transition-colors ${
                 selectedTag === null
-                  ? 'bg-brand-primary text-white'
-                  : 'bg-card-bg text-secondary border border-card-border hover:bg-hover-bg'
+                  ? 'bg-accent text-white'
+                  : 'border border-border bg-surface text-text-secondary hover:text-accent'
               }`}
             >
               {lang === 'zh' ? '全部' : 'All'} ({posts.length})
             </button>
             {allTags.map((tag) => {
-              const count = posts.filter(post => post.tags.includes(tag)).length;
+              const count = posts.filter((post) => post.tags.includes(tag)).length;
               return (
                 <button
                   key={tag}
                   onClick={() => handleTagClick(tag)}
-                  className={`px-3 py-1 rounded-full text-sm transition-colors ${
+                  className={`px-3 py-1 text-xs transition-colors ${
                     selectedTag === tag
-                      ? 'bg-brand-primary text-white'
-                      : 'bg-card-bg text-secondary border border-card-border hover:bg-hover-bg'
+                      ? 'bg-accent text-white'
+                      : 'border border-border bg-surface text-text-secondary hover:text-accent'
                   }`}
                 >
                   {tag} ({count})
@@ -65,11 +68,12 @@ export function BlogClient({ posts, lang }: BlogClientProps) {
             })}
           </div>
           {selectedTag && (
-            <p className="text-sm text-secondary">
-              {lang === 'zh' ? '正在筛选' : 'Filtering'}: <span className="text-brand-primary">{selectedTag}</span>
+            <p className="text-sm text-text-muted">
+              {lang === 'zh' ? '正在筛选' : 'Filtering'}:{' '}
+              <span className="text-accent">{selectedTag}</span>
               <button
                 onClick={() => setSelectedTag(null)}
-                className="ml-2 text-muted hover:text-primary underline"
+                className="ml-2 underline hover:text-accent"
               >
                 {lang === 'zh' ? '清除筛选' : 'Clear'}
               </button>
@@ -77,6 +81,7 @@ export function BlogClient({ posts, lang }: BlogClientProps) {
           )}
         </div>
 
+        {/* Articles grid */}
         {filteredPosts.length > 0 ? (
           <div className="grid gap-6 md:grid-cols-2">
             {filteredPosts.map((post) => (
@@ -84,8 +89,8 @@ export function BlogClient({ posts, lang }: BlogClientProps) {
             ))}
           </div>
         ) : (
-          <div className="text-center py-12 text-secondary">
-            <p>{dict.blog.noPosts}</p>
+          <div className="py-16 text-center">
+            <p className="text-text-muted">{dict.blog.noPosts}</p>
           </div>
         )}
       </div>

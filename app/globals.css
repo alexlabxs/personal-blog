@@ -3,315 +3,265 @@
 @tailwind utilities;
 
 :root {
-  /* 浅色模式变量 */
-  --background: #ffffff;
-  --foreground: #1a1a1a;
-  --brand-primary: #2563EB;
-  --brand-secondary: #8B5CF6;
-  --brand-accent: #1F2937;
-  --brand-light: #F9FAFB;
+  /* Editorial / Literary color palette — Light */
+  --background: #faf7f2;
+  --foreground: #1a1814;
+  --accent: #c47e3a;
+  --accent-dim: #e8c89e;
+  --accent-glow: rgba(196, 126, 58, 0.15);
 
-  /* 浅色模式额外变量 */
-  --terminal-bg: #f8fafc;
-  --terminal-green: #059669;
-  --terminal-dim: #94a3b8;
-  --terminal-border: #e2e8f0;
-  --code-bg: #f1f5f9;
-  --text-primary: #1e293b;
-  --text-secondary: #475569;
-  --text-muted: #64748b;
-  --text-tertiary: #94a3b8;
-  --card-bg: #ffffff;
-  --card-border: #e2e8f0;
-  --hover-bg: #f1f5f9;
+  --surface: #f3efe7;
+  --surface-raised: #ffffff;
+  --border: #e6ded2;
+  --border-strong: #d4c9b8;
+
+  --text-primary: #1a1814;
+  --text-secondary: #5c554b;
+  --text-muted: #8c8279;
+  --text-subtle: #b8b0a6;
+
+  --code-bg: #f0ebe0;
+  --code-border: #e6ded2;
 }
 
 .dark {
-  /* 深色模式变量 */
-  --background: #0a0a0a;
-  --foreground: #e5e5e5;
+  --background: #0f1729;
+  --foreground: #f0e6d3;
+  --accent: #d9984a;
+  --accent-dim: #5c3d1e;
+  --accent-glow: rgba(217, 152, 74, 0.12);
 
-  --terminal-bg: #0a0a0a;
-  --terminal-green: #00ff41;
-  --terminal-dim: #003b00;
-  --terminal-border: #1a1a1a;
-  --code-bg: #1e1e1e;
-  --text-primary: #e5e5e5;
-  --text-secondary: #9ca3af;
-  --text-muted: #6b7280;
-  --text-tertiary: #4b5563;
-  --card-bg: #171717;
-  --card-border: #262626;
-  --hover-bg: #262626;
+  --surface: #141f35;
+  --surface-raised: #1a2842;
+  --border: #1e3250;
+  --border-strong: #2a4470;
+
+  --text-primary: #f0e6d3;
+  --text-secondary: #b0a390;
+  --text-muted: #6b5f4f;
+  --text-subtle: #4a3f32;
+
+  --code-bg: #1a2540;
+  --code-border: #1e3250;
 }
 
+/* ---- Base ---- */
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: var(--font-inter), var(--font-chinese), 'Inter', 'Noto Sans SC', system-ui, -apple-system, sans-serif;
+  font-family: var(--font-body), 'DM Sans', system-ui, -apple-system, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition: background-color 0.4s ease, color 0.4s ease;
 }
 
-/* Font utilities */
+/* ---- Typography ---- */
+.font-display {
+  font-family: var(--font-display), 'Cormorant Garamond', 'Georgia', 'Times New Roman', serif;
+}
+
+.font-body {
+  font-family: var(--font-body), 'DM Sans', system-ui, -apple-system, sans-serif;
+}
+
 .font-mono {
   font-family: var(--font-mono), 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
 }
 
-.font-sans {
-  font-family: var(--font-inter), var(--font-chinese), 'Inter', 'Noto Sans SC', system-ui, sans-serif;
+.font-chinese-serif {
+  font-family: var(--font-chinese-serif), 'Noto Serif SC', 'STSong', 'SimSun', serif;
 }
 
-/* Custom scrollbar - 浅色模式 */
-::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+h1, h2, h3, h4, .display {
+  font-family: var(--font-display), 'Cormorant Garamond', 'Georgia', serif;
+  font-weight: 500;
+  letter-spacing: -0.01em;
 }
 
-::-webkit-scrollbar-track {
-  background: var(--terminal-bg);
-}
+/* ---- Scrollbar ---- */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--background); }
+::-webkit-scrollbar-thumb { background: var(--text-subtle); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--text-muted); }
 
-::-webkit-scrollbar-thumb {
-  background: var(--terminal-dim);
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--text-muted);
-}
-
-/* Selection */
+/* ---- Selection ---- */
 ::selection {
-  background: rgba(37, 99, 235, 0.3);
+  background: var(--accent-glow);
   color: var(--foreground);
 }
 
-.dark ::selection {
-  background: rgba(0, 255, 65, 0.2);
-  color: #fff;
-}
-
-/* Terminal cursor effect */
-.cursor-blink {
-  animation: blink 1s step-end infinite;
-}
-
-@keyframes blink {
-  0%, 100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0;
-  }
-}
-
-/* Fade in animation */
+/* ---- Animations ---- */
 @keyframes fadeIn {
-  from {
-    opacity: 0;
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(24px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes reveal {
+  from { clip-path: inset(0 100% 0 0); }
+  to { clip-path: inset(0 0 0 0); }
+}
+
+@keyframes softPulse {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+
+.fade-in { animation: fadeIn 0.8s ease forwards; }
+.slide-up { animation: slideUp 0.7s ease forwards; }
+.reveal { animation: reveal 1s ease forwards; }
+
+/* Staggered children */
+.stagger-children > * {
+  opacity: 0;
+  animation: slideUp 0.7s ease forwards;
+}
+.stagger-children > *:nth-child(1) { animation-delay: 0.1s; }
+.stagger-children > *:nth-child(2) { animation-delay: 0.2s; }
+.stagger-children > *:nth-child(3) { animation-delay: 0.3s; }
+.stagger-children > *:nth-child(4) { animation-delay: 0.4s; }
+.stagger-children > *:nth-child(5) { animation-delay: 0.5s; }
+.stagger-children > *:nth-child(6) { animation-delay: 0.6s; }
+
+/* ---- Accent underline ---- */
+.accent-link {
+  text-decoration: none;
+  background-image: linear-gradient(var(--accent-dim), var(--accent-dim));
+  background-size: 0% 1px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size 0.4s ease;
+}
+.accent-link:hover {
+  background-size: 100% 1px;
+}
+
+/* ---- Section divider ---- */
+.section-rule {
+  height: 1px;
+  background: var(--border);
+  width: 100%;
+  position: relative;
+}
+.section-rule::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 60px;
+  height: 1px;
+  background: var(--accent);
+}
+
+/* ---- Card base ---- */
+.editorial-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 0;
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+.editorial-card:hover {
+  border-color: var(--accent-dim);
+  background: var(--surface-raised);
+}
+
+/* ---- Button ---- */
+.btn-accent {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 24px;
+  background: var(--accent);
+  color: #fff;
+  font-weight: 500;
+  font-size: 0.9rem;
+  letter-spacing: 0.02em;
+  transition: opacity 0.3s ease;
+}
+.btn-accent:hover { opacity: 0.88; }
+
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 24px;
+  background: transparent;
+  color: var(--text-secondary);
+  border: 1px solid var(--border);
+  font-size: 0.9rem;
+  letter-spacing: 0.02em;
+  transition: border-color 0.3s ease, color 0.3s ease;
+}
+.btn-ghost:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* ---- Tag pill ---- */
+.tag-pill {
+  display: inline-block;
+  padding: 2px 10px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--accent);
+  background: var(--accent-glow);
+}
+
+/* ---- Paper texture (light mode only) ---- */
+@media (prefers-color-scheme: light) {
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    opacity: 0.03;
+    pointer-events: none;
+    z-index: 9999;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    background-size: 256px 256px;
   }
-  to {
-    opacity: 1;
-  }
 }
 
-.fadeIn {
-  animation: fadeIn 0.6s ease-in-out forwards;
-}
+/* ---- Utility classes ---- */
+.bg-background { background-color: var(--background); }
+.bg-surface { background-color: var(--surface); }
+.bg-surface-raised { background-color: var(--surface-raised); }
+.bg-code { background-color: var(--code-bg); }
+.bg-accent-glow { background-color: var(--accent-glow); }
 
-/* Slide in animation */
-@keyframes slideIn {
-  from {
-    transform: translateY(20px);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
+.text-foreground { color: var(--foreground); }
+.text-primary { color: var(--text-primary); }
+.text-secondary { color: var(--text-secondary); }
+.text-muted { color: var(--text-muted); }
+.text-subtle { color: var(--text-subtle); }
+.text-accent { color: var(--accent); }
 
-.slideIn {
-  animation: slideIn 0.6s ease-in-out forwards;
-}
+.border-default { border-color: var(--border); }
+.border-strong { border-color: var(--border-strong); }
 
-/* Pulse animation */
-@keyframes pulse {
-  0%, 100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.5;
-  }
-}
-
-.pulse {
-  animation: pulse 2s infinite;
-}
-
-/* Gradient text - 浅色模式 */
-.gradient-text {
-  background: linear-gradient(135deg, #059669 0%, #047857 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.dark .gradient-text {
-  background: linear-gradient(135deg, #00ff41 0%, #00cc33 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-/* Brand gradient text */
-.brand-gradient {
-  background: linear-gradient(135deg, var(--brand-primary) 0%, var(--brand-secondary) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-/* Brand hover effects */
-.brand-hover {
-  transition: all 0.3s ease;
-}
-
-.brand-hover:hover {
-  color: var(--brand-primary);
-}
-
-.brand-bg-hover {
-  transition: all 0.3s ease;
-}
-
-.brand-bg-hover:hover {
-  background-color: var(--brand-primary);
-  color: var(--brand-light);
-}
-
-/* Card hover effect - 浅色模式 */
-.card-hover {
-  transition: all 0.3s ease;
-}
-
-.card-hover:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 10px 40px rgba(37, 99, 235, 0.1);
-}
-
-.dark .card-hover:hover {
-  box-shadow: 0 10px 40px rgba(0, 255, 65, 0.1);
-}
-
-/* Code block styling */
+/* ---- Code blocks ---- */
 pre {
-  border-radius: 8px;
+  border-radius: 0;
+  border: 1px solid var(--code-border);
+  background: var(--code-bg);
   overflow-x: auto;
 }
-
-/* Line numbers for code blocks */
-.prose pre code {
-  counter-reset: line;
+code {
+  font-family: var(--font-mono), 'JetBrains Mono', 'Fira Code', monospace;
+  font-size: 0.875em;
 }
 
-.prose pre code::before {
-  content: counter(line);
-  counter-increment: line;
-  display: inline-block;
-  width: 2.5em;
-  padding-right: 1em;
-  margin-right: 1em;
-  text-align: right;
-  color: var(--text-muted);
-}
-
-/* 浅色模式特定样式 */
-.bg-background {
-  background-color: var(--background);
-}
-
-.text-foreground {
-  color: var(--foreground);
-}
-
-.bg-terminal-bg {
-  background-color: var(--terminal-bg);
-}
-
-.bg-terminal-dim {
-  background-color: var(--terminal-dim);
-}
-
-.text-terminal-green {
-  color: var(--terminal-green);
-}
-
-.border-terminal-border {
-  border-color: var(--terminal-border);
-}
-
-.border-terminal-dim {
-  border-color: var(--terminal-dim);
-}
-
-.bg-code-bg {
-  background-color: var(--code-bg);
-}
-
-.text-terminal-dim {
-  color: var(--terminal-dim);
-}
-
-/* 浅色/深色模式通用文本样式 */
-.text-primary {
-  color: var(--text-primary);
-}
-
-.text-secondary {
-  color: var(--text-secondary);
-}
-
-.text-muted {
-  color: var(--text-muted);
-}
-
-.text-tertiary {
-  color: var(--text-tertiary);
-}
-
-.bg-card-bg {
-  background-color: var(--card-bg);
-}
-
-.border-card-border {
-  border-color: var(--card-border);
-}
-
-.hover-bg:hover {
-  background-color: var(--hover-bg);
-}
-
-/* 文章卡片浅色模式适配 */
-.light-article-card {
-  background-color: var(--card-bg);
-  border: 1px solid var(--card-border);
-  border-radius: 0.5rem;
-  padding: 1.5rem;
-  transition: box-shadow 0.3s ease;
-}
-
-.light-article-card:hover {
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-}
-
-.dark .light-article-card {
-  background-color: var(--code-bg);
-  border-color: var(--terminal-border);
-}
-
-.dark .light-article-card:hover {
-  box-shadow: 0 4px 20px rgba(0, 255, 65, 0.1);
+/* ---- Prose overrides ---- */
+.prose {
+  --tw-prose-body: var(--text-secondary);
+  --tw-prose-headings: var(--text-primary);
+  --tw-prose-links: var(--accent);
+  --tw-prose-bold: var(--text-primary);
+  --tw-prose-quotes: var(--text-secondary);
+  --tw-prose-quote-borders: var(--accent);
 }

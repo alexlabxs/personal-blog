@@ -39,15 +39,15 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4, delay: index * 0.1 }}
       whileHover={{ y: -4 }}
-      className="group rounded-lg bg-code-bg p-6 card-hover border border-transparent hover:border-terminal-border"
+      className="group rounded-lg bg-code p-6 border border-transparent hover:border-border"
     >
       {/* Header */}
       <div className="mb-4 flex items-start justify-between">
-        <h3 className="text-xl font-semibold text-primary group-hover:text-terminal-green transition-colors">
+        <h3 className="text-xl font-semibold text-primary group-hover:text-accent transition-colors">
           {project.name}
         </h3>
         {project.featured && (
-          <span className="rounded-full bg-hover-bg px-2 py-0.5 text-xs text-terminal-green font-mono">
+          <span className="rounded-full bg-surface px-2 py-0.5 text-xs text-accent font-mono">
             FEATURED
           </span>
         )}
@@ -61,7 +61,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
         {project.techStack.map((tech) => (
           <span
             key={tech}
-            className="rounded-md bg-background px-2 py-1 text-xs font-mono text-secondary border border-card-border"
+            className="rounded-md bg-background px-2 py-1 text-xs font-mono text-secondary border border-border"
           >
             {tech}
           </span>
@@ -69,7 +69,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
       </div>
 
       {/* Footer */}
-      <div className="flex items-center justify-between border-t border-card-border pt-4">
+      <div className="flex items-center justify-between border-t border-border pt-4">
         <div className="flex items-center gap-2 text-sm text-secondary">
           <StatusIcon className={statusColors[project.status]} />
           <span>{statusLabels[project.status]}</span>
@@ -80,7 +80,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
               href={project.githubUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-secondary transition-colors hover:text-terminal-green"
+              className="text-secondary transition-colors hover:text-accent"
               aria-label="GitHub Repository"
             >
               <FaGithub className="h-5 w-5" />
@@ -91,7 +91,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
               href={project.liveUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-secondary transition-colors hover:text-terminal-green"
+              className="text-secondary transition-colors hover:text-accent"
               aria-label="Live Demo"
             >
               <FaExternalLinkAlt className="h-5 w-5" />

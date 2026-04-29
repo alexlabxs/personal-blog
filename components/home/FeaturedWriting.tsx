@@ -12,23 +12,29 @@ interface FeaturedWritingProps {
 
 export function FeaturedWriting({ lang, articles }: FeaturedWritingProps) {
   return (
-    <section className="border-t border-terminal-border py-20">
+    <section className="border-t border-border py-20">
       <div className="container mx-auto max-w-6xl px-4">
-        <motion.h2
-          className="text-3xl font-bold mb-12"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
-          {lang === 'zh' ? '最新思考' : 'Latest Thinking'}
-        </motion.h2>
+        {/* Section header */}
+        <div className="mb-14 flex items-center gap-6">
+          <motion.h2
+            className="whitespace-nowrap font-display text-3xl font-medium"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            {lang === 'zh' ? '最新思考' : 'Latest Thinking'}
+          </motion.h2>
+          <div className="section-rule" />
+        </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {articles.length > 0 ? (
-            articles.map((article, index) => (
+        {/* Editorial grid — asymmetric layout */}
+        {articles.length > 0 ? (
+          <div className="grid gap-px bg-border md:grid-cols-2 lg:grid-cols-3">
+            {articles.map((article, index) => (
               <motion.div
                 key={article.slug}
+                className="bg-background"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -36,27 +42,26 @@ export function FeaturedWriting({ lang, articles }: FeaturedWritingProps) {
               >
                 <ArticleCard article={article} lang={lang} />
               </motion.div>
-            ))
-          ) : (
-            // 占位符
-            <motion.div
-              className="col-span-full text-center py-12 text-secondary/60"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-            >
-              <p className="text-lg">
-                {lang === 'zh' ? '内容准备中...' : 'Content coming soon...'}
-              </p>
-              <p className="text-sm mt-2 max-w-md mx-auto">
-                {lang === 'zh'
-                  ? '第一篇深度文章正在撰写中，敬请期待。探索 AI 工程化与系统设计的思考与实践。'
-                  : 'First deep article is in progress. Stay tuned. Exploring thinking and practices on AI engineering and systems design.'}
-              </p>
-            </motion.div>
-          )}
-        </div>
+            ))}
+          </div>
+        ) : (
+          <motion.div
+            className="py-16 text-center"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <p className="font-display text-xl text-text-muted">
+              {lang === 'zh' ? '内容准备中...' : 'Content coming soon...'}
+            </p>
+            <p className="mx-auto mt-3 max-w-md text-sm text-text-muted">
+              {lang === 'zh'
+                ? '深度文章正在撰写中。探索 AI 工程化与系统设计的思考与实践。'
+                : 'Deep articles in progress. Exploring thinking and practices on AI engineering and systems design.'}
+            </p>
+          </motion.div>
+        )}
       </div>
     </section>
   );
