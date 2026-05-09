@@ -3,10 +3,13 @@
 import { motion } from 'framer-motion';
 import { Project } from '@/lib/types';
 import { FaGithub, FaExternalLinkAlt, FaRocket, FaHammer, FaArchive, FaCheckCircle } from 'react-icons/fa';
+import Link from 'next/link';
+import { Locale } from '@/lib/i18n';
 
 interface ProjectCardProps {
   project: Project;
   index: number;
+  lang: Locale;
 }
 
 const statusIcons = {
@@ -30,7 +33,7 @@ const statusColors = {
   archived: 'text-gray-400',
 };
 
-export function ProjectCard({ project, index }: ProjectCardProps) {
+export function ProjectCard({ project, index, lang }: ProjectCardProps) {
   const StatusIcon = statusIcons[project.status];
 
   return (
@@ -75,6 +78,13 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
           <span>{statusLabels[project.status]}</span>
         </div>
         <div className="flex gap-4">
+          <Link
+            href={`/${lang}/projects/${project.slug}`}
+            className="text-secondary transition-colors hover:text-accent text-sm font-mono"
+            aria-label="Case study"
+          >
+            Case →
+          </Link>
           {project.githubUrl && (
             <a
               href={project.githubUrl}

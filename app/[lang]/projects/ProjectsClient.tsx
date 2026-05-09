@@ -16,12 +16,12 @@ export function ProjectsClient({ lang }: ProjectsClientProps) {
 
   const allTechs = useMemo(() => {
     return Array.from(new Set(projects.flatMap(project => project.techStack))).sort();
-  }, [projects]);
+  }, []);
 
   const filteredProjects = useMemo(() => {
     if (!selectedTech) return projects;
     return projects.filter(project => project.techStack.includes(selectedTech));
-  }, [projects, selectedTech]);
+  }, [selectedTech]);
 
   const featuredProjects = filteredProjects.filter((p) => p.featured);
 
@@ -33,7 +33,7 @@ export function ProjectsClient({ lang }: ProjectsClientProps) {
       });
     });
     return counts;
-  }, [projects]);
+  }, []);
 
   const handleTechClick = (tech: string | null) => {
     setSelectedTech(tech === selectedTech ? null : tech);
@@ -42,8 +42,10 @@ export function ProjectsClient({ lang }: ProjectsClientProps) {
   const allLabel = lang === 'zh' ? '全部' : 'All';
   const filteringLabel = lang === 'zh' ? '正在筛选' : 'Filtering';
   const clearLabel = lang === 'zh' ? '清除筛选' : 'Clear';
-  const noProjectsLabel = lang === 'zh' ? '没有找到使用' : 'No projects found with';
-  const techStackLabel = lang === 'zh' ? '技术栈的项目' : 'tech stack';
+  const emptyProjectsLabel =
+    lang === 'zh'
+      ? '项目复盘暂未开放。我会在内容打磨完成后，再逐步公开独立产品、AI 践行和系统设计相关项目。'
+      : 'Project write-ups are not public yet. I will gradually publish indie product, AI practice, and systems design projects after polishing them.';
 
   return (
     <main className="min-h-screen bg-background text-foreground px-4 py-16 md:px-8">
@@ -54,6 +56,7 @@ export function ProjectsClient({ lang }: ProjectsClientProps) {
           <p className="text-secondary">{lang === 'zh' ? '正在构建和已经完成的项目' : 'Projects I\'m building and have completed'}</p>
         </div>
 
+        {projects.length > 0 && (
         <div className="mb-8">
           <div className="flex flex-wrap gap-2 mb-4">
             <button
@@ -92,6 +95,7 @@ export function ProjectsClient({ lang }: ProjectsClientProps) {
             </p>
           )}
         </div>
+        )}
 
         {featuredProjects.length > 0 && (
           <section className="mb-12">
@@ -100,7 +104,7 @@ export function ProjectsClient({ lang }: ProjectsClientProps) {
             </h2>
             <div className="grid gap-6 md:grid-cols-2">
               {featuredProjects.map((project, index) => (
-                <ProjectCard key={project.id} project={project} index={index} />
+                <ProjectCard key={project.id} project={project} index={index} lang={lang} />
               ))}
             </div>
           </section>
@@ -110,12 +114,12 @@ export function ProjectsClient({ lang }: ProjectsClientProps) {
           <h2 className="mb-6 font-mono text-muted text-sm">ALL PROJECTS</h2>
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {filteredProjects.map((project, index) => (
-              <ProjectCard key={project.id} project={project} index={index} />
+              <ProjectCard key={project.id} project={project} index={index} lang={lang} />
             ))}
           </div>
           {filteredProjects.length === 0 && (
             <div className="text-center py-12 text-secondary">
-              <p>{noProjectsLabel} {selectedTech} {techStackLabel}</p>
+              <p>{emptyProjectsLabel}</p>
             </div>
           )}
         </section>

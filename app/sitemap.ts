@@ -1,10 +1,11 @@
 import { MetadataRoute } from 'next';
-import { getSortedPostsData } from '@/lib/posts';
+import { getPublicPostsData } from '@/lib/posts';
 import { locales } from '@/lib/i18n';
+import { projects } from '@/lib/projects';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://alexlabx.com';
-  const posts = getSortedPostsData();
+  const posts = getPublicPostsData();
 
   const staticPages: MetadataRoute.Sitemap = [];
 
@@ -57,5 +58,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
     });
   });
 
-  return [...staticPages, ...blogPages];
+  // 项目详情页
+  const projectPages: MetadataRoute.Sitemap = [];
+  projects.forEach((project) => {
+    locales.forEach((lang) => {
+      projectPages.push({
+        url: `${baseUrl}/${lang}/projects/${project.slug}`,
+        lastModified: new Date(),
+        changeFrequency: 'monthly',
+        priority: 0.6,
+      });
+    });
+  });
+
+  return [...staticPages, ...blogPages, ...projectPages];
 }

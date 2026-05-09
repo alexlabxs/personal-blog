@@ -10,7 +10,9 @@ interface CodeBlockProps {
 }
 
 export function CodeBlock({ children, className }: CodeBlockProps) {
-  const language = className?.replace('language-', '') || 'text';
+  const language = className?.split(' ')
+    .find((c) => c.startsWith('language-'))
+    ?.replace('language-', '') || 'text';
   const [copied, setCopied] = useState(false);
 
   const handleCopy = async () => {

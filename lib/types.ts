@@ -20,6 +20,7 @@ export interface BlogPost {
  */
 export interface Project {
   id: string;
+  slug: string;
   name: string;
   description: string;
   techStack: string[];
@@ -28,6 +29,18 @@ export interface Project {
   githubUrl?: string;
   status: 'active' | 'developing' | 'completed' | 'archived';
   featured?: boolean;
+  highlights?: string[];
+  caseStudy?: {
+    context: string;
+    whatBuilt: string;
+    architecture?: string[];
+    keyDecisions?: string[];
+    metrics?: string[];
+    costs?: string[];
+    timeline?: string[];
+    lessons?: string[];
+    relatedPostSlugs?: string[];
+  };
 }
 
 /**

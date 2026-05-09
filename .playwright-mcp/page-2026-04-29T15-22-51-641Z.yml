@@ -1,0 +1,105 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e4]:
+      - link "Alex" [ref=e5] [cursor=pointer]:
+        - /url: /zh
+      - navigation [ref=e6]:
+        - link "首页" [ref=e7] [cursor=pointer]:
+          - /url: /zh
+        - link "博客" [ref=e8] [cursor=pointer]:
+          - /url: /zh/blog
+        - link "项目" [ref=e9] [cursor=pointer]:
+          - /url: /zh/projects
+        - link "关于" [ref=e10] [cursor=pointer]:
+          - /url: /zh/about
+      - generic [ref=e11]:
+        - button "Toggle theme" [ref=e12] [cursor=pointer]:
+          - img [ref=e13]
+        - link "EN" [ref=e15] [cursor=pointer]:
+          - /url: /en
+  - main [ref=e16]:
+    - main [ref=e17]:
+      - generic [ref=e18]:
+        - generic [ref=e19]:
+          - generic [ref=e20]: ~/about
+          - heading "关于我" [level=1] [ref=e21]
+          - generic [ref=e22]:
+            - paragraph [ref=e23]:
+              - text: 我是
+              - strong [ref=e24]: Alex（肖凯瀚）
+              - text: ，一名全栈工程师。
+            - paragraph [ref=e25]: 过去 10 年，我在保险行业做 Java 后端开发，设计过财务系统、记账引擎、费控管理等核心模块。 我学会了如何设计复杂的业务系统，如何让代码在生产环境稳定运行。
+            - paragraph [ref=e26]: 但现在，我在思考一个更大的问题：
+            - paragraph [ref=e27]: AI 时代，系统设计会变得更重要还是更不重要？
+            - paragraph [ref=e28]:
+              - text: 大多数人觉得 AI 会替代工程师。我不这么认为。我认为 AI 让系统设计变得
+              - strong [ref=e29]: 更关键
+              - text: ——因为 AI 本身就是最难预测、最难驾驭的"组件"。
+            - paragraph [ref=e30]: 如何把 AI 集成到生产系统？如何保证可靠性？如何控制成本？ 这些问题，只有懂系统设计的工程师才能回答。
+            - paragraph [ref=e31]: 所以我开始写作，记录我的思考：
+            - list [ref=e32]:
+              - listitem [ref=e33]: → 怎样让 AI 从实验室走向生产环境？
+              - listitem [ref=e34]: → 系统设计在 AI 时代有什么新挑战？
+              - listitem [ref=e35]: → 工程师需要补充什么产品思维？
+            - paragraph [ref=e36]: 欢迎一起探索这些问题。
+        - generic [ref=e37]:
+          - heading "背景" [level=2] [ref=e38]
+          - generic [ref=e39]:
+            - generic [ref=e40]:
+              - generic [ref=e41]: 2019-Now
+              - generic [ref=e42]:
+                - heading "高级 Java 工程师" [level=3] [ref=e43]
+                - paragraph [ref=e44]: 保险行业财务系统核心模块开发、IFRS17 准则重构、LLM 与 OCR 技术集成
+            - generic [ref=e45]:
+              - generic [ref=e46]: 2015-2019
+              - generic [ref=e47]:
+                - heading "Java 开发工程师" [level=3] [ref=e48]
+                - paragraph [ref=e49]: 金融行业系统开发、行情数据系统
+        - generic [ref=e50]:
+          - heading "联系我" [level=2] [ref=e51]
+          - generic [ref=e52]:
+            - generic [ref=e53]:
+              - generic [ref=e54]: EMAIL
+              - link "dreamkey.xiao@gmail.com" [ref=e55] [cursor=pointer]:
+                - /url: mailto:dreamkey.xiao@gmail.com
+            - generic [ref=e56]:
+              - link "GitHub" [ref=e57] [cursor=pointer]:
+                - /url: https://github.com/xiaokaihan
+              - link "Twitter" [ref=e58] [cursor=pointer]:
+                - /url: https://x.com/DreamkeyKey
+  - contentinfo [ref=e59]:
+    - generic [ref=e60]:
+      - generic [ref=e61]:
+        - generic [ref=e62]:
+          - heading "关于" [level=3] [ref=e63]
+          - paragraph [ref=e64]: Full-Stack Engineer，专注于构建有思想的数字产品。Code. Create. Connect.
+        - generic [ref=e65]:
+          - heading "快速链接" [level=3] [ref=e66]
+          - list [ref=e67]:
+            - listitem [ref=e68]:
+              - link "首页" [ref=e69] [cursor=pointer]:
+                - /url: /zh
+            - listitem [ref=e70]:
+              - link "博客" [ref=e71] [cursor=pointer]:
+                - /url: /zh/blog
+            - listitem [ref=e72]:
+              - link "项目" [ref=e73] [cursor=pointer]:
+                - /url: /zh/projects
+            - listitem [ref=e74]:
+              - link "关于" [ref=e75] [cursor=pointer]:
+                - /url: /zh/about
+        - generic [ref=e76]:
+          - heading "社交媒体" [level=3] [ref=e77]
+          - generic [ref=e78]:
+            - link "Email" [ref=e79] [cursor=pointer]:
+              - /url: mailto:dreamkey.xiao@gmail.com
+              - img [ref=e80]
+            - link [ref=e82] [cursor=pointer]:
+              - /url: https://github.com/xiaokaihan
+              - img [ref=e83]
+            - link [ref=e85] [cursor=pointer]:
+              - /url: https://x.com/DreamkeyKey
+              - img [ref=e86]
+      - paragraph [ref=e89]: © 2026 Alex. 保留所有权利
+  - button "打开聊天" [ref=e90] [cursor=pointer]:
+    - img [ref=e91]

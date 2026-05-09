@@ -25,6 +25,13 @@ export function ArticleCard({ article, lang }: ArticleCardProps) {
         </span>
       </div>
 
+      {/* Series */}
+      {article.series && (
+        <div className="mb-3">
+          <span className="tag-pill">{article.series}</span>
+        </div>
+      )}
+
       {/* Title */}
       <h2 className="mb-3 font-display text-2xl font-medium leading-tight">
         <Link href={`/${lang}/blog/${article.slug}`} className="accent-link text-text-primary">

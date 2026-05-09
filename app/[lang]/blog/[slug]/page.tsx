@@ -1,5 +1,5 @@
 import { notFound } from 'next/navigation';
-import { getPostData, getSortedPostsData } from '@/lib/posts';
+import { getPostData, getPublicPostsData, isPublicPost } from '@/lib/posts';
 import { MdxContent } from '@/components/MdxContent';
 import { ArticleToc } from '@/components/ArticleToc';
 import { RelatedArticles } from '@/components/RelatedArticles';
@@ -15,7 +15,7 @@ type Props = {
 };
 
 export async function generateStaticParams() {
-  const posts = getSortedPostsData();
+  const posts = getPublicPostsData();
   const locales = ['zh', 'en'];
 
   const params: { lang: string; slug: string }[] = [];
@@ -29,8 +29,12 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  if (!isPublicPost(params.slug)) {
+    return {};
+  }
+
   const postData = getPostData(params.slug);
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://xiaokaihan.github.io';
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://alexlabx.com';
 
   return {
     title: postData.title,
@@ -58,8 +62,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function PostPage({ params }: Props) {
+  if (!isPublicPost(params.slug)) {
+    notFound();
+  }
+
   const postData = getPostData(params.slug);
-  const allPostsData = getSortedPostsData();
+  const allPostsData = getPublicPostsData();
   const readingTimeLabel = params.lang === 'zh' ? '分钟阅读' : 'min read';
 
   if (!postData) {
@@ -71,20 +79,25 @@ export default async function PostPage({ params }: Props) {
       <BlogSchema post={postData} />
       <div className="container mx-auto max-w-6xl">
         <div className="mb-12 font-mono text-accent text-sm">~/blog/{params.slug}</div>
-        <h1 className="mb-8 text-4xl font-bold">{postData.title}</h1>
+        <h1 className="mb-6 font-display text-4xl font-medium text-text-primary">{postData.title}</h1>
 
-        <div className="flex items-center text-sm text-gray-500 mb-8">
+        <div className="mb-6 flex flex-wrap items-center gap-x-3 gap-y-2 text-sm text-text-muted">
           <time dateTime={postData.date}>{postData.date}</time>
-          <span className="mx-2">•</span>
-          <span>{postData.readingTime} {readingTimeLabel}</span>
+          <span>•</span>
+          <span>
+            {postData.readingTime} {readingTimeLabel}
+          </span>
+          {postData.series && (
+            <>
+              <span>•</span>
+              <span className="text-accent">{postData.series}</span>
+            </>
+          )}
         </div>
 
-        <div className="flex flex-wrap gap-2 mb-8">
+        <div className="mb-10 flex flex-wrap gap-2">
           {postData.tags.map((tag) => (
-            <span
-              key={tag}
-              className="px-3 py-1 bg-blue-100 text-blue-800 text-xs rounded-full"
-            >
+            <span key={tag} className="tag-pill">
               {tag}
             </span>
           ))}
@@ -95,8 +108,8 @@ export default async function PostPage({ params }: Props) {
             <MdxContent source={postData.content} article={postData} />
           </div>
           <div className="lg:col-span-1">
-            <ArticleToc content={postData.content} article={postData} />
-            <RelatedArticles currentArticle={postData} allArticles={allPostsData} />
+            <ArticleToc content={postData.content} article={postData} lang={params.lang} />
+            <RelatedArticles currentArticle={postData} allArticles={allPostsData} lang={params.lang} />
           </div>
         </div>
       </div>

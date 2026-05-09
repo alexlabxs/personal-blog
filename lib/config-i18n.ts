@@ -8,14 +8,14 @@ const baseProfile = {
 
 const profileTranslations = {
   zh: {
-    role: 'AI 时代的系统设计工程师',
-    tagline: '让 AI 从实验室走向生产环境',
-    bio: '全栈思维 × AI 工程化。我在思考：怎样才能让 AI 真正为组织创造价值？为什么系统设计在 AI 时代变得更重要？欢迎一起探索这些问题。',
+    role: 'AI 工程化 × 系统设计',
+    tagline: '把模型变成可上线、可控成本、可迭代的产品',
+    bio: '面向技术经理与独立开发者：我记录 AI 工程化与系统设计的关键决策、成本权衡与落地复盘，也会展示我在做的项目（博客 + Agent + 小程序 / iOS）。',
   },
   en: {
-    role: 'Systems Design Engineer in AI Era',
-    tagline: 'Making AI Production-Ready',
-    bio: 'Full-stack thinking × AI engineering. I explore: How to make AI truly create value for organizations? Why does systems design matter more in the AI era? Let\'s explore these questions together.',
+    role: 'AI Engineering × Systems Design',
+    tagline: 'Turn models into shippable products with controllable cost',
+    bio: "For tech leads and indie builders: I write about AI engineering and systems design decisions, cost trade-offs, and postmortems. I also share projects I'm building (blog + agent + mini program / iOS).",
   },
 };
 

@@ -1,0 +1,105 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e4]:
+      - link "Alex" [ref=e5] [cursor=pointer]:
+        - /url: /zh
+      - navigation [ref=e6]:
+        - link "首页" [ref=e7] [cursor=pointer]:
+          - /url: /zh
+        - link "博客" [ref=e8] [cursor=pointer]:
+          - /url: /zh/blog
+        - link "项目" [ref=e9] [cursor=pointer]:
+          - /url: /zh/projects
+        - link "关于" [ref=e10] [cursor=pointer]:
+          - /url: /zh/about
+      - generic [ref=e11]:
+        - button "Switch to dark mode" [ref=e12] [cursor=pointer]:
+          - img [ref=e13]
+        - link "EN" [ref=e15] [cursor=pointer]:
+          - /url: /en
+  - main [ref=e16]:
+    - main [ref=e17]:
+      - generic [ref=e21]:
+        - generic [ref=e22]: Alex Xiao
+        - heading "AI 时代的系统设计工程师" [level=1] [ref=e23]
+        - generic [ref=e24]:
+          - paragraph [ref=e25]: 让 AI 从实验室走向生产环境
+          - paragraph [ref=e26]: 全栈思维 × AI 工程化。我在思考：怎样才能让 AI 真正为组织创造价值？为什么系统设计在 AI 时代变得更重要？欢迎一起探索这些问题。
+        - generic [ref=e27]:
+          - link "阅读我的思考 →" [ref=e28] [cursor=pointer]:
+            - /url: /zh/blog
+            - text: 阅读我的思考
+            - generic [ref=e29]: →
+          - link "关于我" [ref=e30] [cursor=pointer]:
+            - /url: /zh/about
+      - generic [ref=e32]:
+        - heading "最新思考" [level=2] [ref=e34]
+        - article [ref=e38]:
+          - generic [ref=e39]:
+            - time [ref=e40]: 2026-04-15
+            - generic [ref=e42]: 5 分钟阅读
+          - heading "欢迎来到我的博客" [level=2] [ref=e43]:
+            - link "欢迎来到我的博客" [ref=e44] [cursor=pointer]:
+              - /url: /zh/blog/welcome-to-my-blog
+          - paragraph [ref=e45]: 这是一个使用 Next.js 和 MDX 构建的博客，记录我的技术学习和项目经验。
+          - generic [ref=e46]:
+            - generic [ref=e47]: nextjs
+            - generic [ref=e48]: mdx
+            - generic [ref=e49]: 博客
+      - generic [ref=e53]:
+        - heading "📝 深度内容准备中" [level=3] [ref=e54]
+        - paragraph [ref=e55]: 第一篇深度文章正在撰写中，主题：AI 应用的架构模式演进
+        - generic [ref=e56]:
+          - link "查看所有文章 →" [ref=e57] [cursor=pointer]:
+            - /url: /zh/blog
+          - generic [ref=e58]: "|"
+          - generic [ref=e59]: 订阅 Newsletter，第一时间获取更新
+      - generic [ref=e61]:
+        - heading "关于我" [level=2] [ref=e62]
+        - paragraph [ref=e64]: 我是一名全栈工程师，专注于系统设计。在 AI 时代，我在思考如何让 AI 从实验室走向生产环境，如何设计真正创造价值的 AI 系统。欢迎一起探索这些问题。
+        - link "了解更多 →" [ref=e66] [cursor=pointer]:
+          - /url: /zh/about
+      - generic [ref=e68]:
+        - heading "订阅我的思考" [level=2] [ref=e69]
+        - paragraph [ref=e70]: 获取最新的 AI 工程化和系统设计思考，直接发送到你的邮箱。
+        - generic [ref=e72]:
+          - textbox "你的邮箱地址" [ref=e73]
+          - button "订阅" [ref=e74] [cursor=pointer]
+        - paragraph [ref=e75]: 没有垃圾邮件，随时可以退订。
+  - contentinfo [ref=e76]:
+    - generic [ref=e77]:
+      - generic [ref=e78]:
+        - generic [ref=e79]:
+          - heading "关于" [level=3] [ref=e80]
+          - paragraph [ref=e81]: Full-Stack Engineer，专注于构建有思想的数字产品。Code. Create. Connect.
+        - generic [ref=e82]:
+          - heading "快速链接" [level=3] [ref=e83]
+          - list [ref=e84]:
+            - listitem [ref=e85]:
+              - link "首页" [ref=e86] [cursor=pointer]:
+                - /url: /zh
+            - listitem [ref=e87]:
+              - link "博客" [ref=e88] [cursor=pointer]:
+                - /url: /zh/blog
+            - listitem [ref=e89]:
+              - link "项目" [ref=e90] [cursor=pointer]:
+                - /url: /zh/projects
+            - listitem [ref=e91]:
+              - link "关于" [ref=e92] [cursor=pointer]:
+                - /url: /zh/about
+        - generic [ref=e93]:
+          - heading "社交媒体" [level=3] [ref=e94]
+          - generic [ref=e95]:
+            - link "Email" [ref=e96] [cursor=pointer]:
+              - /url: mailto:dreamkey.xiao@gmail.com
+              - img [ref=e97]
+            - link [ref=e99] [cursor=pointer]:
+              - /url: https://github.com/xiaokaihan
+              - img [ref=e100]
+            - link [ref=e102] [cursor=pointer]:
+              - /url: https://x.com/DreamkeyKey
+              - img [ref=e103]
+      - paragraph [ref=e106]: © 2026 Alex. 保留所有权利
+  - button "打开聊天" [ref=e107] [cursor=pointer]:
+    - img [ref=e108]
+  - alert [ref=e111]

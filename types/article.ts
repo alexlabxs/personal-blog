@@ -4,6 +4,7 @@ export interface Article {
   description: string;
   date: string;
   tags: string[];
+  series?: string;
   content: string;
   readingTime: number;
   published: boolean;
@@ -15,6 +16,7 @@ export interface ArticleMetadata {
   description: string;
   date: string;
   tags: string[];
+  series?: string;
   readingTime: number;
   published: boolean;
   featured?: boolean;

@@ -4,6 +4,7 @@ import matter from 'gray-matter';
 import { Article, ArticleMetadata } from '@/types/article';
 
 const postsDirectory = path.join(process.cwd(), 'content', 'posts');
+const PUBLIC_POST_SLUGS = new Set(['welcome-to-my-blog']);
 
 export function getSortedPostsData(): Article[] {
   // 获取 posts 目录下的所有文件
@@ -35,6 +36,14 @@ export function getSortedPostsData(): Article[] {
       return -1;
     }
   });
+}
+
+export function getPublicPostsData(): Article[] {
+  return getSortedPostsData().filter((post) => post.published && PUBLIC_POST_SLUGS.has(post.slug));
+}
+
+export function isPublicPost(slug: string): boolean {
+  return PUBLIC_POST_SLUGS.has(slug);
 }
 
 export function getAllPostSlugs() {

@@ -2,10 +2,12 @@
 
 import { useEffect, useState, useRef } from 'react';
 import { Article } from '@/types/article';
+import { Locale } from '@/lib/i18n';
 
 interface ArticleTocProps {
   content: string;
   article: Article;
+  lang: Locale;
 }
 
 interface TocItem {
@@ -14,7 +16,7 @@ interface TocItem {
   level: number;
 }
 
-export function ArticleToc({ content, article }: ArticleTocProps) {
+export function ArticleToc({ content, article, lang }: ArticleTocProps) {
   const [toc, setToc] = useState<TocItem[]>([]);
   const [activeId, setActiveId] = useState<string>('');
   const tocRef = useRef<HTMLDivElement>(null);
@@ -77,16 +79,21 @@ export function ArticleToc({ content, article }: ArticleTocProps) {
   };
 
   return (
-    <div ref={tocRef} className="hidden lg:block w-64 p-6 bg-gray-50 rounded-lg sticky top-4 h-fit">
-      <h3 className="text-lg font-semibold mb-4 text-gray-900">文章目录</h3>
+    <div
+      ref={tocRef}
+      className="sticky top-24 hidden h-fit w-64 max-h-[calc(100vh-7rem)] overflow-auto border border-border bg-surface p-6 lg:block"
+    >
+      <h3 className="mb-4 font-display text-lg font-medium text-text-primary">
+        {lang === 'zh' ? '文章目录' : 'Contents'}
+      </h3>
       {toc.length > 0 ? (
         <ul className="space-y-2">
           {toc.map((item) => (
             <li key={item.id}>
               <button
                 onClick={() => scrollToHeading(item.id)}
-                className={`text-sm text-left hover:text-blue-600 transition-colors ${
-                  activeId === item.id ? 'text-blue-600 font-semibold' : 'text-gray-600'
+                className={`text-left text-sm transition-colors hover:text-accent ${
+                  activeId === item.id ? 'font-semibold text-accent' : 'text-text-secondary'
                 }`}
                 style={{ paddingLeft: `${(item.level - 1) * 12}px` }}
               >
@@ -96,7 +103,7 @@ export function ArticleToc({ content, article }: ArticleTocProps) {
           ))}
         </ul>
       ) : (
-        <p className="text-sm text-gray-500">暂无目录</p>
+        <p className="text-sm text-text-muted">{lang === 'zh' ? '暂无目录' : 'No headings'}</p>
       )}
     </div>
   );

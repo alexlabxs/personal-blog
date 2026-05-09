@@ -156,7 +156,7 @@ export default function AboutPage({ params }: Props) {
         </section>
 
         {/* 联系方式 */}
-        <section className="border-t border-border pt-12">
+        <section id="contact" className="border-t border-border pt-12">
           <h2 className="mb-6 font-display text-2xl font-medium">
             {lang === 'zh' ? '联系我' : 'Contact'}
           </h2>

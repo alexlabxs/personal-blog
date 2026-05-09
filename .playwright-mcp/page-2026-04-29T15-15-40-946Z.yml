@@ -1,0 +1,135 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e4]:
+      - link "Alex" [ref=e5] [cursor=pointer]:
+        - /url: /zh
+      - navigation [ref=e6]:
+        - link "首页" [ref=e7] [cursor=pointer]:
+          - /url: /zh
+        - link "博客" [ref=e8] [cursor=pointer]:
+          - /url: /zh/blog
+        - link "项目" [ref=e9] [cursor=pointer]:
+          - /url: /zh/projects
+        - link "关于" [ref=e10] [cursor=pointer]:
+          - /url: /zh/about
+      - generic [ref=e11]:
+        - button "Toggle theme" [ref=e12] [cursor=pointer]:
+          - img [ref=e13]
+        - link "EN" [ref=e15] [cursor=pointer]:
+          - /url: /en
+  - main [ref=e16]:
+    - main [ref=e17]:
+      - generic [ref=e18]:
+        - generic [ref=e19]: ~/blog
+        - heading "博客" [level=1] [ref=e20]
+        - paragraph [ref=e21]: 深度思考 AI 时代的系统设计。分享工程实践、架构决策和产品思维。
+        - generic [ref=e23]:
+          - button "全部 (5)" [ref=e24] [cursor=pointer]
+          - button "AI (4)" [ref=e25] [cursor=pointer]
+          - button "mdx (1)" [ref=e26] [cursor=pointer]
+          - button "nextjs (1)" [ref=e27] [cursor=pointer]
+          - button "企业决策 (1)" [ref=e28] [cursor=pointer]
+          - button "企业应用 (1)" [ref=e29] [cursor=pointer]
+          - button "博客 (2)" [ref=e30] [cursor=pointer]
+          - button "思考 (1)" [ref=e31] [cursor=pointer]
+          - button "成本分析 (1)" [ref=e32] [cursor=pointer]
+          - button "职业转型 (1)" [ref=e33] [cursor=pointer]
+          - button "落地实践 (1)" [ref=e34] [cursor=pointer]
+          - button "项目实战 (1)" [ref=e35] [cursor=pointer]
+        - generic [ref=e36]:
+          - article [ref=e37]:
+            - generic [ref=e38]:
+              - time [ref=e39]: 2026-04-22
+              - generic [ref=e41]: 8 分钟阅读
+            - heading "我为什么从 Java 架构师转向 AI Agent 开发" [level=2] [ref=e42]:
+              - link "我为什么从 Java 架构师转向 AI Agent 开发" [ref=e43] [cursor=pointer]:
+                - /url: /zh/blog/why-i-switched-to-ai-agent
+            - paragraph [ref=e44]: 10年 Java 开发经验，为什么我选择转型做 AI Agent？这不是追风，而是看到了一个更大的机会。
+            - generic [ref=e45]:
+              - generic [ref=e46]: 职业转型
+              - generic [ref=e47]: AI
+              - generic [ref=e48]: 思考
+          - article [ref=e49]:
+            - generic [ref=e50]:
+              - time [ref=e51]: 2026-04-21
+              - generic [ref=e53]: 10 分钟阅读
+            - heading "传统企业最容易落地的 5 个 AI 应用" [level=2] [ref=e54]:
+              - link "传统企业最容易落地的 5 个 AI 应用" [ref=e55] [cursor=pointer]:
+                - /url: /zh/blog/top-5-ai-applications-for-enterprise
+            - paragraph [ref=e56]: 不是所有企业都需要训练大模型。这 5 个 AI 应用场景，投入小、见效快，适合大多数传统企业。
+            - generic [ref=e57]:
+              - generic [ref=e58]: AI
+              - generic [ref=e59]: 企业应用
+              - generic [ref=e60]: 落地实践
+          - article [ref=e61]:
+            - generic [ref=e62]:
+              - time [ref=e63]: 2026-04-20
+              - generic [ref=e65]: 6 分钟阅读
+            - heading "用 AI 做我的博客项目 - 第 1 周进度" [level=2] [ref=e66]:
+              - link "用 AI 做我的博客项目 - 第 1 周进度" [ref=e67] [cursor=pointer]:
+                - /url: /zh/blog/blog-project-week-1
+            - paragraph [ref=e68]: 真实记录：用 AI 辅助开发一个全栈博客项目。这是第 1 周的进度和心得。
+            - generic [ref=e69]:
+              - generic [ref=e70]: AI
+              - generic [ref=e71]: 项目实战
+              - generic [ref=e72]: 博客
+          - article [ref=e73]:
+            - generic [ref=e74]:
+              - time [ref=e75]: 2026-04-19
+              - generic [ref=e77]: 7 分钟阅读
+            - heading "AI Agent vs 传统自动化：成本对比分析" [level=2] [ref=e78]:
+              - link "AI Agent vs 传统自动化：成本对比分析" [ref=e79] [cursor=pointer]:
+                - /url: /zh/blog/ai-agent-vs-rpa-cost-comparison
+            - paragraph [ref=e80]: 企业该选 AI Agent 还是传统自动化？我用真实数据告诉你哪个更划算。
+            - generic [ref=e81]:
+              - generic [ref=e82]: AI
+              - generic [ref=e83]: 成本分析
+              - generic [ref=e84]: 企业决策
+          - article [ref=e85]:
+            - generic [ref=e86]:
+              - time [ref=e87]: 2026-04-15
+              - generic [ref=e89]: 5 分钟阅读
+            - heading "欢迎来到我的博客" [level=2] [ref=e90]:
+              - link "欢迎来到我的博客" [ref=e91] [cursor=pointer]:
+                - /url: /zh/blog/welcome-to-my-blog
+            - paragraph [ref=e92]: 这是一个使用 Next.js 和 MDX 构建的博客，记录我的技术学习和项目经验。
+            - generic [ref=e93]:
+              - generic [ref=e94]: nextjs
+              - generic [ref=e95]: mdx
+              - generic [ref=e96]: 博客
+  - contentinfo [ref=e97]:
+    - generic [ref=e98]:
+      - generic [ref=e99]:
+        - generic [ref=e100]:
+          - heading "关于" [level=3] [ref=e101]
+          - paragraph [ref=e102]: Full-Stack Engineer，专注于构建有思想的数字产品。Code. Create. Connect.
+        - generic [ref=e103]:
+          - heading "快速链接" [level=3] [ref=e104]
+          - list [ref=e105]:
+            - listitem [ref=e106]:
+              - link "首页" [ref=e107] [cursor=pointer]:
+                - /url: /zh
+            - listitem [ref=e108]:
+              - link "博客" [ref=e109] [cursor=pointer]:
+                - /url: /zh/blog
+            - listitem [ref=e110]:
+              - link "项目" [ref=e111] [cursor=pointer]:
+                - /url: /zh/projects
+            - listitem [ref=e112]:
+              - link "关于" [ref=e113] [cursor=pointer]:
+                - /url: /zh/about
+        - generic [ref=e114]:
+          - heading "社交媒体" [level=3] [ref=e115]
+          - generic [ref=e116]:
+            - link "Email" [ref=e117] [cursor=pointer]:
+              - /url: mailto:dreamkey.xiao@gmail.com
+              - img [ref=e118]
+            - link [ref=e120] [cursor=pointer]:
+              - /url: https://github.com/xiaokaihan
+              - img [ref=e121]
+            - link [ref=e123] [cursor=pointer]:
+              - /url: https://x.com/DreamkeyKey
+              - img [ref=e124]
+      - paragraph [ref=e127]: © 2026 Alex. 保留所有权利
+  - button "打开聊天" [ref=e128] [cursor=pointer]:
+    - img [ref=e129]

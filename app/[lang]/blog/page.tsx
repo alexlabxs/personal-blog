@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import { getDictionary, Locale } from '@/lib/i18n';
 import { BlogClient } from './BlogClient';
-import { getSortedPostsData } from '@/lib/posts';
+import { getPublicPostsData } from '@/lib/posts';
 import { generateBlogListMetadata } from '@/lib/seo/metadata';
 
 type Props = {
@@ -13,6 +13,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default function BlogPage({ params }: Props) {
-  const allPostsData = getSortedPostsData();
+  const allPostsData = getPublicPostsData();
   return <BlogClient posts={allPostsData} lang={params.lang} />;
 }

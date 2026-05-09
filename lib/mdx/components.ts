@@ -1,13 +1,13 @@
 import { MDXComponents } from 'mdx/types';
-import { CodeBlock } from '@/components/CodeBlock';
 import { Callout } from '@/components/Callout';
 import { CustomImage } from '@/components/Image';
 import { YouTube } from '@/components/YouTube';
 import { Twitter } from '@/components/Twitter';
+import { MdxPre } from '@/components/MdxPre';
 
 export const components: MDXComponents = {
-  // 代码块
-  code: CodeBlock,
+  // 代码块（只接管 fenced code，不影响行内 code）
+  pre: MdxPre,
 
   // 引用块
   blockquote: Callout,
