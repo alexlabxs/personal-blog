@@ -1,0 +1,552 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Personal Blog 改造项目 - Claude Code Prompt</title>
+  <style>
+    body { max-width: 920px; margin: 40px auto; padding: 0 20px; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; line-height: 1.7; color: #1f2937; background: #fff; }
+    h1, h2, h3, h4, h5, h6 { line-height: 1.3; margin-top: 1.8em; }
+    h1 { margin-top: 0; }
+    code { padding: 0.15em 0.35em; border-radius: 4px; background: #f3f4f6; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+    pre { overflow-x: auto; padding: 16px; border-radius: 8px; background: #111827; }
+    pre code { padding: 0; background: transparent; color: #f9fafb; }
+    blockquote { margin: 1.2em 0; padding-left: 1em; color: #4b5563; border-left: 4px solid #d1d5db; }
+    table { width: 100%; border-collapse: collapse; margin: 1.2em 0; }
+    th, td { padding: 8px 10px; border: 1px solid #d1d5db; text-align: left; vertical-align: top; }
+    th { background: #f9fafb; }
+    a { color: #2563eb; }
+  </style>
+</head>
+<body>
+<h1>Personal Blog 改造项目 - Claude Code Prompt</h1>
+<h2>项目概述</h2>
+<p>这是一个 Next.js 14 (App Router) 个人博客网站的改造项目。需要从&quot;简历式展示&quot;转变为&quot;思想输出平台&quot;，目标受众是对 AI 工程化和系统设计感兴趣的人。</p>
+<p><strong>项目仓库</strong>: https://github.com/xiaokaihan/personal-blog</p>
+<p><strong>当前网站</strong>: https://alexlabx.com</p>
+<p><strong>技术栈</strong>: Next.js 14 + App Router + Tailwind CSS + MDX + Framer Motion + i18n</p>
+<p>---</p>
+<h2>🎯 改造目标</h2>
+<h3>核心定位转变</h3>
+<ul>
+<li><strong>旧定位</strong>: &quot;AI Agent 开发者 | 全栈工程师&quot; (简历式)</li>
+<li><strong>新定位</strong>: &quot;AI 时代的系统设计工程师&quot; (思想家式)</li>
+</ul>
+<h3>设计风格选择</h3>
+<ul>
+<li><strong>方案</strong>: 编辑叙事风格 (Editorial + Narrative)</li>
+<li><strong>背景</strong>: 深色主题</li>
+<li><strong>特点</strong>: 内容优先、视觉层次丰富、有故事感</li>
+</ul>
+<h3>核心价值主张</h3>
+<p>&quot;让 AI 从实验室走向生产环境&quot;</p>
+<p>---</p>
+<h2>📋 改造清单</h2>
+<h3>第一阶段：内容和定位（Day 1-2）</h3>
+<h4>1. 首页 (app/[lang]/page.tsx) 核心改动</h4>
+<p><strong>删除以下内容</strong>:</p>
+<ul>
+<li>❌ 虚假数据统计卡片（&quot;5+ 年经验 / 20+ 项目 / 30+ 文章&quot;）</li>
+<li>❌ 工作经历 Timeline（移到 About 页）</li>
+<li>❌ 技能标签云（移到 About 页或删除）</li>
+<li>❌ 代码块样式的自我介绍（<code>const me = {...}</code>）</li>
+</ul>
+<p><strong>新的首页结构</strong>:</p>
+<pre><code class="language-tsx">&lt;main&gt;
+  {/* Hero Section - 第一屏 */}
+  &lt;section className=&quot;hero&quot;&gt;
+    &lt;h1&gt;AI 时代的系统设计工程师&lt;/h1&gt;
+    &lt;p className=&quot;tagline&quot;&gt;让 AI 从实验室走向生产环境&lt;/p&gt;
+    &lt;p className=&quot;bio&quot;&gt;
+      全栈思维 × AI 工程化。我在思考：怎样才能让 AI 真正为组织创造价值？
+      为什么系统设计在 AI 时代变得更重要？
+    &lt;/p&gt;
+    &lt;a href=&quot;/blog&quot; className=&quot;cta&quot;&gt;Read My Thinking →&lt;/a&gt;
+  &lt;/section&gt;
+
+  {/* Featured Writing - 第二屏 */}
+  &lt;section className=&quot;featured-writing&quot;&gt;
+    &lt;h2&gt;最新思考&lt;/h2&gt;
+    {/* 文章卡片 - 即使暂时是占位符 */}
+    &lt;div className=&quot;articles-grid&quot;&gt;
+      {/* Article cards */}
+    &lt;/div&gt;
+  &lt;/section&gt;
+
+  {/* Brief About - 第三屏 */}
+  &lt;section className=&quot;brief-about&quot;&gt;
+    &lt;h2&gt;关于我&lt;/h2&gt;
+    &lt;p&gt;简短介绍（100-150字）&lt;/p&gt;
+    &lt;a href=&quot;/about&quot;&gt;了解更多 →&lt;/a&gt;
+  &lt;/section&gt;
+
+  {/* Newsletter/Connect - 第四屏 */}
+  &lt;section className=&quot;newsletter&quot;&gt;
+    &lt;h2&gt;订阅我的思考&lt;/h2&gt;
+    &lt;form&gt;{/* Email 订阅表单 */}&lt;/form&gt;
+  &lt;/section&gt;
+&lt;/main&gt;</code></pre>
+<h4>2. 配置文件更新 (lib/config-i18n.ts 或类似文件)</h4>
+<p>需要修改的文案：</p>
+<p><strong>中文版本</strong>:</p>
+<pre><code class="language-typescript">const config_zh = {
+  profile: {
+    name: &quot;Alex Xiao&quot;,
+    role: &quot;AI 时代的系统设计工程师&quot;,
+    tagline: &quot;让 AI 从实验室走向生产环境&quot;,
+    bio: &quot;全栈思维 × AI 工程化。我在思考：怎样才能让 AI 真正为组织创造价值？为什么系统设计在 AI 时代变得更重要？欢迎一起探索这些问题。&quot;
+  },
+  // 删除或注释掉 experiences 和 skills (移到 About 页面)
+}</code></pre>
+<p><strong>英文版本</strong>:</p>
+<pre><code class="language-typescript">const config_en = {
+  profile: {
+    name: &quot;Alex (Xiao Kaihan)&quot;,
+    role: &quot;Systems Design Engineer in AI Era&quot;,
+    tagline: &quot;Making AI Production-Ready&quot;,
+    bio: &quot;Full-stack thinking × AI engineering. I explore: How to make AI truly create value? Why systems design matters more in the AI era? Let&#39;s think together.&quot;
+  },
+}</code></pre>
+<h4>3. SEO 元数据更新 (lib/seo/metadata.ts)</h4>
+<pre><code class="language-typescript">export const siteConfig = {
+  title: {
+    zh: &quot;Alex — AI 时代的系统设计工程师&quot;,
+    en: &quot;Alex — Systems Design Engineer in AI Era&quot;
+  },
+  description: {
+    zh: &quot;思考 AI 工程化、系统设计和产品。让 AI 从实验室走向生产环境。&quot;,
+    en: &quot;Thinking about AI engineering, systems design, and products. Making AI production-ready.&quot;
+  },
+  keywords: {
+    zh: &quot;AI工程化, 系统设计, LLM应用, AI Agent, 全栈开发, 产品思维&quot;,
+    en: &quot;AI Engineering, Systems Design, LLM Applications, AI Agent, Full-stack Development, Product Thinking&quot;
+  }
+}</code></pre>
+<h4>4. 博客描述更新 (app/[lang]/blog/page.tsx)</h4>
+<p>修改博客页面的描述：</p>
+<p><strong>旧文案</strong>:</p>
+<blockquote>
+<p>&quot;技术博客，分享 Java 开发经验、微服务架构设计与 AI 落地实践。&quot;</p>
+</blockquote>
+<p><strong>新文案（中文）</strong>:</p>
+<blockquote>
+<p>&quot;深度思考 AI 时代的系统设计。分享工程实践、架构决策和产品思维。&quot;</p>
+</blockquote>
+<p><strong>新文案（英文）</strong>:</p>
+<blockquote>
+<p>&quot;Deep thinking on systems design in the AI era. Sharing engineering practices, architecture decisions, and product thinking.&quot;</p>
+</blockquote>
+<p>---</p>
+<h3>第二阶段：首页视觉重构（Day 3-4）</h3>
+<h4>5. Hero Section 设计</h4>
+<p>创建新的 Hero 组件，替换现有的 Typewriter 等组件。</p>
+<p><strong>目标样式特征</strong>:</p>
+<ul>
+<li>深色背景（保持现有的 <code>bg-background</code>）</li>
+<li>更有层次的视觉效果（渐变、微妙的背景图案）</li>
+<li>简洁的文字排版（不是代码风格）</li>
+<li>清晰的 CTA 按钮</li>
+</ul>
+<p><strong>新建文件</strong>: <code>components/hero/HeroV2.tsx</code></p>
+<pre><code class="language-tsx">// 参考方案 2（编辑叙事）的设计
+export function HeroV2({ lang, dict, profile }) {
+  return (
+    &lt;section className=&quot;relative min-h-screen flex items-center&quot;&gt;
+      {/* 背景层 */}
+      &lt;div className=&quot;absolute inset-0 bg-gradient-to-br from-background via-background to-background/95&quot;&gt;
+        {/* 微妙的网格或纹理 */}
+      &lt;/div&gt;
+      
+      {/* 内容层 */}
+      &lt;div className=&quot;container mx-auto max-w-4xl px-4 relative z-10&quot;&gt;
+        &lt;div className=&quot;space-y-6&quot;&gt;
+          &lt;h1 className=&quot;text-5xl md:text-7xl font-bold leading-tight&quot;&gt;
+            &lt;span className=&quot;block text-secondary/60 text-2xl md:text-3xl mb-2&quot;&gt;
+              {profile.name}
+            &lt;/span&gt;
+            {profile.role}
+          &lt;/h1&gt;
+          
+          &lt;p className=&quot;text-xl md:text-2xl text-secondary/80&quot;&gt;
+            {profile.tagline}
+          &lt;/p&gt;
+          
+          &lt;p className=&quot;text-lg text-secondary/70 max-w-2xl leading-relaxed&quot;&gt;
+            {profile.bio}
+          &lt;/p&gt;
+          
+          &lt;div className=&quot;pt-4&quot;&gt;
+            &lt;a 
+              href={`/${lang}/blog`}
+              className=&quot;inline-flex items-center px-6 py-3 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors&quot;
+            &gt;
+              {dict.cta.readMyThinking} →
+            &lt;/a&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/section&gt;
+  );
+}</code></pre>
+<h4>6. Featured Writing Section</h4>
+<p>创建文章预览卡片组件。</p>
+<p><strong>新建文件</strong>: <code>components/home/FeaturedWriting.tsx</code></p>
+<pre><code class="language-tsx">export function FeaturedWriting({ lang, articles }) {
+  return (
+    &lt;section className=&quot;py-20 border-t border-terminal-border&quot;&gt;
+      &lt;div className=&quot;container mx-auto max-w-6xl px-4&quot;&gt;
+        &lt;h2 className=&quot;text-3xl font-bold mb-12&quot;&gt;
+          {lang === &#39;zh&#39; ? &#39;最新思考&#39; : &#39;Latest Thinking&#39;}
+        &lt;/h2&gt;
+        
+        &lt;div className=&quot;grid md:grid-cols-2 lg:grid-cols-3 gap-6&quot;&gt;
+          {articles.length &gt; 0 ? (
+            articles.map(article =&gt; (
+              &lt;ArticleCard key={article.slug} article={article} lang={lang} /&gt;
+            ))
+          ) : (
+            // 占位符
+            &lt;div className=&quot;col-span-full text-center py-12 text-secondary/60&quot;&gt;
+              &lt;p&gt;{lang === &#39;zh&#39; ? &#39;内容准备中...&#39; : &#39;Content coming soon...&#39;}&lt;/p&gt;
+              &lt;p className=&quot;text-sm mt-2&quot;&gt;
+                {lang === &#39;zh&#39; 
+                  ? &#39;第一篇深度文章正在撰写中，敬请期待。&#39; 
+                  : &#39;First deep article is in progress. Stay tuned.&#39;}
+              &lt;/p&gt;
+            &lt;/div&gt;
+          )}
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/section&gt;
+  );
+}</code></pre>
+<h4>7. Article Card 设计</h4>
+<p><strong>新建文件</strong>: <code>components/blog/ArticleCard.tsx</code></p>
+<pre><code class="language-tsx">export function ArticleCard({ article, lang }) {
+  return (
+    &lt;article className=&quot;group&quot;&gt;
+      &lt;a 
+        href={`/${lang}/blog/${article.slug}`}
+        className=&quot;block p-6 rounded-lg bg-code-bg hover:bg-code-bg/80 transition-all&quot;
+      &gt;
+        {/* 分类标签 */}
+        &lt;div className=&quot;flex gap-2 mb-3&quot;&gt;
+          {article.tags?.slice(0, 2).map(tag =&gt; (
+            &lt;span 
+              key={tag}
+              className=&quot;text-xs px-2 py-1 rounded bg-terminal-green/10 text-terminal-green&quot;
+            &gt;
+              {tag}
+            &lt;/span&gt;
+          ))}
+        &lt;/div&gt;
+        
+        {/* 标题 */}
+        &lt;h3 className=&quot;text-xl font-bold mb-2 group-hover:text-terminal-green transition-colors&quot;&gt;
+          {article.title}
+        &lt;/h3&gt;
+        
+        {/* 摘要 */}
+        &lt;p className=&quot;text-secondary/70 text-sm mb-4 line-clamp-3&quot;&gt;
+          {article.excerpt || article.description}
+        &lt;/p&gt;
+        
+        {/* 元信息 */}
+        &lt;div className=&quot;flex items-center gap-4 text-xs text-secondary/50&quot;&gt;
+          &lt;span&gt;{article.date}&lt;/span&gt;
+          &lt;span&gt;·&lt;/span&gt;
+          &lt;span&gt;{article.readingTime || &#39;5 min read&#39;}&lt;/span&gt;
+        &lt;/div&gt;
+      &lt;/a&gt;
+    &lt;/article&gt;
+  );
+}</code></pre>
+<p>---</p>
+<h3>第三阶段：About 页面整理（Day 4-5）</h3>
+<h4>8. About 页面重构 (app/[lang]/about/page.tsx)</h4>
+<p>将首页移除的内容整理到 About 页面：</p>
+<p><strong>新的 About 页面结构</strong>:</p>
+<pre><code class="language-tsx">export default function AboutPage({ params }) {
+  return (
+    &lt;main className=&quot;py-20&quot;&gt;
+      &lt;div className=&quot;container mx-auto max-w-4xl px-4&quot;&gt;
+        {/* 开场白 */}
+        &lt;section className=&quot;mb-16&quot;&gt;
+          &lt;h1 className=&quot;text-4xl font-bold mb-6&quot;&gt;关于我&lt;/h1&gt;
+          &lt;div className=&quot;prose prose-invert max-w-none&quot;&gt;
+            &lt;p className=&quot;text-lg&quot;&gt;
+              我是一名全栈工程师，专注于系统设计。
+              在 AI 时代，我在思考...（150-200字）
+            &lt;/p&gt;
+          &lt;/div&gt;
+        &lt;/section&gt;
+
+        {/* 为什么听我的 */}
+        &lt;section className=&quot;mb-16&quot;&gt;
+          &lt;h2 className=&quot;text-2xl font-bold mb-6&quot;&gt;为什么我的观点值得听&lt;/h2&gt;
+          &lt;div className=&quot;space-y-4&quot;&gt;
+            {/* 核心观点和价值主张 */}
+          &lt;/div&gt;
+        &lt;/section&gt;
+
+        {/* 工作经历（从首页移过来）*/}
+        &lt;section className=&quot;mb-16&quot;&gt;
+          &lt;h2 className=&quot;text-2xl font-bold mb-6&quot;&gt;经历&lt;/h2&gt;
+          &lt;Timeline experiences={experiences} /&gt;
+        &lt;/section&gt;
+
+        {/* 技能地图（可选，可视化展示）*/}
+        &lt;section className=&quot;mb-16&quot;&gt;
+          &lt;h2 className=&quot;text-2xl font-bold mb-6&quot;&gt;技能&lt;/h2&gt;
+          {/* 简化的技能展示，不是标签云 */}
+        &lt;/section&gt;
+
+        {/* 联系方式 */}
+        &lt;section&gt;
+          &lt;h2 className=&quot;text-2xl font-bold mb-6&quot;&gt;联系&lt;/h2&gt;
+          &lt;div className=&quot;flex gap-4&quot;&gt;
+            &lt;a href=&quot;mailto:your@email.com&quot; className=&quot;...&quot;&gt;Email&lt;/a&gt;
+            &lt;a href=&quot;https://twitter.com/...&quot; className=&quot;...&quot;&gt;Twitter&lt;/a&gt;
+          &lt;/div&gt;
+        &lt;/section&gt;
+      &lt;/div&gt;
+    &lt;/main&gt;
+  );
+}</code></pre>
+<p>---</p>
+<h3>第四阶段：细节优化（Day 6-7）</h3>
+<h4>9. 导航栏更新 (components/Header.tsx)</h4>
+<p><strong>隐藏&quot;资源&quot;链接</strong>（暂时没有内容）:</p>
+<pre><code class="language-tsx">const navItems = [
+  { href: &#39;/blog&#39;, label: dict.nav.blog },
+  { href: &#39;/projects&#39;, label: dict.nav.projects },
+  // { href: &#39;/resources&#39;, label: dict.nav.resources }, // 注释掉
+  { href: &#39;/about&#39;, label: dict.nav.about },
+];</code></pre>
+<h4>10. Footer 更新 (components/Footer.tsx)</h4>
+<p><strong>添加联系方式</strong>:</p>
+<pre><code class="language-tsx">&lt;div className=&quot;social-links&quot;&gt;
+  &lt;a href=&quot;mailto:your@email.com&quot;&gt;Email&lt;/a&gt;
+  &lt;a href=&quot;https://twitter.com/yourhandle&quot;&gt;Twitter&lt;/a&gt;
+&lt;/div&gt;</code></pre>
+<h4>11. 博客分类标签体系更新</h4>
+<p>在博客相关组件中，更新分类标签：</p>
+<p><strong>旧标签</strong>: mdx, nextjs, 博客</p>
+<p><strong>新标签</strong>: </p>
+<ul>
+<li>系统设计 (Systems Design)</li>
+<li>AI工程化 (AI Engineering)</li>
+<li>产品思维 (Product Thinking)</li>
+<li>项目复盘 (Project Reflections)</li>
+</ul>
+<p>---</p>
+<h3>第五阶段：性能和 SEO（Day 7）</h3>
+<h4>12. Meta 标签验证</h4>
+<p>确保所有页面都有正确的 meta 标签：</p>
+<ul>
+<li>title</li>
+<li>description</li>
+<li>og:image</li>
+<li>twitter:card</li>
+</ul>
+<h4>13. 响应式测试</h4>
+<p>在以下断点测试所有改动：</p>
+<ul>
+<li>移动端: 375px</li>
+<li>平板: 768px</li>
+<li>桌面: 1440px</li>
+</ul>
+<p>---</p>
+<h2>🛠️ 实施指南</h2>
+<h3>开发流程</h3>
+<ol>
+<li><strong>创建新分支</strong></li>
+</ol>
+<pre><code class="language-bash">git checkout -b refactor/editorial-design</code></pre>
+<ol>
+<li><strong>按顺序实施改动</strong></li>
+</ol>
+<ul>
+<li>Day 1-2: 内容和配置文件</li>
+<li>Day 3-4: 首页视觉重构</li>
+<li>Day 4-5: About 页面</li>
+<li>Day 6-7: 细节优化和测试</li>
+</ul>
+<ol>
+<li><strong>测试验证</strong></li>
+</ol>
+<pre><code class="language-bash">npm run dev
+# 在本地 localhost:3000 测试所有改动</code></pre>
+<ol>
+<li><strong>提交和部署</strong></li>
+</ol>
+<pre><code class="language-bash">git add .
+git commit -m &quot;refactor: transform to editorial design&quot;
+git push origin refactor/editorial-design
+# 合并到 main 后自动部署到 Vercel</code></pre>
+<h3>关键文件清单</h3>
+<p>需要修改的文件：</p>
+<ul>
+<li><input type="checkbox" disabled> <code>app/[lang]/page.tsx</code> (首页主体)</li>
+<li><input type="checkbox" disabled> <code>app/[lang]/layout.tsx</code> (meta 标签)</li>
+<li><input type="checkbox" disabled> <code>app/[lang]/about/page.tsx</code> (About 页面)</li>
+<li><input type="checkbox" disabled> <code>app/[lang]/blog/page.tsx</code> (博客描述)</li>
+<li><input type="checkbox" disabled> <code>lib/config-i18n.ts</code> 或类似配置文件 (profile 数据)</li>
+<li><input type="checkbox" disabled> <code>lib/seo/metadata.ts</code> (SEO 配置)</li>
+<li><input type="checkbox" disabled> <code>components/Header.tsx</code> (导航)</li>
+<li><input type="checkbox" disabled> <code>components/Footer.tsx</code> (Footer)</li>
+</ul>
+<p>需要创建的新文件：</p>
+<ul>
+<li><input type="checkbox" disabled> <code>components/hero/HeroV2.tsx</code></li>
+<li><input type="checkbox" disabled> <code>components/home/FeaturedWriting.tsx</code></li>
+<li><input type="checkbox" disabled> <code>components/blog/ArticleCard.tsx</code></li>
+</ul>
+<p>需要删除或移动的组件：</p>
+<ul>
+<li><input type="checkbox" disabled> <code>components/hero/Typewriter.tsx</code> (可以保留但不在首页用)</li>
+<li><input type="checkbox" disabled> <code>components/hero/Timeline.tsx</code> (移到 About 页面)</li>
+<li><input type="checkbox" disabled> <code>components/hero/SkillCloud.tsx</code> (移到 About 页面或删除)</li>
+</ul>
+<p>---</p>
+<h2>🎨 设计规范</h2>
+<h3>颜色</h3>
+<p>保持现有的深色主题，但确保：</p>
+<ul>
+<li>主背景: <code>bg-background</code> (深色)</li>
+<li>文字: <code>text-foreground</code> (浅色)</li>
+<li>强调色: <code>text-terminal-green</code> (保持)</li>
+<li>次要文字: <code>text-secondary</code> (灰色)</li>
+</ul>
+<h3>字体</h3>
+<p>保持现有字体配置：</p>
+<ul>
+<li>正文: Inter</li>
+<li>代码/标题: JetBrains Mono</li>
+<li>中文: Noto Sans SC</li>
+</ul>
+<h3>间距</h3>
+<ul>
+<li>Section 间距: <code>py-20</code> 或 <code>py-16</code></li>
+<li>容器宽度: <code>max-w-4xl</code> (文章) 或 <code>max-w-6xl</code> (网格布局)</li>
+</ul>
+<p>---</p>
+<h2>✅ 验收标准</h2>
+<p>改造完成后，网站应该：</p>
+<ol>
+<li><strong>首页</strong></li>
+</ol>
+<ul>
+<li>✅ 清晰展示身份定位</li>
+<li>✅ 没有虚假数据</li>
+<li>✅ 没有简历式的工作经历展示</li>
+<li>✅ 有&quot;最新思考&quot;区域（即使是占位符）</li>
+<li>✅ 有 Newsletter 订阅入口</li>
+</ul>
+<ol>
+<li><strong>About 页面</strong></li>
+</ol>
+<ul>
+<li>✅ 包含详细的自我介绍</li>
+<li>✅ 包含工作经历</li>
+<li>✅ 包含联系方式</li>
+</ul>
+<ol>
+<li><strong>Blog 页面</strong></li>
+</ol>
+<ul>
+<li>✅ 描述符合新定位</li>
+<li>✅ 标签体系更新</li>
+</ul>
+<ol>
+<li><strong>整体</strong></li>
+</ol>
+<ul>
+<li>✅ 移动端完美适配</li>
+<li>✅ 加载速度快</li>
+<li>✅ SEO 优化到位</li>
+<li>✅ 没有 console 错误</li>
+</ul>
+<p>---</p>
+<h2>📝 注意事项</h2>
+<ol>
+<li><strong>保持现有技术栈</strong></li>
+</ol>
+<ul>
+<li>不要改变 Next.js 配置</li>
+<li>不要移除现有依赖</li>
+<li>保持国际化结构</li>
+</ul>
+<ol>
+<li><strong>渐进式改造</strong></li>
+</ol>
+<ul>
+<li>一次改一个页面</li>
+<li>每次改动后测试</li>
+<li>保持 git commit 清晰</li>
+</ul>
+<ol>
+<li><strong>内容优先</strong></li>
+</ol>
+<ul>
+<li>文案比视觉更重要</li>
+<li>先改文字，再改样式</li>
+<li>确保移动端可读性</li>
+</ul>
+<ol>
+<li><strong>性能优先</strong></li>
+</ol>
+<ul>
+<li>不要添加大图片</li>
+<li>保持动画简洁</li>
+<li>优化首屏加载</li>
+</ul>
+<p>---</p>
+<h2>🚀 部署计划</h2>
+<ol>
+<li><strong>本地验证</strong></li>
+</ol>
+<ul>
+<li>所有页面都能正常访问</li>
+<li>响应式设计正常</li>
+<li>没有控制台错误</li>
+</ul>
+<ol>
+<li><strong>Staging 测试</strong></li>
+</ol>
+<ul>
+<li>部署到 Vercel preview</li>
+<li>分享给 1-2 个朋友看反馈</li>
+</ul>
+<ol>
+<li><strong>正式上线</strong></li>
+</ol>
+<ul>
+<li>合并到 main 分支</li>
+<li>自动部署到 alexlabx.com</li>
+<li>发布社交媒体公告</li>
+</ul>
+<p>---</p>
+<h2>🎯 改造目标检查</h2>
+<p>完成后，访问 https://alexlabx.com 应该能在 5 秒内回答：</p>
+<ol>
+<li><strong>Alex 是谁？</strong></li>
+</ol>
+<p>   → AI 时代的系统设计工程师</p>
+<ol>
+<li><strong>他做什么？</strong></li>
+</ol>
+<p>   → 思考如何让 AI 从实验室走向生产环境</p>
+<ol>
+<li><strong>为什么关注他？</strong></li>
+</ol>
+<p>   → 深度思考 + 系统设计 × AI 工程化</p>
+<ol>
+<li><strong>接下来做什么？</strong></li>
+</ol>
+<p>   → 阅读文章 / 订阅 Newsletter / 联系他</p>
+<p>---</p>
+<p>现在开始改造吧！按照这个计划，1-2 周内完成一个焕然一新的个人网站。</p>
+<p>Good luck! 🚀</p>
+</body>
+</html>

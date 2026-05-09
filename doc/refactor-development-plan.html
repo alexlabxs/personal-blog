@@ -1,0 +1,469 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>个人博客重构开发计划</title>
+  <style>
+    body { max-width: 920px; margin: 40px auto; padding: 0 20px; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; line-height: 1.7; color: #1f2937; background: #fff; }
+    h1, h2, h3, h4, h5, h6 { line-height: 1.3; margin-top: 1.8em; }
+    h1 { margin-top: 0; }
+    code { padding: 0.15em 0.35em; border-radius: 4px; background: #f3f4f6; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+    pre { overflow-x: auto; padding: 16px; border-radius: 8px; background: #111827; }
+    pre code { padding: 0; background: transparent; color: #f9fafb; }
+    blockquote { margin: 1.2em 0; padding-left: 1em; color: #4b5563; border-left: 4px solid #d1d5db; }
+    table { width: 100%; border-collapse: collapse; margin: 1.2em 0; }
+    th, td { padding: 8px 10px; border: 1px solid #d1d5db; text-align: left; vertical-align: top; }
+    th { background: #f9fafb; }
+    a { color: #2563eb; }
+  </style>
+</head>
+<body>
+<h1>个人博客重构开发计划</h1>
+<blockquote>
+<p>基于文档：claude-code-refactor-prompt.html</p>
+<p>创建日期：2026-04-26</p>
+<p>预计完成周期：7天</p>
+</blockquote>
+<p>---</p>
+<h2>📋 项目概述</h2>
+<p><strong>项目目标</strong>：将个人博客从&quot;简历式展示&quot;改造为&quot;思想输出平台&quot;</p>
+<p><strong>核心转变</strong>：</p>
+<ul>
+<li><strong>旧定位</strong>：&quot;AI Agent 开发者 | 全栈工程师&quot; (简历式)</li>
+<li><strong>新定位</strong>：&quot;AI 时代的系统设计工程师&quot; (思想家式)</li>
+</ul>
+<p><strong>设计风格</strong>：编辑叙事风格 (Editorial + Narrative)</p>
+<p><strong>背景主题</strong>：深色主题</p>
+<p><strong>核心价值</strong>：&quot;让 AI 从实验室走向生产环境&quot;</p>
+<p>---</p>
+<h2>🎯 重构阶段划分</h2>
+<h3>第一阶段：内容和定位（Day 1-2）</h3>
+<p><strong>目标</strong>：更新文案和配置，建立新的内容结构</p>
+<h4>任务清单</h4>
+<h5>1.1 更新配置文件</h5>
+<ul>
+<li><input type="checkbox" disabled> 修改 <code>lib/config-i18n.ts</code></li>
+<li><input type="checkbox" disabled> 更新 <code>baseProfile.role</code> 为 &quot;AI 时代的系统设计工程师&quot;</li>
+<li><input type="checkbox" disabled> 更新中文 <code>role</code> 为 &quot;AI 时代的系统设计工程师&quot;</li>
+<li><input type="checkbox" disabled> 更新英文 <code>role</code> 为 &quot;Systems Design Engineer in AI Era&quot;</li>
+<li><input type="checkbox" disabled> 更新中文 <code>tagline</code> 为 &quot;让 AI 从实验室走向生产环境&quot;</li>
+<li><input type="checkbox" disabled> 更新英文 <code>tagline</code> 为 &quot;Making AI Production-Ready&quot;</li>
+<li><input type="checkbox" disabled> 更新中文 <code>bio</code> 为新的价值主张文案</li>
+<li><input type="checkbox" disabled> 更新英文 <code>bio</code> 为新的价值主张文案</li>
+<li><input type="checkbox" disabled> 保留 <code>experiences</code> 数据（将移至 About 页面）</li>
+<li><input type="checkbox" disabled> 保留 <code>skills</code> 数据（将移至 About 页面）</li>
+</ul>
+<h5>1.2 更新 SEO 元数据</h5>
+<ul>
+<li><input type="checkbox" disabled> 检查并更新 <code>lib/seo/metadata.ts</code></li>
+<li><input type="checkbox" disabled> 更新 <code>siteConfig.title.zh</code> 为 &quot;Alex — AI 时代的系统设计工程师&quot;</li>
+<li><input type="checkbox" disabled> 更新 <code>siteConfig.title.en</code> 为 &quot;Alex — Systems Design Engineer in AI Era&quot;</li>
+<li><input type="checkbox" disabled> 更新 <code>siteConfig.description.zh</code> 为 &quot;思考 AI 工程化、系统设计和产品。让 AI 从实验室走向生产环境。&quot;</li>
+<li><input type="checkbox" disabled> 更新 <code>siteConfig.description.en</code> 为 &quot;Thinking about AI engineering, systems design, and products. Making AI production-ready.&quot;</li>
+<li><input type="checkbox" disabled> 更新 <code>keywords</code> 为新的标签体系</li>
+</ul>
+<h5>1.3 更新博客页面描述</h5>
+<ul>
+<li><input type="checkbox" disabled> 修改 <code>app/[lang]/blog/page.tsx</code> 的描述文案</li>
+<li><input type="checkbox" disabled> 中文：&quot;深度思考 AI 时代的系统设计。分享工程实践、架构决策和产品思维。&quot;</li>
+<li><input type="checkbox" disabled> 英文：&quot;Deep thinking on systems design in the AI era. Sharing engineering practices, architecture decisions, and product thinking.&quot;</li>
+</ul>
+<h5>1.4 删除首页内容</h5>
+<ul>
+<li><input type="checkbox" disabled> 删除虚假数据统计卡片（5+ 年经验 / 20+ 项目 / 30+ 文章）</li>
+<li><input type="checkbox" disabled> 删除工作经历 Timeline（移到 About 页）</li>
+<li><input type="checkbox" disabled> 删除技能标签云（移到 About 页）</li>
+<li><input type="checkbox" disabled> 删除代码块样式的自我介绍（<code>const me = {...}</code>）</li>
+</ul>
+<h5>1.5 创建新的首页结构</h5>
+<ul>
+<li><input type="checkbox" disabled> 创建 Hero Section（第一屏）</li>
+<li><input type="checkbox" disabled> 新标题：&quot;AI 时代的系统设计工程师&quot;</li>
+<li><input type="checkbox" disabled> 新标语：&quot;让 AI 从实验室走向生产环境&quot;</li>
+<li><input type="checkbox" disabled> 新简介：&quot;全栈思维 × AI 工程化。我在思考：怎样才能让 AI 真正为组织创造价值？为什么系统设计在 AI 时代变得更重要？&quot;</li>
+<li><input type="checkbox" disabled> CTA 按钮：&quot;Read My Thinking →&quot;</li>
+</ul>
+<ul>
+<li><input type="checkbox" disabled> 创建 Featured Writing Section（第二屏）</li>
+<li><input type="checkbox" disabled> 标题：&quot;最新思考&quot; / &quot;Latest Thinking&quot;</li>
+<li><input type="checkbox" disabled> 文章卡片网格布局</li>
+<li><input type="checkbox" disabled> 占位符内容（暂无文章）</li>
+</ul>
+<ul>
+<li><input type="checkbox" disabled> 创建 Brief About Section（第三屏）</li>
+<li><input type="checkbox" disabled> 标题：&quot;关于我&quot; / &quot;About Me&quot;</li>
+<li><input type="checkbox" disabled> 简短介绍（100-150字）</li>
+<li><input type="checkbox" disabled> &quot;了解更多&quot;链接</li>
+</ul>
+<ul>
+<li><input type="checkbox" disabled> 创建 Newsletter Section（第四屏）</li>
+<li><input type="checkbox" disabled> 标题：&quot;订阅我的思考&quot; / &quot;Subscribe&quot;</li>
+<li><input type="checkbox" disabled> Email 订阅表单</li>
+</ul>
+<p>---</p>
+<h3>第二阶段：首页视觉重构（Day 3-4）</h3>
+<p><strong>目标</strong>：创建新的视觉组件，实现编辑叙事风格</p>
+<h4>任务清单</h4>
+<h5>2.1 创建 HeroV2 组件</h5>
+<ul>
+<li><input type="checkbox" disabled> 新建文件 <code>components/hero/HeroV2.tsx</code></li>
+<li><input type="checkbox" disabled> 实现深色背景（<code>bg-background</code>）</li>
+<li><input type="checkbox" disabled> 添加渐变效果</li>
+<li><input type="checkbox" disabled> 添加微妙的背景图案（网格或纹理）</li>
+<li><input type="checkbox" disabled> 简洁的文字排版（非代码风格）</li>
+<li><input type="checkbox" disabled> 清晰的 CTA 按钮</li>
+<li><input type="checkbox" disabled> 响应式设计支持</li>
+</ul>
+<h5>2.2 创建 FeaturedWriting 组件</h5>
+<ul>
+<li><input type="checkbox" disabled> 新建文件 <code>components/home/FeaturedWriting.tsx</code></li>
+<li><input type="checkbox" disabled> 实现文章卡片网格布局</li>
+<li><input type="checkbox" disabled> 添加占位符内容</li>
+<li><input type="checkbox" disabled> 响应式设计（移动端1列，平板2列，桌面3列）</li>
+<li><input type="checkbox" disabled> 添加加载动画</li>
+</ul>
+<h5>2.3 创建 ArticleCard 组件</h5>
+<ul>
+<li><input type="checkbox" disabled> 新建文件 <code>components/blog/ArticleCard.tsx</code></li>
+<li><input type="checkbox" disabled> 实现卡片布局</li>
+<li><input type="checkbox" disabled> 添加分类标签</li>
+<li><input type="checkbox" disabled> 添加标题和摘要</li>
+<li><input type="checkbox" disabled> 添加元信息（日期、阅读时间）</li>
+<li><input type="checkbox" disabled> 添加 hover 效果</li>
+</ul>
+<h5>2.4 更新首页主文件</h5>
+<ul>
+<li><input type="checkbox" disabled> 重构 <code>app/[lang]/page.tsx</code></li>
+<li><input type="checkbox" disabled> 移除旧组件引用</li>
+<li><input type="checkbox" disabled> 集成 HeroV2</li>
+<li><input type="checkbox" disabled> 集成 FeaturedWriting</li>
+<li><input type="checkbox" disabled> 集成 Brief About</li>
+<li><input type="checkbox" disabled> 集成 Newsletter</li>
+<li><input type="checkbox" disabled> 确保响应式布局</li>
+</ul>
+<p>---</p>
+<h3>第三阶段：About 页面整理（Day 4-5）</h3>
+<p><strong>目标</strong>：将首页移除的内容整理到 About 页面</p>
+<h4>任务清单</h4>
+<h5>3.1 重构 About 页面结构</h5>
+<ul>
+<li><input type="checkbox" disabled> 修改 <code>app/[lang]/about/page.tsx</code></li>
+<li><input type="checkbox" disabled> 创建开场白 Section</li>
+<li><input type="checkbox" disabled> 标题：&quot;关于我&quot;</li>
+<li><input type="checkbox" disabled> 详细自我介绍（150-200字）</li>
+<li><input type="checkbox" disabled> 思想定位说明</li>
+</ul>
+<ul>
+<li><input type="checkbox" disabled> 创建&quot;为什么听我的&quot; Section</li>
+<li><input type="checkbox" disabled> 标题：&quot;为什么我的观点值得听&quot;</li>
+<li><input type="checkbox" disabled> 核心观点和价值主张</li>
+<li><input type="checkbox" disabled> 专业背景说明</li>
+</ul>
+<ul>
+<li><input type="checkbox" disabled> 创建经历 Section</li>
+<li><input type="checkbox" disabled> 标题：&quot;经历&quot;</li>
+<li><input type="checkbox" disabled> 集成 Timeline 组件</li>
+<li><input type="checkbox" disabled> 展示工作经历</li>
+</ul>
+<ul>
+<li><input type="checkbox" disabled> 创建技能 Section（可选）</li>
+<li><input type="checkbox" disabled> 标题：&quot;技能&quot;</li>
+<li><input type="checkbox" disabled> 简化的技能展示</li>
+<li><input type="checkbox" disabled> 不是标签云形式</li>
+</ul>
+<ul>
+<li><input type="checkbox" disabled> 创建联系方式 Section</li>
+<li><input type="checkbox" disabled> 标题：&quot;联系&quot;</li>
+<li><input type="checkbox" disabled> Email 链接</li>
+<li><input type="checkbox" disabled> 社交媒体链接</li>
+</ul>
+<h5>3.2 更新导航链接</h5>
+<ul>
+<li><input type="checkbox" disabled> 确保首页的&quot;了解更多&quot;链接指向 About 页面</li>
+</ul>
+<p>---</p>
+<h3>第四阶段：细节优化（Day 6-7）</h3>
+<p><strong>目标</strong>：优化页面细节，提升用户体验</p>
+<h4>任务清单</h4>
+<h5>4.1 更新导航栏</h5>
+<ul>
+<li><input type="checkbox" disabled> 修改 <code>components/Header.tsx</code></li>
+<li><input type="checkbox" disabled> 隐藏&quot;资源&quot;链接（暂时没有内容）</li>
+<li><input type="checkbox" disabled> 确保导航链接正确</li>
+<li><input type="checkbox" disabled> 测试移动端导航</li>
+</ul>
+<h5>4.2 更新 Footer</h5>
+<ul>
+<li><input type="checkbox" disabled> 修改 <code>components/Footer.tsx</code></li>
+<li><input type="checkbox" disabled> 添加 Email 联系方式</li>
+<li><input type="checkbox" disabled> 添加 Twitter/X 链接</li>
+<li><input type="checkbox" disabled> 更新版权信息</li>
+</ul>
+<h5>4.3 更新博客分类标签</h5>
+<ul>
+<li><input type="checkbox" disabled> 更新博客相关组件</li>
+<li><input type="checkbox" disabled> 旧标签：mdx, nextjs, 博客</li>
+<li><input type="checkbox" disabled> 新标签：</li>
+<li>系统设计 (Systems Design)</li>
+<li>AI工程化 (AI Engineering)</li>
+<li>产品思维 (Product Thinking)</li>
+<li>项目复盘 (Project Reflections)</li>
+</ul>
+<h5>4.4 动画效果优化</h5>
+<ul>
+<li><input type="checkbox" disabled> 确保 Framer Motion 动画流畅</li>
+<li><input type="checkbox" disabled> 优化页面加载动画</li>
+<li><input type="checkbox" disabled> 添加过渡效果</li>
+</ul>
+<h5>4.5 字体和排版优化</h5>
+<ul>
+<li><input type="checkbox" disabled> 确保中文字体正确加载（Noto Sans SC）</li>
+<li><input type="checkbox" disabled> 优化字体大小和行高</li>
+<li><input type="checkbox" disabled> 确保代码字体（JetBrains Mono）正确</li>
+</ul>
+<p>---</p>
+<h3>第五阶段：性能和 SEO（Day 7）</h3>
+<p><strong>目标</strong>：优化性能和 SEO，确保网站质量</p>
+<h4>任务清单</h4>
+<h5>5.1 Meta 标签验证</h5>
+<ul>
+<li><input type="checkbox" disabled> 检查所有页面的 meta 标签</li>
+<li><input type="checkbox" disabled> 确保 title 正确</li>
+<li><input type="checkbox" disabled> 确保 description 正确</li>
+<li><input type="checkbox" disabled> 确保 og:image 存在</li>
+<li><input type="checkbox" disabled> 确保 twitter:card 正确</li>
+</ul>
+<h5>5.2 响应式测试</h5>
+<ul>
+<li><input type="checkbox" disabled> 测试移动端 (375px)</li>
+<li><input type="checkbox" disabled> 测试平板 (768px)</li>
+<li><input type="checkbox" disabled> 测试桌面 (1440px)</li>
+<li><input type="checkbox" disabled> 测试不同浏览器</li>
+</ul>
+<h5>5.3 性能优化</h5>
+<ul>
+<li><input type="checkbox" disabled> 检查 Lighthouse 性能分数</li>
+<li><input type="checkbox" disabled> 优化图片加载</li>
+<li><input type="checkbox" disabled> 优化 CSS 和 JS 打包</li>
+<li><input type="checkbox" disabled> 确保 Core Web Vitals 达标</li>
+</ul>
+<h5>5.4 无障碍性测试</h5>
+<ul>
+<li><input type="checkbox" disabled> 检查键盘导航</li>
+<li><input type="checkbox" disabled> 检查屏幕阅读器支持</li>
+<li><input type="checkbox" disabled> 检查颜色对比度</li>
+</ul>
+<h5>5.5 本地测试</h5>
+<ul>
+<li><input type="checkbox" disabled> 运行 <code>npm run dev</code></li>
+<li><input type="checkbox" disabled> 测试所有页面</li>
+<li><input type="checkbox" disabled> 测试语言切换</li>
+<li><input type="checkbox" disabled> 测试深色/浅色主题</li>
+<li><input type="checkbox" disabled> 检查控制台错误</li>
+</ul>
+<p>---</p>
+<h2>🛠️ 技术实施细节</h2>
+<h3>文件清单</h3>
+<h4>需要修改的文件：</h4>
+<ol>
+<li><code>lib/config-i18n.ts</code> - 配置文件更新</li>
+<li><code>lib/seo/metadata.ts</code> - SEO 元数据更新</li>
+<li><code>app/[lang]/page.tsx</code> - 首页重构</li>
+<li><code>app/[lang]/about/page.tsx</code> - About 页面重构</li>
+<li><code>app/[lang]/blog/page.tsx</code> - 博客描述更新</li>
+<li><code>app/[lang]/layout.tsx</code> - 布局检查</li>
+<li><code>components/Header.tsx</code> - 导航更新</li>
+<li><code>components/Footer.tsx</code> - Footer 更新</li>
+</ol>
+<h4>需要创建的新文件：</h4>
+<ol>
+<li><code>components/hero/HeroV2.tsx</code> - 新的 Hero 组件</li>
+<li><code>components/home/FeaturedWriting.tsx</code> - 最新思考 Section</li>
+<li><code>components/blog/ArticleCard.tsx</code> - 文章卡片组件</li>
+</ol>
+<h4>需要保留但迁移的组件：</h4>
+<ol>
+<li><code>components/hero/Typewriter.tsx</code> - 保留，可能用于其他页面</li>
+<li><code>components/hero/Timeline.tsx</code> - 移至 About 页面</li>
+<li><code>components/hero/SkillCloud.tsx</code> - 移至 About 页面</li>
+</ol>
+<h3>设计规范</h3>
+<h4>颜色方案</h4>
+<ul>
+<li>主背景: <code>bg-background</code> (深色)</li>
+<li>文字: <code>text-foreground</code> (浅色)</li>
+<li>强调色: <code>text-terminal-green</code></li>
+<li>次要文字: <code>text-secondary</code> (灰色)</li>
+</ul>
+<h4>字体配置</h4>
+<ul>
+<li>正文: Inter</li>
+<li>代码/标题: JetBrains Mono</li>
+<li>中文: Noto Sans SC</li>
+</ul>
+<h4>间距规范</h4>
+<ul>
+<li>Section 间距: <code>py-20</code> 或 <code>py-16</code></li>
+<li>容器宽度: <code>max-w-4xl</code> (文章) 或 <code>max-w-6xl</code> (网格布局)</li>
+</ul>
+<p>---</p>
+<h2>📊 验收标准</h2>
+<h3>首页验收</h3>
+<ul>
+<li><input type="checkbox" disabled> 清晰展示身份定位：&quot;AI 时代的系统设计工程师&quot;</li>
+<li><input type="checkbox" disabled> 没有虚假数据统计</li>
+<li><input type="checkbox" disabled> 没有简历式的工作经历展示</li>
+<li><input type="checkbox" disabled> 有&quot;最新思考&quot;区域（即使是占位符）</li>
+<li><input type="checkbox" disabled> 有 Newsletter 订阅入口</li>
+<li><input type="checkbox" disabled> CTA 按钮可点击</li>
+<li><input type="checkbox" disabled> 移动端完美适配</li>
+</ul>
+<h3>About 页面验收</h3>
+<ul>
+<li><input type="checkbox" disabled> 包含详细的自我介绍</li>
+<li><input type="checkbox" disabled> 包含工作经历</li>
+<li><input type="checkbox" disabled> 包含联系方式</li>
+<li><input type="checkbox" disabled> 页面结构清晰</li>
+<li><input type="checkbox" disabled> 响应式设计正常</li>
+</ul>
+<h3>Blog 页面验收</h3>
+<ul>
+<li><input type="checkbox" disabled> 描述符合新定位</li>
+<li><input type="checkbox" disabled> 标签体系更新</li>
+<li><input type="checkbox" disabled> 文章卡片显示正常</li>
+<li><input type="checkbox" disabled> 分类过滤功能正常</li>
+</ul>
+<h3>整体验收</h3>
+<ul>
+<li><input type="checkbox" disabled> 移动端完美适配</li>
+<li><input type="checkbox" disabled> 加载速度快（Lighthouse Performance &gt; 90）</li>
+<li><input type="checkbox" disabled> SEO 优化到位</li>
+<li><input type="checkbox" disabled> 没有 console 错误</li>
+<li><input type="checkbox" disabled> 中英文切换正常</li>
+<li><input type="checkbox" disabled> 深色/浅色主题切换正常</li>
+</ul>
+<p>---</p>
+<h2>🚀 部署流程</h2>
+<h3>1. 创建开发分支</h3>
+<pre><code class="language-bash">git checkout -b refactor/editorial-design</code></pre>
+<h3>2. 按阶段实施</h3>
+<ul>
+<li>Day 1-2: 内容和配置文件</li>
+<li>Day 3-4: 首页视觉重构</li>
+<li>Day 4-5: About 页面</li>
+<li>Day 6-7: 细节优化和测试</li>
+</ul>
+<h3>3. 本地测试</h3>
+<pre><code class="language-bash">npm run dev
+# 在 localhost:3000 测试所有改动</code></pre>
+<h3>4. 提交代码</h3>
+<pre><code class="language-bash">git add .
+git commit -m &quot;refactor: transform to editorial design&quot;
+git push origin refactor/editorial-design</code></pre>
+<h3>5. 部署到 Vercel</h3>
+<ul>
+<li>通过 Pull Request 创建 preview 部署</li>
+<li>在 preview 环境测试</li>
+<li>合并到 main 分支后自动部署到生产环境</li>
+</ul>
+<h3>6. 生产验证</h3>
+<ul>
+<li>访问 https://alexlabx.com</li>
+<li>测试所有功能</li>
+<li>监控性能指标</li>
+<li>检查 SEO 指标</li>
+</ul>
+<p>---</p>
+<h2>⚠️ 注意事项</h2>
+<h3>技术约束</h3>
+<ol>
+<li><strong>保持现有技术栈</strong></li>
+</ol>
+<ul>
+<li>不改变 Next.js 配置</li>
+<li>不移除现有依赖</li>
+<li>保持国际化结构</li>
+</ul>
+<ol>
+<li><strong>渐进式改造</strong></li>
+</ol>
+<ul>
+<li>一次改一个页面</li>
+<li>每次改动后测试</li>
+<li>保持 git commit 清晰</li>
+</ul>
+<ol>
+<li><strong>内容优先</strong></li>
+</ol>
+<ul>
+<li>文案比视觉更重要</li>
+<li>先改文字，再改样式</li>
+<li>确保移动端可读性</li>
+</ul>
+<ol>
+<li><strong>性能优先</strong></li>
+</ol>
+<ul>
+<li>不添加大图片</li>
+<li>保持动画简洁</li>
+<li>优化首屏加载</li>
+</ul>
+<h3>潜在风险</h3>
+<ol>
+<li><strong>中英文文案一致性</strong> - 需要确保两种语言的文案风格统一</li>
+<li><strong>移动端适配</strong> - 重点测试移动端显示效果</li>
+<li><strong>SEO 影响</strong> - 改造后需要重新提交 sitemap</li>
+<li><strong>用户体验</strong> - 需要邀请朋友测试反馈</li>
+</ol>
+<p>---</p>
+<h2>📝 进度跟踪</h2>
+<h3>每日检查点</h3>
+<ul>
+<li><input type="checkbox" disabled> Day 1: 配置文件和文案更新完成</li>
+<li><input type="checkbox" disabled> Day 2: 首页基础结构完成</li>
+<li><input type="checkbox" disabled> Day 3: HeroV2 组件完成</li>
+<li><input type="checkbox" disabled> Day 4: FeaturedWriting 和 ArticleCard 组件完成</li>
+<li><input type="checkbox" disabled> Day 5: About 页面重构完成</li>
+<li><input type="checkbox" disabled> Day 6: 导航、Footer 和细节优化完成</li>
+<li><input type="checkbox" disabled> Day 7: 性能优化和测试完成</li>
+</ul>
+<h3>里程碑</h3>
+<ul>
+<li><input type="checkbox" disabled> <strong>M1</strong>: 首页重构完成（Day 4 结束）</li>
+<li><input type="checkbox" disabled> <strong>M2</strong>: About 页面重构完成（Day 5 结束）</li>
+<li><input type="checkbox" disabled> <strong>M3</strong>: 所有页面优化完成（Day 7 结束）</li>
+<li><input type="checkbox" disabled> <strong>M4</strong>: 部署到生产环境（Day 7）</li>
+</ul>
+<p>---</p>
+<h2>🎯 最终目标</h2>
+<p>完成后，访问 https://alexlabx.com 应该能在 5 秒内回答：</p>
+<ol>
+<li><strong>Alex 是谁？</strong></li>
+</ol>
+<p>   → AI 时代的系统设计工程师</p>
+<ol>
+<li><strong>他做什么？</strong></li>
+</ol>
+<p>   → 思考如何让 AI 从实验室走向生产环境</p>
+<ol>
+<li><strong>为什么关注他？</strong></li>
+</ol>
+<p>   → 深度思考 + 系统设计 × AI 工程化</p>
+<ol>
+<li><strong>接下来做什么？</strong></li>
+</ol>
+<p>   → 阅读文章 / 订阅 Newsletter / 联系他</p>
+<p>---</p>
+<h2>📞 联系与反馈</h2>
+<p>如遇到问题或需要调整计划，请：</p>
+<ol>
+<li>检查文档：claude-code-refactor-prompt.html</li>
+<li>查看项目文档：PROJECT_SPECS.md</li>
+<li>查看 README.md 了解项目结构</li>
+</ol>
+<p>---</p>
+<p><strong>让我们开始改造吧！按照这个计划，7天内完成一个焕然一新的个人网站。</strong></p>
+<p>Good luck! 🚀</p>
+</body>
+</html>

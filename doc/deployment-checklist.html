@@ -1,0 +1,581 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>部署检查清单</title>
+  <style>
+    body { max-width: 920px; margin: 40px auto; padding: 0 20px; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; line-height: 1.7; color: #1f2937; background: #fff; }
+    h1, h2, h3, h4, h5, h6 { line-height: 1.3; margin-top: 1.8em; }
+    h1 { margin-top: 0; }
+    code { padding: 0.15em 0.35em; border-radius: 4px; background: #f3f4f6; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+    pre { overflow-x: auto; padding: 16px; border-radius: 8px; background: #111827; }
+    pre code { padding: 0; background: transparent; color: #f9fafb; }
+    blockquote { margin: 1.2em 0; padding-left: 1em; color: #4b5563; border-left: 4px solid #d1d5db; }
+    table { width: 100%; border-collapse: collapse; margin: 1.2em 0; }
+    th, td { padding: 8px 10px; border: 1px solid #d1d5db; text-align: left; vertical-align: top; }
+    th { background: #f9fafb; }
+    a { color: #2563eb; }
+  </style>
+</head>
+<body>
+<h1>部署检查清单</h1>
+<blockquote>
+<p><strong>用途</strong>：确保重构后的个人博客成功部署到生产环境</p>
+<p><strong>日期</strong>：2026-04-26</p>
+<p><strong>分支</strong>：refactor/editorial-design</p>
+<p><strong>生产环境</strong>：https://alexlabx.com</p>
+</blockquote>
+<p>---</p>
+<h2>📋 部署前检查清单</h2>
+<h3>1. 本地验证（必须完成）</h3>
+<h4>代码质量检查</h4>
+<ul>
+<li><input type="checkbox" disabled> <strong>TypeScript 编译通过</strong></li>
+</ul>
+<p>  ```bash</p>
+<p>  npx tsc --noEmit</p>
+<p>  ```</p>
+<p>  确保没有类型错误</p>
+<ul>
+<li><input type="checkbox" disabled> <strong>代码 lint 通过</strong></li>
+</ul>
+<p>  ```bash</p>
+<p>  npm run lint</p>
+<p>  ```</p>
+<p>  确保没有代码风格问题</p>
+<ul>
+<li><input type="checkbox" disabled> <strong>构建成功</strong></li>
+</ul>
+<p>  ```bash</p>
+<p>  npm run build</p>
+<p>  ```</p>
+<p>  确保生产构建成功，无错误</p>
+<h4>功能测试</h4>
+<ul>
+<li><input type="checkbox" disabled> <strong>首页功能正常</strong></li>
+<li>Hero Section 显示正确</li>
+<li>Featured Writing 显示正确</li>
+<li>Brief About 显示正确</li>
+<li>Newsletter 表单显示正确</li>
+</ul>
+<ul>
+<li><input type="checkbox" disabled> <strong>About 页面功能正常</strong></li>
+<li>所有 Section 显示正确</li>
+<li>Timeline 组件正常</li>
+<li>SkillCloud 组件正常</li>
+<li>联系方式链接正常</li>
+</ul>
+<ul>
+<li><input type="checkbox" disabled> <strong>导航和 Footer 正常</strong></li>
+<li>导航栏工作正常（无资源链接）</li>
+<li>Footer 包含 Email 链接</li>
+<li>社交媒体链接正常</li>
+</ul>
+<ul>
+<li><input type="checkbox" disabled> <strong>多语言功能正常</strong></li>
+<li>中文显示正确</li>
+<li>英文显示正确</li>
+<li>语言切换正常</li>
+</ul>
+<ul>
+<li><input type="checkbox" disabled> <strong>主题切换正常</strong></li>
+<li>深色主题正常</li>
+<li>浅色主题正常</li>
+<li>主题切换功能正常</li>
+</ul>
+<h4>响应式设计测试</h4>
+<ul>
+<li><input type="checkbox" disabled> <strong>移动端测试</strong>（375px）</li>
+<li>所有页面正常显示</li>
+<li>导航菜单正常工作</li>
+<li>文字和按钮大小合适</li>
+</ul>
+<ul>
+<li><input type="checkbox" disabled> <strong>平板测试</strong>（768px）</li>
+<li>布局切换正常</li>
+<li>导航显示为桌面版</li>
+<li>内容间距合适</li>
+</ul>
+<ul>
+<li><input type="checkbox" disabled> <strong>桌面测试</strong>（1440px）</li>
+<li>布局正常</li>
+<li>所有元素对齐</li>
+<li>视觉效果良好</li>
+</ul>
+<h4>性能检查</h4>
+<ul>
+<li><input type="checkbox" disabled> <strong>Lighthouse Performance 分数 &gt; 90</strong></li>
+<li>打开 Chrome DevTools &gt; Lighthouse</li>
+<li>运行 Performance 测试</li>
+<li>确保分数 &gt; 90</li>
+</ul>
+<ul>
+<li><input type="checkbox" disabled> <strong>Lighthouse SEO 分数 &gt; 90</strong></li>
+<li>运行 SEO 测试</li>
+<li>确保分数 &gt; 90</li>
+</ul>
+<ul>
+<li><input type="checkbox" disabled> <strong>Lighthouse Accessibility 分数 &gt; 90</strong></li>
+<li>运行 Accessibility 测试</li>
+<li>确保分数 &gt; 90</li>
+</ul>
+<ul>
+<li><input type="checkbox" disabled> <strong>加载时间 &lt; 3秒</strong></li>
+<li>使用 Network 面板检查</li>
+<li>确保首屏加载时间 &lt; 3秒</li>
+</ul>
+<h4>SEO 检查</h4>
+<ul>
+<li><input type="checkbox" disabled> <strong>Meta 标签完整</strong></li>
+<li>所有页面有正确的 title</li>
+<li>所有页面有正确的 description</li>
+<li>所有页面有正确的 keywords</li>
+</ul>
+<ul>
+<li><input type="checkbox" disabled> <strong>Open Graph 标签</strong></li>
+<li>og:title 正确</li>
+<li>og:description 正确</li>
+<li>og:image 存在</li>
+</ul>
+<ul>
+<li><input type="checkbox" disabled> <strong>Twitter Card 标签</strong></li>
+<li>twitter:card 设置正确</li>
+<li>twitter:title 正确</li>
+<li>twitter:description 正确</li>
+<li>twitter:image 存在</li>
+</ul>
+<h4>内容检查</h4>
+<ul>
+<li><input type="checkbox" disabled> <strong>文案审核</strong></li>
+<li>所有中文文案正确</li>
+<li>所有英文文案正确</li>
+<li>没有错别字或语法错误</li>
+</ul>
+<ul>
+<li><input type="checkbox" disabled> <strong>链接检查</strong></li>
+<li>所有内部链接正常</li>
+<li>所有外部链接正常</li>
+<li>没有 404 错误</li>
+</ul>
+<ul>
+<li><input type="checkbox" disabled> <strong>图片检查</strong></li>
+<li>所有图片正常加载</li>
+<li>图片大小合适</li>
+<li>图片有 alt 文本</li>
+</ul>
+<p>---</p>
+<h3>2. Git 提交检查</h3>
+<h4>状态检查</h4>
+<ul>
+<li><input type="checkbox" disabled> <strong>确认当前分支</strong></li>
+</ul>
+<p>  ```bash</p>
+<p>  git branch</p>
+<p>  ```</p>
+<p>  确保在 <code>refactor/editorial-design</code> 分支</p>
+<ul>
+<li><input type="checkbox" disabled> <strong>检查改动文件</strong></li>
+</ul>
+<p>  ```bash</p>
+<p>  git status</p>
+<p>  ```</p>
+<p>  确认所有改动文件正确</p>
+<ul>
+<li><input type="checkbox" disabled> <strong>检查是否有未提交的改动</strong></li>
+</ul>
+<p>  ```bash</p>
+<p>  git diff</p>
+<p>  ```</p>
+<p>  查看具体改动内容</p>
+<h4>提交代码</h4>
+<ul>
+<li><input type="checkbox" disabled> <strong>添加所有改动</strong></li>
+</ul>
+<p>  ```bash</p>
+<p>  git add .</p>
+<p>  ```</p>
+<ul>
+<li><input type="checkbox" disabled> <strong>提交代码</strong></li>
+</ul>
+<p>  ```bash</p>
+<p>  git commit -m &quot;refactor: complete homepage and about page transformation to editorial design</p>
+<p>Completed all core refactoring:</p>
+<ul>
+<li>Updated profile configuration for new positioning</li>
+<li>Enhanced SEO metadata with new keywords</li>
+<li>Removed fake statistics from homepage</li>
+<li>Created HeroV2 component with modern design</li>
+<li>Created FeaturedWriting section with article grid</li>
+<li>Refactored homepage structure (Hero + Featured + Brief About + Newsletter)</li>
+<li>Restructured About page with new sections</li>
+<li>Updated navigation to remove resources link</li>
+<li>Updated Footer to include Email contact</li>
+</ul>
+<p>Transformed from resume-style display to thought-leader platform.&quot;</p>
+<p>  ```</p>
+<ul>
+<li><input type="checkbox" disabled> <strong>推送到远程仓库</strong></li>
+</ul>
+<p>  ```bash</p>
+<p>  git push origin refactor/editorial-design</p>
+<p>  ```</p>
+<h4>验证远程仓库</h4>
+<ul>
+<li><input type="checkbox" disabled> <strong>检查 GitHub</strong></li>
+<li>访问：https://github.com/xiaokaihan/personal-blog</li>
+<li>确认 <code>refactor/editorial-design</code> 分支存在</li>
+<li>确认所有改动已推送</li>
+</ul>
+<p>---</p>
+<h2>🚀 部署流程</h2>
+<h3>3. 创建 Pull Request</h3>
+<h4>PR 准备</h4>
+<ul>
+<li><input type="checkbox" disabled> <strong>访问 GitHub</strong></li>
+<li>打开仓库页面</li>
+<li>确认分支列表中有 <code>refactor/editorial-design</code></li>
+</ul>
+<ul>
+<li><input type="checkbox" disabled> <strong>创建 PR</strong></li>
+</ul>
+<ol>
+<li>点击 &quot;New pull request&quot;</li>
+<li>选择分支：<code>refactor/editorial-design</code> → <code>main</code></li>
+<li>填写 PR 标题：</li>
+</ol>
+<p>     ```</p>
+<p>     Refactor: Transform homepage and about page to editorial design</p>
+<p>     ```</p>
+<ol>
+<li>填写 PR 描述：</li>
+</ol>
+<p>     ```markdown</p>
+<p>     ## 概述</p>
+<p>     完成了个人博客从&quot;简历式展示&quot;到&quot;思想输出平台&quot;的核心重构。</p>
+<p>     ## 主要改动</p>
+<ul>
+<li>更新配置文件，定位改为&quot;AI 时代的系统设计工程师&quot;</li>
+<li>更新 SEO 元数据，添加新的关键词体系</li>
+<li>创建 HeroV2 组件，采用编辑叙事风格</li>
+<li>创建 FeaturedWriting Section，展示最新思考</li>
+<li>重构首页结构（Hero + Featured + Brief About + Newsletter）</li>
+<li>重构 About 页面，添加&quot;为什么听我&quot;Section</li>
+<li>更新导航栏，移除资源链接</li>
+<li>更新 Footer，添加 Email 联系方式</li>
+</ul>
+<p>     ## 测试</p>
+<ul>
+<li>✅ TypeScript 检查通过</li>
+<li>✅ 本地功能测试完成</li>
+<li>✅ 响应式设计测试完成</li>
+<li>✅ Lighthouse 性能测试通过</li>
+</ul>
+<p>     ## 部署</p>
+<ul>
+<li>Preview 环境：<a href="链接">查看</a></li>
+<li>预计影响：首页和 About 页面</li>
+</ul>
+<p>     ## 截图</p>
+<p>     （如果需要，可以添加截图）</p>
+<p>     ```</p>
+<ul>
+<li><input type="checkbox" disabled> <strong>设置 PR Reviewers</strong></li>
+<li>添加需要的 Reviewers（如果有）</li>
+</ul>
+<h4>PR 检查</h4>
+<ul>
+<li><input type="checkbox" disabled> <strong>自动检查通过</strong></li>
+<li>CI/CD 检查通过</li>
+<li>代码质量检查通过</li>
+<li>构建检查通过</li>
+</ul>
+<ul>
+<li><input type="checkbox" disabled> <strong>Review 通过</strong></li>
+<li>Reviewer 批准 PR</li>
+<li>没有要求修改的评论</li>
+</ul>
+<p>---</p>
+<h3>4. Preview 环境测试</h3>
+<h4>访问 Preview</h4>
+<ul>
+<li><input type="checkbox" disabled> <strong>获取 Preview 链接</strong></li>
+<li>从 PR 页面获取 preview 链接</li>
+<li>通常格式：https://refactor-editorial-design-personal-blog.vercel.app</li>
+</ul>
+<h4>Preview 环境测试</h4>
+<ul>
+<li><input type="checkbox" disabled> <strong>首页测试</strong></li>
+<li>所有功能与本地测试一致</li>
+<li>没有部署相关问题</li>
+<li>图片正常加载</li>
+</ul>
+<ul>
+<li><input type="checkbox" disabled> <strong>About 页面测试</strong></li>
+<li>所有功能正常</li>
+<li>没有部署相关问题</li>
+</ul>
+<ul>
+<li><input type="checkbox" disabled> <strong>导航和 Footer 测试</strong></li>
+<li>所有链接正常</li>
+<li>Email 链接可点击</li>
+</ul>
+<ul>
+<li><input type="checkbox" disabled> <strong>多语言测试</strong></li>
+<li>中英文切换正常</li>
+<li>URL 更新正确</li>
+</ul>
+<ul>
+<li><input type="checkbox" disabled> <strong>主题切换测试</strong></li>
+<li>深色/浅色主题正常</li>
+<li>主题状态保持</li>
+</ul>
+<ul>
+<li><input type="checkbox" disabled> <strong>性能测试</strong></li>
+<li>加载速度正常</li>
+<li>Lighthouse 分数与本地一致</li>
+</ul>
+<h4>问题修复</h4>
+<ul>
+<li><input type="checkbox" disabled> <strong>如果有问题</strong></li>
+</ul>
+<ol>
+<li>记录问题详情</li>
+<li>在本地修复问题</li>
+<li>提交修复到 <code>refactor/editorial-design</code> 分支</li>
+<li>PR 自动更新，重新测试</li>
+</ol>
+<p>---</p>
+<h3>5. 合并到 main 分支</h3>
+<h4>合并前最后检查</h4>
+<ul>
+<li><input type="checkbox" disabled> <strong>Preview 环境测试通过</strong></li>
+<li><input type="checkbox" disabled> <strong>所有 Reviewer 批准</strong></li>
+<li><input type="checkbox" disabled> <strong>所有自动检查通过</strong></li>
+<li><input type="checkbox" disabled> <strong>没有遗留问题</strong></li>
+</ul>
+<h4>合并 PR</h4>
+<ul>
+<li><input type="checkbox" disabled> <strong>点击 &quot;Merge pull request&quot;</strong></li>
+<li><input type="checkbox" disabled> <strong>选择合并方式</strong></li>
+<li>建议使用 &quot;Merge pull request&quot;</li>
+<li>或者 &quot;Squash and merge&quot;</li>
+</ul>
+<ul>
+<li><input type="checkbox" disabled> <strong>确认合并</strong></li>
+<li>点击 &quot;Confirm merge&quot;</li>
+</ul>
+<h4>删除分支（可选）</h4>
+<ul>
+<li><input type="checkbox" disabled> <strong>删除功能分支</strong></li>
+<li>在合并后删除 <code>refactor/editorial-design</code> 分支</li>
+<li>保持仓库整洁</li>
+</ul>
+<p>---</p>
+<h3>6. 生产环境验证</h3>
+<h4>访问生产环境</h4>
+<ul>
+<li><input type="checkbox" disabled> <strong>等待部署完成</strong></li>
+<li>Vercel 自动部署到生产环境</li>
+<li>部署完成后访问：https://alexlabx.com</li>
+</ul>
+<h4>生产环境测试</h4>
+<ul>
+<li><input type="checkbox" disabled> <strong>首页测试</strong></li>
+<li>✅ 所有功能正常</li>
+<li>✅ 显示正确的定位和内容</li>
+<li>✅ 性能良好</li>
+</ul>
+<ul>
+<li><input type="checkbox" disabled> <strong>About 页面测试</strong></li>
+<li>✅ 所有功能正常</li>
+<li>✅ 内容显示正确</li>
+</ul>
+<ul>
+<li><input type="checkbox" disabled> <strong>导航和 Footer 测试</strong></li>
+<li>✅ 所有链接正常</li>
+<li>✅ Email 功能正常</li>
+</ul>
+<ul>
+<li><input type="checkbox" disabled> <strong>SEO 验证</strong></li>
+<li>使用工具验证 Meta 标签</li>
+<li>检查搜索引擎可见性</li>
+</ul>
+<ul>
+<li><input type="checkbox" disabled> <strong>移动端测试</strong></li>
+<li>使用手机浏览器访问</li>
+<li>所有功能正常</li>
+</ul>
+<h4>性能监控</h4>
+<ul>
+<li><input type="checkbox" disabled> <strong>检查 Vercel Analytics</strong></li>
+<li>访问 Vercel Dashboard</li>
+<li>查看性能指标</li>
+<li>确保没有性能下降</li>
+</ul>
+<ul>
+<li><input type="checkbox" disabled> <strong>检查 Core Web Vitals</strong></li>
+<li>LCP (Largest Contentful Paint) &lt; 2.5s</li>
+<li>FID (First Input Delay) &lt; 100ms</li>
+<li>CLS (Cumulative Layout Shift) &lt; 0.1</li>
+</ul>
+<p>---</p>
+<h3>7. 发布后任务</h3>
+<h4>文档更新</h4>
+<ul>
+<li><input type="checkbox" disabled> <strong>更新 README.md</strong></li>
+<li>更新项目描述</li>
+<li>更新技术栈说明</li>
+<li>更新部署信息</li>
+</ul>
+<ul>
+<li><input type="checkbox" disabled> <strong>更新 CHANGELOG</strong></li>
+<li>记录本次重构</li>
+<li>说明主要改动</li>
+<li>添加版本信息</li>
+</ul>
+<h4>通知和公告</h4>
+<ul>
+<li><input type="checkbox" disabled> <strong>社交媒体公告</strong></li>
+<li>Twitter/X 发布更新通知</li>
+<li>LinkedIn 更新（如果有）</li>
+<li>其他平台（如果有）</li>
+</ul>
+<ul>
+<li><input type="checkbox" disabled> <strong>用户通知</strong></li>
+<li>如果有订阅用户，发送通知邮件</li>
+<li>说明网站更新内容</li>
+</ul>
+<h4>监控和维护</h4>
+<ul>
+<li><input type="checkbox" disabled> <strong>监控错误日志</strong></li>
+<li>检查是否有新的错误</li>
+<li>及时修复发现的问题</li>
+</ul>
+<ul>
+<li><input type="checkbox" disabled> <strong>收集用户反馈</strong></li>
+<li>观察用户反馈</li>
+<li>记录改进建议</li>
+</ul>
+<p>---</p>
+<h2>🎯 部署成功标准</h2>
+<h3>必须满足</h3>
+<ul>
+<li><input type="checkbox" disabled> 所有测试通过</li>
+<li><input type="checkbox" disabled> Preview 环境测试通过</li>
+<li><input type="checkbox" disabled> 生产环境功能正常</li>
+<li><input type="checkbox" disabled> SEO 指标达标</li>
+<li><input type="checkbox" disabled> 性能指标达标</li>
+</ul>
+<h3>应该满足</h3>
+<ul>
+<li><input type="checkbox" disabled> 没有控制台错误</li>
+<li><input type="checkbox" disabled> 没有性能问题</li>
+<li><input type="checkbox" disabled> 移动端体验良好</li>
+<li><input type="checkbox" disabled> 所有链接正常</li>
+</ul>
+<h3>最好满足</h3>
+<ul>
+<li><input type="checkbox" disabled> 获得正面用户反馈</li>
+<li><input type="checkbox" disabled> SEO 排名提升</li>
+<li><input type="checkbox" disabled> 用户留存率提升</li>
+</ul>
+<p>---</p>
+<h2>📊 部署检查记录</h2>
+<h3>基本信息</h3>
+<ul>
+<li><strong>部署日期</strong>：____/____/____</li>
+<li><strong>部署人员</strong>：_____________</li>
+<li><strong>分支</strong>：refactor/editorial-design</li>
+<li><strong>PR 链接</strong>：_____________</li>
+</ul>
+<h3>检查结果</h3>
+<table>
+<thead><tr><th>检查项</th><th>状态</th><th>备注</th></tr></thead>
+<tbody>
+<tr><td>本地验证</td><td>☐ 通过 ☐ 失败</td><td></td></tr>
+<tr><td>Git 提交</td><td>☐ 通过 ☐ 失败</td><td></td></tr>
+<tr><td>PR 创建</td><td>☐ 通过 ☐ 失败</td><td></td></tr>
+<tr><td>Preview 测试</td><td>☐ 通过 ☐ 失败</td><td></td></tr>
+<tr><td>合并到 main</td><td>☐ 通过 ☐ 失败</td><td></td></tr>
+<tr><td>生产环境测试</td><td>☐ 通过 ☐ 失败</td><td></td></tr>
+<tr><td>SEO 验证</td><td>☐ 通过 ☐ 失败</td><td></td></tr>
+<tr><td>性能测试</td><td>☐ 通过 ☐ 失败</td><td></td></tr>
+</tbody>
+</table>
+<h3>发现的问题</h3>
+<ol>
+<li>_________________________________</li>
+<li>_________________________________</li>
+<li>_________________________________</li>
+</ol>
+<h3>解决方案</h3>
+<ol>
+<li>_________________________________</li>
+<li>_________________________________</li>
+<li>_________________________________</li>
+</ol>
+<h3>部署结果</h3>
+<ul>
+<li><input type="checkbox" disabled> 部署成功</li>
+<li><input type="checkbox" disabled> 部署失败（失败原因：_____________）</li>
+</ul>
+<h3>后续计划</h3>
+<ol>
+<li>_________________________________</li>
+<li>_________________________________</li>
+<li>_________________________________</li>
+</ol>
+<p>---</p>
+<h2>🔧 常见问题排查</h2>
+<h3>问题1：Vercel 部署失败</h3>
+<p><strong>症状</strong>：PR 无法自动部署到 Vercel</p>
+<p><strong>排查</strong>：</p>
+<ol>
+<li>检查 Vercel Dashboard 中的错误日志</li>
+<li>检查构建日志</li>
+<li>确认环境变量配置正确</li>
+<li>检查依赖版本兼容性</li>
+</ol>
+<h3>问题2：Preview 环境与本地不一致</h3>
+<p><strong>症状</strong>：Preview 环境显示与本地不同</p>
+<p><strong>排查</strong>：</p>
+<ol>
+<li>清除浏览器缓存</li>
+<li>检查环境变量配置</li>
+<li>检查 API 配置</li>
+<li>对比构建输出</li>
+</ol>
+<h3>问题3：生产环境性能下降</h3>
+<p><strong>症状</strong>：部署后性能不如预期</p>
+<p><strong>排查</strong>：</p>
+<ol>
+<li>检查 Vercel Analytics</li>
+<li>运行 Lighthouse 测试</li>
+<li>检查网络请求</li>
+<li>优化图片和资源</li>
+</ol>
+<p>---</p>
+<h2>✅ 部署完成</h2>
+<p>恭喜！个人博客重构成功部署到生产环境！</p>
+<h3>完成的工作</h3>
+<ul>
+<li>✅ 代码质量检查通过</li>
+<li>✅ 功能测试通过</li>
+<li>✅ 性能测试通过</li>
+<li>✅ SEO 检查通过</li>
+<li>✅ Preview 环境测试通过</li>
+<li>✅ 生产环境部署成功</li>
+<li>✅ 生产环境测试通过</li>
+</ul>
+<h3>下一步建议</h3>
+<ol>
+<li>持续监控网站性能</li>
+<li>收集用户反馈</li>
+<li>规划下一步改进</li>
+<li>准备内容创作</li>
+</ol>
+<p>---</p>
+<p><strong>部署检查清单完成！按照这个清单逐步完成部署流程。</strong> 🚀</p>
+</body>
+</html>
